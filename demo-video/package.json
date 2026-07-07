@@ -1,0 +1,18 @@
+{
+  "name": "zendutrace-demo-video",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.js",
+    "render": "remotion render src/index.js ZenduTraceDemo ../public/assets/zendutrace-demo.mp4 --codec h264",
+    "poster": "remotion still src/index.js ZenduTraceDemo ../public/assets/zendutrace-demo-poster.png --frame 1150",
+    "render:film": "remotion render src/index.js ZenduTraceFilm ../public/assets/zendutrace-film.mp4 --codec h264",
+    "render:hero": "remotion render src/index.js HeroLoop ../public/assets/hero-loop-raw.mp4 --codec h264",
+    "poster:film": "remotion still src/index.js ZenduTraceFilm ../public/assets/zendutrace-film-poster.png --frame 440"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0",
+    "@remotion/cli": "^4.0.0"
+  }
+}
