@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 
 // Ports mesh(): plain 2D canvas draw loop for the hero background.
 // Soft moving radial-gradient blobs + faint grid lines + vignette.
-export function useMeshCanvas(canvasRef) {
+export function useMeshCanvas(canvasRef, active = true, animate = true) {
   useEffect(() => {
+    if (!active) return undefined;
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
@@ -65,14 +66,14 @@ export function useMeshCanvas(canvasRef) {
       vig.addColorStop(1, 'rgba(0,0,0,0.62)');
       ctx.fillStyle = vig;
       ctx.fillRect(0, 0, w, h);
-      raf = requestAnimationFrame(draw);
+      if (animate) raf = requestAnimationFrame(draw);
     };
-    raf = requestAnimationFrame(draw);
+    draw();
 
     return () => {
-      cancelAnimationFrame(raf);
+      if (raf) cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [active, animate]);
 }

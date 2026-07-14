@@ -2,34 +2,51 @@ import { useState } from 'react';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-// Client-side email capture: validates, records the lead locally, and opens a
-// prefilled mail draft to the sales inbox (no backend on this static site).
-export function useEmailCapture(subject) {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | error | done
+// Form relay endpoint (Formspree/Basin/serverless function). Set
+// VITE_CAPTURE_ENDPOINT in .env before launch; without it, submits fall back
+// to the "failed" state which offers a direct sales@ mailto instead.
+const CAPTURE_ENDPOINT = import.meta.env.VITE_CAPTURE_ENDPOINT || '';
 
-  const submit = (e) => {
+export function useEmailCapture(request) {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | error | sending | done | failed
+
+  const fallbackHref = `mailto:sales@zenduit.com?subject=${encodeURIComponent(request)}&body=${encodeURIComponent(`Work email: ${email.trim()}\n\nRequest: ${request}`)}`;
+
+  const submit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
     const value = email.trim();
     if (!EMAIL_RE.test(value)) {
       setStatus('error');
       return;
     }
+    setStatus('sending');
     try {
-      const leads = JSON.parse(localStorage.getItem('zt-leads') || '[]');
-      leads.push({ email: value, subject, at: new Date().toISOString() });
-      localStorage.setItem('zt-leads', JSON.stringify(leads));
+      const res = await fetch(CAPTURE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: value, request, page: window.location.href, at: new Date().toISOString() }),
+      });
+      if (!res.ok) throw new Error(`capture endpoint responded ${res.status}`);
+      try {
+        const leads = JSON.parse(localStorage.getItem('xt-leads') || '[]');
+        leads.push({ email: value, request, at: new Date().toISOString() });
+        localStorage.setItem('xt-leads', JSON.stringify(leads));
+      } catch {
+        // storage unavailable — the endpoint already has the lead
+      }
+      setStatus('done');
     } catch {
-      // storage unavailable — the mail draft below still captures the lead
+      setStatus('failed');
     }
-    window.location.href = `mailto:hello@zenduit.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Work email: ${value}\n\nPlease send my starter roll of ZenduTrace labels.`)}`;
-    setStatus('done');
   };
 
   const onChange = (e) => {
     setEmail(e.target.value);
-    if (status === 'error') setStatus('idle');
+    if (status === 'error' || status === 'failed') setStatus('idle');
   };
 
-  return { email, status, submit, onChange };
+  const reset = () => setStatus('idle');
+
+  return { email, status, submit, onChange, reset, fallbackHref };
 }

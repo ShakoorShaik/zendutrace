@@ -1,51 +1,148 @@
+import { useEffect, useRef, useState } from 'react';
 import { useHover } from '../hooks/useHover';
 import { useEmailCapture } from '../hooks/useEmailCapture';
 
-function ClaimButton() {
+const INTENTS = {
+  labels: {
+    chip: '10 free labels',
+    heading: 'Get 10 free labels',
+    sub: (
+      <>
+        Starter roll ships free. First shipments live on the map the same week &mdash; then <strong style={{ color: '#FFFFFF' }}>$6 per label, tracking included</strong>.
+      </>
+    ),
+    request: '10 free XenTag labels',
+    button: 'Claim 10 free labels',
+    done: 'Request received — we’ll confirm by email and ship your starter roll.',
+  },
+  demo: {
+    chip: '20-minute demo',
+    heading: (
+      <>
+        Book a <span style={{ whiteSpace: 'nowrap' }}>20-minute</span> demo
+      </>
+    ),
+    sub: (
+      <>
+        A walkthrough of the live platform with your use case &mdash; and we&rsquo;ll ship <strong style={{ color: '#FFFFFF' }}>sample labels the same week</strong>.
+      </>
+    ),
+    request: 'Book a 20-minute XenTag demo',
+    button: 'Request a demo',
+    done: 'Request received — we’ll reach out by email to schedule your demo.',
+  },
+};
+
+function IntentChip({ active, onClick, children }) {
+  return (
+    <button
+      type="button"
+      className="cta-intent"
+      onClick={onClick}
+      aria-pressed={active}
+      style={{
+        padding: '9px 18px',
+        borderRadius: 999,
+        border: active ? '1px solid rgba(255,122,46,0.65)' : '1px solid rgba(255,255,255,0.18)',
+        background: active ? 'rgba(255,122,46,0.16)' : 'rgba(255,255,255,0.05)',
+        color: active ? '#FFB37E' : 'rgba(255,255,255,0.7)',
+        fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+        fontSize: 13.5,
+        fontWeight: 600,
+        cursor: 'pointer',
+        transition: 'all .18s',
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+function SubmitButton({ label, sending }) {
   const [hovered, hoverProps] = useHover();
   return (
     <button
       type="submit"
+      className="cta-submit"
+      disabled={sending}
       style={{
         padding: '15px 26px',
         borderRadius: 12,
         border: 'none',
-        cursor: 'pointer',
+        cursor: sending ? 'default' : 'pointer',
         fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
         fontSize: 15.5,
         fontWeight: 700,
         color: '#fff',
-        background: 'linear-gradient(135deg,#C2410C,#FB8B24)',
-        boxShadow: hovered ? '0 22px 44px -12px rgba(194,65,12,0.8)' : '0 16px 36px -12px rgba(194,65,12,0.7)',
-        transform: hovered ? 'translateY(-2px)' : 'none',
-        transition: 'transform .18s,box-shadow .18s',
+        background: sending ? 'rgba(194,65,12,0.6)' : hovered ? '#D2470A' : '#C2410C',
+        boxShadow: '0 2px 10px -2px rgba(0,0,0,0.4)',
+        transform: hovered && !sending ? 'translateY(-1px)' : 'none',
+        transition: 'transform .18s,background .18s',
         whiteSpace: 'nowrap',
       }}
       {...hoverProps}
     >
-      Claim 10 free labels <span style={{ fontSize: 16 }}>&#8594;</span>
+      {sending ? 'Sending…' : <>{label} <span style={{ fontSize: 16 }}>&#8594;</span></>}
     </button>
   );
 }
 
 export default function CtaBanner({ openDemo }) {
-  const { email, status, submit, onChange } = useEmailCapture('10 free ZenduTrace labels');
+  const [intent, setIntentState] = useState('labels');
+  const copy = INTENTS[intent];
+  const { email, status, submit, onChange, reset, fallbackHref } = useEmailCapture(copy.request);
+  const resetRef = useRef(reset);
+  resetRef.current = reset;
+
+  // Switching intent clears any stale error/failed message from the previous request type.
+  const setIntent = (next) => {
+    setIntentState(next);
+    reset();
+  };
+
+  // Nav/footer "Book a demo" buttons dispatch this so the form arrives preset.
+  useEffect(() => {
+    const onIntent = (e) => {
+      if (e.detail === 'demo' || e.detail === 'labels') {
+        setIntentState(e.detail);
+        resetRef.current();
+      }
+    };
+    window.addEventListener('xt-intent', onIntent);
+    return () => window.removeEventListener('xt-intent', onIntent);
+  }, []);
 
   return (
-    <section id="book" style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 32px 94px' }}>
-      <div style={{ position: 'relative', borderRadius: 26, overflow: 'hidden', padding: '66px 44px', textAlign: 'center', background: '#1A1613', border: '1px solid rgba(26,22,19,0.5)' }}>
-        <div style={{ position: 'absolute', top: -80, left: '50%', transform: 'translateX(-50%)', width: 460, height: 240, background: 'radial-gradient(ellipse,rgba(194,65,12,0.4),transparent 70%)', filter: 'blur(40px)' }} />
-        <div style={{ position: 'absolute', bottom: -100, right: -40, width: 340, height: 240, background: 'radial-gradient(ellipse,rgba(251,139,36,0.22),transparent 70%)', filter: 'blur(40px)' }} />
+    <section id="book" className="cta-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 32px 94px' }}>
+      <div className="cta-panel" style={{ position: 'relative', borderRadius: 26, overflow: 'hidden', padding: '66px 44px', textAlign: 'center', background: '#0F1114', border: '1px solid rgba(13,16,20,0.5)' }}>
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px)',
+            backgroundSize: '34px 34px',
+            maskImage: 'linear-gradient(180deg,black,transparent 75%)',
+            WebkitMaskImage: 'linear-gradient(180deg,black,transparent 75%)',
+          }}
+        />
         <div style={{ position: 'relative' }}>
-          <h2 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,4vw,52px)', lineHeight: 1.05, letterSpacing: '-0.025em', color: '#FBFAF8', maxWidth: '20ch', margin: '0 auto' }}>
-            Get 10 free labels
+          <div className="cta-intents" style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 26 }}>
+            <IntentChip active={intent === 'labels'} onClick={() => setIntent('labels')}>{INTENTS.labels.chip}</IntentChip>
+            <IntentChip active={intent === 'demo'} onClick={() => setIntent('demo')}>{INTENTS.demo.chip}</IntentChip>
+          </div>
+          <h2 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,4vw,52px)', lineHeight: 1.05, letterSpacing: '-0.025em', color: '#FFFFFF', maxWidth: '20ch', margin: '0 auto' }}>
+            {copy.heading}
           </h2>
-          <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.6, color: '#C9C1B7', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
-            Tell us where to ship them. We&rsquo;ll send a starter roll of ZenduTrace labels and have your first assets live in ZenduONE the same week &mdash; no cost, no commitment.
+          <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.66, color: '#B9C0C8', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            {copy.sub}
           </p>
 
           {status === 'done' ? (
             <div
+              className="cta-success"
+              role="status"
+              aria-live="polite"
               style={{
                 marginTop: 32,
                 display: 'inline-flex',
@@ -55,35 +152,36 @@ export default function CtaBanner({ openDemo }) {
                 borderRadius: 14,
                 background: 'rgba(30,138,91,0.16)',
                 border: '1.5px solid rgba(30,138,91,0.55)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
               }}
             >
-              <span style={{ width: 28, height: 28, borderRadius: '50%', background: '#1E8A5B', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span aria-hidden="true" style={{ width: 28, height: 28, borderRadius: '50%', background: '#1E8A5B', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
               </span>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 16.5, fontWeight: 600, color: '#FBFAF8' }}>
-                Request started &mdash; finish sending the email draft and your labels ship this week.
+              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 16.5, fontWeight: 600, color: '#FFFFFF' }}>
+                {copy.done}
               </span>
             </div>
           ) : (
-            <form onSubmit={submit} noValidate style={{ marginTop: 32, maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
-              <div style={{ flex: 1, minWidth: 220 }}>
+            <form className="cta-form" onSubmit={submit} noValidate style={{ marginTop: 32, maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
+              <div className="cta-field" style={{ flex: 1, minWidth: 0 }}>
+                <label className="sr-only" htmlFor="cta-email">Work email</label>
                 <input
+                  id="cta-email"
                   type="email"
+                  required
+                  autoComplete="email"
+                  inputMode="email"
                   value={email}
                   onChange={onChange}
                   placeholder="Your work email"
-                  aria-label="Work email"
                   aria-invalid={status === 'error'}
+                  aria-describedby={status === 'error' ? 'cta-email-error' : status === 'failed' ? 'cta-email-failed' : undefined}
                   style={{
                     width: '100%',
                     padding: '15px 18px',
                     borderRadius: 12,
                     background: 'rgba(255,255,255,0.08)',
                     border: status === 'error' ? '1.5px solid #E5484D' : '1px solid rgba(255,255,255,0.2)',
-                    backdropFilter: 'blur(8px)',
-                    WebkitBackdropFilter: 'blur(8px)',
                     color: '#fff',
                     fontSize: 15,
                     outline: 'none',
@@ -91,25 +189,33 @@ export default function CtaBanner({ openDemo }) {
                   }}
                 />
                 {status === 'error' && (
-                  <div style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif" }}>
+                  <div id="cta-email-error" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif" }}>
                     Enter a valid work email address.
                   </div>
                 )}
+                {status === 'failed' && (
+                  <div id="cta-email-failed" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif" }}>
+                    Couldn&rsquo;t send right now &mdash;{' '}
+                    <a href={fallbackHref} style={{ color: '#FFB37E', textDecoration: 'underline' }}>email sales@zenduit.com</a> instead.
+                  </div>
+                )}
               </div>
-              <ClaimButton />
+              <SubmitButton label={copy.button} sending={status === 'sending'} />
             </form>
           )}
 
-          <div style={{ marginTop: 18, display: 'flex', gap: '10px 18px', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', fontSize: 13, color: '#9A8E80' }}>
+          <div className="cta-meta" style={{ marginTop: 18, display: 'flex', gap: '10px 18px', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', fontSize: 13, color: '#A6ADB5' }}>
             <span>No credit card</span>
-            <span>&middot;</span>
+            <span aria-hidden="true">&middot;</span>
             <span>Ships this week</span>
-            <span>&middot;</span>
+            <span aria-hidden="true">&middot;</span>
             <span>Reps &amp; resellers welcome</span>
-            <span>&middot;</span>
+            <span aria-hidden="true">&middot;</span>
             <button
+              type="button"
+              className="cta-watch"
               onClick={openDemo}
-              style={{ background: 'none', border: 'none', color: '#C9C1B7', fontSize: 13, cursor: 'pointer', textDecoration: 'underline', fontFamily: 'inherit', padding: 0 }}
+              style={{ background: 'none', border: 'none', color: '#B9C0C8', fontSize: 13, cursor: 'pointer', textDecoration: 'underline', fontFamily: 'inherit', padding: 0 }}
             >
               Watch the lifecycle
             </button>

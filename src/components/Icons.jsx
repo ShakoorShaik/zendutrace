@@ -85,7 +85,7 @@ export function TrustIcon({ icon, color }) {
 }
 
 export function CustomerLogoIcon({ icon }) {
-  const common = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: '#6B655D', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  const common = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: '#5C636B', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' };
   switch (icon) {
     case 'coldchain':
       return <svg {...common}><path d="M12 2v20M4 7l16 10M20 7L4 17" /></svg>;

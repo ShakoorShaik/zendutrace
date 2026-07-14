@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useHover } from '../hooks/useHover';
+
+const demoIntent = () => window.dispatchEvent(new CustomEvent('xt-intent', { detail: 'demo' }));
 
 function NavLink({ href, children }) {
   const [hovered, hoverProps] = useHover();
@@ -20,10 +23,10 @@ function NavLink({ href, children }) {
   );
 }
 
-function ProductsLink({ openTrace, openXentag }) {
+function ProductsLink({ openTrace, openXenAuth }) {
   const [hovered, hoverProps] = useHover();
   const [traceHover, traceHoverProps] = useHover();
-  const [xentagHover, xentagHoverProps] = useHover();
+  const [xenAuthHover, xenAuthHoverProps] = useHover();
 
   return (
     <div className="znav-drop" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -52,7 +55,7 @@ function ProductsLink({ openTrace, openXentag }) {
           style={{
             padding: 10,
             borderRadius: 16,
-            background: 'rgba(15,21,37,0.94)',
+            background: 'rgba(16,17,21,0.94)',
             backdropFilter: 'blur(20px) saturate(1.5)',
             WebkitBackdropFilter: 'blur(20px) saturate(1.5)',
             border: '1px solid rgba(255,255,255,0.1)',
@@ -60,6 +63,7 @@ function ProductsLink({ openTrace, openXentag }) {
           }}
         >
           <button
+            type="button"
             onClick={openTrace}
             style={{
               display: 'flex',
@@ -77,19 +81,20 @@ function ProductsLink({ openTrace, openXentag }) {
             }}
             {...traceHoverProps}
           >
-            <span style={{ flexShrink: 0, width: 36, height: 36, borderRadius: 9, background: 'rgba(79,169,255,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ flexShrink: 0, width: 36, height: 36, borderRadius: 9, background: 'rgba(92,179,248,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="10" r="2.6" stroke="#4FA9FF" strokeWidth="1.7" />
-                <path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8z" stroke="#4FA9FF" strokeWidth="1.7" />
+                <circle cx="12" cy="10" r="2.6" stroke="#5CB3F8" strokeWidth="1.7" />
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8z" stroke="#5CB3F8" strokeWidth="1.7" />
               </svg>
             </span>
             <span>
-              <span style={{ display: 'block', fontSize: 14.5, fontWeight: 600, color: '#fff' }}>ZenduTrace</span>
-              <span style={{ display: 'block', marginTop: 2, fontSize: 12.5, lineHeight: 1.4, color: 'rgba(255,255,255,0.55)' }}>BLE + cellular asset &amp; cold-chain tracking</span>
+              <span style={{ display: 'block', fontSize: 14.5, fontWeight: 600, color: '#fff' }}>XenTag</span>
+              <span style={{ display: 'block', marginTop: 2, fontSize: 12.5, lineHeight: 1.4, color: 'rgba(255,255,255,0.55)' }}>BLE + cellular tracking for high-value goods</span>
             </span>
           </button>
           <button
-            onClick={openXentag}
+            type="button"
+            onClick={openXenAuth}
             style={{
               display: 'flex',
               gap: 12,
@@ -99,22 +104,23 @@ function ProductsLink({ openTrace, openXentag }) {
               padding: '12px 13px',
               borderRadius: 11,
               border: 'none',
-              background: xentagHover ? 'rgba(255,255,255,0.06)' : 'none',
+              background: xenAuthHover ? 'rgba(255,255,255,0.06)' : 'none',
               cursor: 'pointer',
               fontFamily: 'inherit',
               transition: 'background .16s',
             }}
-            {...xentagHoverProps}
+            {...xenAuthHoverProps}
           >
             <span style={{ flexShrink: 0, width: 36, height: 36, borderRadius: 9, background: 'rgba(0,229,160,0.13)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
-                <path d="M6 8a6 6 0 0 1 12 0M9 11a3 3 0 0 1 6 0" stroke="#00E5A0" strokeWidth="1.7" strokeLinecap="round" />
-                <circle cx="12" cy="15" r="1.4" fill="#00E5A0" />
+                <path d="M12 3l7 2.8v5.4c0 4.6-2.9 7.6-7 9.8-4.1-2.2-7-5.2-7-9.8V5.8L12 3z" stroke="#00E5A0" strokeWidth="1.7" strokeLinejoin="round" />
+                <circle cx="12" cy="10.2" r="1.5" fill="#00E5A0" />
+                <path d="M12 11.5v3.4" stroke="#00E5A0" strokeWidth="1.7" strokeLinecap="round" />
               </svg>
             </span>
             <span>
-              <span style={{ display: 'block', fontSize: 14.5, fontWeight: 600, color: '#fff' }}>XenTag</span>
-              <span style={{ display: 'block', marginTop: 2, fontSize: 12.5, lineHeight: 1.4, color: 'rgba(255,255,255,0.55)' }}>NFC product authentication &amp; EU DPP</span>
+              <span style={{ display: 'block', fontSize: 14.5, fontWeight: 600, color: '#fff' }}>XenAuth</span>
+              <span style={{ display: 'block', marginTop: 2, fontSize: 12.5, lineHeight: 1.4, color: 'rgba(255,255,255,0.55)' }}>NFC product authentication &amp; digital product passports</span>
             </span>
           </button>
         </div>
@@ -128,20 +134,22 @@ function BookDemoButton() {
   return (
     <a
       href="#book"
+      className="znav-cta"
+      onClick={demoIntent}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         gap: 9,
-        background: 'linear-gradient(135deg,#FF6B00,#FF8A2B)',
+        background: hovered ? '#D2470A' : '#C2410C',
         color: '#fff',
         fontSize: 15,
         fontWeight: 600,
         padding: '12px 20px',
         borderRadius: 10,
         flexShrink: 0,
-        boxShadow: hovered ? '0 14px 30px -10px rgba(255,107,0,0.85)' : '0 10px 24px -10px rgba(255,107,0,0.7)',
+        boxShadow: '0 2px 8px -2px rgba(0,0,0,0.4)',
         transform: hovered ? 'translateY(-1px)' : 'none',
-        transition: 'transform .18s,box-shadow .18s',
+        transition: 'transform .18s,background .18s',
       }}
       {...hoverProps}
     >
@@ -153,12 +161,92 @@ function BookDemoButton() {
   );
 }
 
-export default function Nav({ scrolled, openTrace, openXentag }) {
+function MobileMenu({ open, close, openTrace, openXenAuth }) {
+  const item = {
+    display: 'block',
+    width: '100%',
+    textAlign: 'left',
+    padding: '13px 16px',
+    borderRadius: 11,
+    color: 'rgba(255,255,255,0.88)',
+    fontSize: 16,
+    fontWeight: 500,
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  };
   return (
-    <nav style={{ position: 'fixed', top: 18, left: 0, right: 0, zIndex: 60, display: 'flex', justifyContent: 'center', padding: '0 clamp(16px,3vw,28px)', pointerEvents: 'none' }}>
+    <div
+      id="mobile-navigation"
+      className="znav-mobile-menu"
+      role="navigation"
+      aria-label="Mobile navigation"
+      aria-hidden={!open}
+      hidden={!open}
+      inert={!open}
+      style={{
+        position: 'absolute',
+        top: 'calc(100% + 10px)',
+        left: 0,
+        right: 0,
+        borderRadius: 16,
+        padding: 10,
+        background: 'rgba(13,14,18,0.96)',
+        backdropFilter: 'blur(20px) saturate(1.5)',
+        WebkitBackdropFilter: 'blur(20px) saturate(1.5)',
+        border: '1px solid rgba(255,255,255,0.12)',
+        boxShadow: '0 30px 70px -24px rgba(0,0,0,0.85)',
+        animation: 'zfade .18s ease',
+      }}
+    >
+      <button type="button" style={item} onClick={() => { close(); openTrace(); }}>XenTag &mdash; live tracking labels</button>
+      <button type="button" style={item} onClick={() => { close(); openXenAuth(); }}>XenAuth &mdash; NFC authentication</button>
+      <div style={{ height: 1, margin: '6px 4px', background: 'rgba(255,255,255,0.08)' }} />
+      <a style={item} href="#how" onClick={close}>How it works</a>
+      <a style={item} href="#industries" onClick={close}>Industries</a>
+      <a style={item} href="#platform" onClick={close}>Platform</a>
+      <a style={item} href="#integrations" onClick={close}>Integrations</a>
+      <a style={item} href="#compare" onClick={close}>Compare</a>
+      <div style={{ height: 1, margin: '6px 4px', background: 'rgba(255,255,255,0.08)' }} />
+      <a
+        style={{ ...item, color: '#FFB37E', fontWeight: 600 }}
+        href="#book"
+        onClick={() => { demoIntent(); close(); }}
+      >
+        Book a demo &rarr;
+      </a>
+    </div>
+  );
+}
+
+export default function Nav({ scrolled, openTrace, openXenAuth }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const close = () => setMenuOpen(false);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === 'Escape' && setMenuOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 981px)');
+    const closeOnDesktop = (event) => {
+      if (event.matches) setMenuOpen(false);
+    };
+    desktop.addEventListener?.('change', closeOnDesktop);
+    return () => desktop.removeEventListener?.('change', closeOnDesktop);
+  }, []);
+
+  return (
+    <nav className="znav" aria-label="Primary navigation" style={{ position: 'fixed', top: 18, left: 0, right: 0, zIndex: 60, display: 'flex', justifyContent: 'center', padding: '0 clamp(16px,3vw,28px)', pointerEvents: 'none' }}>
       <div
+        className="znav-shell"
         style={{
           pointerEvents: 'auto',
+          position: 'relative',
           width: '100%',
           maxWidth: 1300,
           height: 72,
@@ -168,24 +256,53 @@ export default function Nav({ scrolled, openTrace, openXentag }) {
           justifyContent: 'space-between',
           gap: 32,
           borderRadius: 16,
-          background: scrolled ? 'rgba(10,14,26,0.86)' : 'rgba(10,14,26,0.72)',
+          background: scrolled || menuOpen ? 'rgba(9,10,13,0.86)' : 'rgba(9,10,13,0.72)',
           backdropFilter: 'blur(18px) saturate(1.5)',
           WebkitBackdropFilter: 'blur(18px) saturate(1.5)',
           border: '1px solid rgba(255,255,255,0.1)',
           boxShadow: '0 20px 50px -20px rgba(0,0,0,0.75)',
         }}
       >
-        <a href="#top" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-          <img src="/images/zendutrace-logo.svg" alt="ZenduTrace" style={{ height: 46, width: 'auto', display: 'block' }} />
+        <a href="#top" style={{ display: 'flex', alignItems: 'center', flexShrink: 0, minWidth: 0 }}>
+          <img className="znav-logo" src="/images/xentag-logo-white.png" alt="XenTag" style={{ height: 40, width: 'auto', display: 'block' }} />
         </a>
         <div className="znav-links" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(26px,3.2vw,50px)' }}>
-          <ProductsLink openTrace={openTrace} openXentag={openXentag} />
+          <ProductsLink openTrace={openTrace} openXenAuth={openXenAuth} />
           <NavLink href="#how">How it works</NavLink>
           <NavLink href="#industries">Industries</NavLink>
-          <NavLink href="#zenduone">ZenduONE</NavLink>
+          <NavLink href="#platform">Platform</NavLink>
           <NavLink href="#integrations">Integrations</NavLink>
         </div>
-        <BookDemoButton />
+        <div className="znav-actions" style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
+          <BookDemoButton />
+          <button
+            type="button"
+            className="znav-burger"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            style={{
+              display: 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 44,
+              height: 44,
+              borderRadius: 11,
+              border: '1px solid rgba(255,255,255,0.16)',
+              background: menuOpen ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)',
+              color: '#fff',
+              cursor: 'pointer',
+            }}
+          >
+            {menuOpen ? (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M5 5l14 14M19 5L5 19" /></svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+            )}
+          </button>
+        </div>
+        <MobileMenu open={menuOpen} close={close} openTrace={openTrace} openXenAuth={openXenAuth} />
       </div>
     </nav>
   );

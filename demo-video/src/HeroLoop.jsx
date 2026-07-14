@@ -1,8 +1,10 @@
 import React from 'react';
 import { AbsoluteFill, Easing, Img, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig, spring } from 'remotion';
-import { FONT, GREEN, INK, MINT, ORANGE } from './ui.jsx';
+import { FONT, GREEN, INK, ORANGE } from './ui.jsx';
 
-// Text-free background montage for the landing hero: the full ZenduTrace journey
+const MINT = GREEN;
+
+// Text-free background montage for the landing hero: the full XenTag journey
 // (print → seal → label → load → depart → transit → track → deliver), told with
 // stock/product footage plus branded tracking-UI overlays instead of captions.
 
@@ -10,7 +12,7 @@ const FADE = 15;
 
 const WordPatch = ({ size = 30, sub, bg = '#F4F2ED' }) => (
   <div style={{ width: '100%', height: '100%', background: bg, borderRadius: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-    <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: size, letterSpacing: '-0.02em', color: '#1A1613', whiteSpace: 'nowrap' }}>ZenduTrace&#8482;</span>
+    <Img src={staticFile('xentag-logo.png')} style={{ display: 'block', width: '76%', height: Math.max(18, size * 0.72), objectFit: 'contain' }} />
     {sub && <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: size * 0.36, letterSpacing: '0.22em', color: 'rgba(26,22,19,0.6)', whiteSpace: 'nowrap' }}>{sub}</span>}
   </div>
 );
@@ -18,9 +20,9 @@ const WordPatch = ({ size = 30, sub, bg = '#F4F2ED' }) => (
 const STICK_PATCHES = [{ x: 40, y: 57, w: 13, h: 8, rotate: -1.5, el: <WordPatch size={30} bg="#EDE9E1" /> }];
 const PRINT_PATCHES = [{ x: 51.9, y: 79.6, w: 8, h: 13, rotate: -58, el: <div style={{ width: '100%', height: '100%', background: '#F1EFE9', borderRadius: 5 }} /> }];
 const LABEL_PATCHES = [
-  { x: 48.2, y: 51.5, w: 17.5, h: 15, el: <WordPatch size={42} sub="CELLULAR TRACKING LABEL" bg="#F7F5F0" /> },
+  { x: 48.2, y: 51.5, w: 17.5, h: 15, el: <WordPatch size={42} sub="SMART TRACKING LABEL" bg="#F7F5F0" /> },
   { x: 40.9, y: 8.8, w: 12, h: 5.5, el: <div style={{ width: '100%', height: '100%', background: '#F7F5F0' }} /> },
-  { x: 56.8, y: 13, w: 7, h: 15, el: <div style={{ width: '100%', height: '100%', background: '#15130F', clipPath: 'polygon(100% 0, 0 0, 100% 100%)', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end', padding: '6% 8%' }}><span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 26, color: '#fff' }}>Z</span></div> },
+  { x: 55.5, y: 10.5, w: 12, h: 7.5, el: <div style={{ width: '100%', height: '100%', background: '#15130F', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12%' }}><Img src={staticFile('xentag-logo-white.png')} style={{ display: 'block', width: '100%', height: '100%', objectFit: 'contain' }} /></div> },
 ];
 
 // ---- branded tracking-UI overlays (chrome, not captions) ----
@@ -32,7 +34,7 @@ function LogoChip({ status = 'LIVE', color = MINT, delay = 20 }) {
   const pulse = 0.55 + Math.abs(Math.sin(frame / 16)) * 0.45;
   return (
     <div style={{ position: 'absolute', top: 54, right: 64, opacity: frame < delay ? 0 : 1, transform: `translateY(${(1 - s) * -30}px)`, display: 'flex', alignItems: 'center', gap: 16, padding: '14px 22px', borderRadius: 14, background: 'rgba(10,14,26,0.72)', border: '1px solid rgba(255,255,255,0.16)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}>
-      <Img src={staticFile('zendutrace-logo.svg')} style={{ height: 34, display: 'block' }} />
+      <Img src={staticFile('xentag-logo-white.png')} style={{ height: 34, display: 'block' }} />
       <span style={{ width: 1, height: 26, background: 'rgba(255,255,255,0.2)' }} />
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
         <span style={{ width: 10, height: 10, borderRadius: '50%', background: color, opacity: pulse, boxShadow: `0 0 10px ${color}` }} />
@@ -50,7 +52,7 @@ function MiniTracker({ progress, temp, delay = 14 }) {
   return (
     <div style={{ position: 'absolute', right: 64, bottom: 64, width: 340, opacity: frame < delay ? 0 : 1, transform: `translateY(${(1 - s) * 60}px)`, borderRadius: 18, overflow: 'hidden', background: 'rgba(10,14,26,0.78)', border: '1px solid rgba(255,255,255,0.16)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', boxShadow: '0 30px 60px -25px rgba(0,0,0,0.8)' }}>
       <div style={{ padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-        <Img src={staticFile('zendutrace-logo.svg')} style={{ height: 24, display: 'block' }} />
+        <Img src={staticFile('xentag-logo-white.png')} style={{ height: 24, display: 'block' }} />
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: MINT, boxShadow: `0 0 8px ${MINT}` }} />
           <span style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.8)' }}>IN TRANSIT</span>
@@ -97,14 +99,14 @@ function DeliveredBadge({ delay = 40 }) {
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
       </span>
       <div>
-        <Img src={staticFile('zendutrace-logo.svg')} style={{ height: 22, display: 'block' }} />
+        <Img src={staticFile('xentag-logo-white.png')} style={{ height: 22, display: 'block' }} />
         <div style={{ marginTop: 5, fontFamily: FONT, fontSize: 16, fontWeight: 700, letterSpacing: '0.1em', color: MINT }}>DELIVERED</div>
       </div>
     </div>
   );
 }
 
-// Full-frame dark map interstitial (matches the site's ZenduONE aesthetic).
+// Full-frame dark map interstitial (matches the site's XenTag platform aesthetic).
 function MapShot({ dur }) {
   const frame = useCurrentFrame();
   const progress = interpolate(frame, [8, dur - 20], [0.1, 0.92], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.quad) });
@@ -143,29 +145,23 @@ function MapShot({ dur }) {
 
 const SHOTS = [
   // 1. ops intro
-  { type: 'video', src: 'photos/hero.mp4', dur: 130 },
+  { type: 'video', src: 'photos/hero.mp4', dur: 100 },
   // 2. label comes off the printer
-  { type: 'photo', src: 'photos/activate.jpg', dur: 110, from: { scale: 1.03, x: 0, y: 0 }, to: { scale: 1.12, x: -40, y: -16 }, patches: PRINT_PATCHES },
-  // 3. package gets sealed
-  { type: 'video', src: 'stock/42137.mp4', dur: 120, startFrom: 30 },
-  // 4. ZenduTrace label on the box — activated
-  { type: 'photo', src: 'photos/stick.jpg', dur: 120, from: { scale: 1.16, x: 20, y: -14 }, to: { scale: 1.04, x: 0, y: 0 }, patches: STICK_PATCHES, overlay: <LogoChip status="ACTIVATED" color={GREEN} delay={30} /> },
-  // 5. loaded with the freight
-  { type: 'video', src: 'stock/31998.mp4', dur: 120, startFrom: 10 },
-  { type: 'video', src: 'stock/31346.mp4', dur: 120, startFrom: 40 },
-  // 6. truck departs the warehouse
-  { type: 'video', src: 'stock/23011.mp4', dur: 120, startFrom: 30, overlay: <LogoChip status="LIVE" delay={24} /> },
-  // 7. in transit — tracked
-  { type: 'video', src: 'stock/28787.mp4', dur: 150, startFrom: 60, overlay: <MiniTracker progress={0.45} /> },
-  { type: 'video', src: 'stock/17228.mp4', dur: 140, startFrom: 40, overlay: <MiniTracker progress={0.75} temp /> },
-  // 8. the ZenduONE view
-  { type: 'map', dur: 150 },
-  // 9. last mile
-  { type: 'video', src: 'stock/31136.mp4', dur: 120, startFrom: 40 },
-  // 10. handoff — delivered
-  { type: 'video', src: 'stock/24279.mp4', dur: 150, startFrom: 150, overlay: <DeliveredBadge delay={50} /> },
-  // 11. brand end card
-  { type: 'photo', src: 'photos/label-cellular.jpg', dur: 110, from: { scale: 1.05, x: 330, y: 0 }, to: { scale: 1.14, x: 380, y: 8 }, patches: LABEL_PATCHES, dim: 0.22 },
+  { type: 'photo', src: 'photos/activate.jpg', dur: 90, from: { scale: 1.03, x: 0, y: 0 }, to: { scale: 1.12, x: -40, y: -16 }, patches: PRINT_PATCHES },
+  // 3. XenTag label on the box — activated
+  { type: 'photo', src: 'photos/stick.jpg', dur: 90, from: { scale: 1.16, x: 20, y: -14 }, to: { scale: 1.04, x: 0, y: 0 }, patches: STICK_PATCHES, overlay: <LogoChip status="ACTIVATED" color={GREEN} delay={24} /> },
+  // 4. loaded with the freight
+  { type: 'video', src: 'stock/31998.mp4', dur: 100, startFrom: 10 },
+  // 5. truck departs the warehouse
+  { type: 'video', src: 'stock/23011.mp4', dur: 110, startFrom: 30, overlay: <LogoChip status="LIVE" delay={20} /> },
+  // 6. in transit — tracked
+  { type: 'video', src: 'stock/28787.mp4', dur: 120, startFrom: 60, overlay: <MiniTracker progress={0.72} temp /> },
+  // 7. the XenTag platform view
+  { type: 'map', dur: 120 },
+  // 8. handoff — delivered
+  { type: 'video', src: 'stock/24279.mp4', dur: 120, startFrom: 150, overlay: <DeliveredBadge delay={38} /> },
+  // 9. brand end card
+  { type: 'photo', src: 'photos/label-cellular.jpg', dur: 90, from: { scale: 1.05, x: 330, y: 0 }, to: { scale: 1.14, x: 380, y: 8 }, patches: LABEL_PATCHES, dim: 0.18 },
 ];
 
 export const HERO_LOOP_DUR = SHOTS.reduce((s, x) => s + x.dur, 0) - FADE * (SHOTS.length - 1);
