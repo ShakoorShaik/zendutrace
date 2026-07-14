@@ -1,4 +1,5 @@
 import { useHover } from '../hooks/useHover';
+import { XenAuthMark, XenTagMark } from './Icons.jsx';
 
 function ProductChip({ onClick, iconBg, icon, name, tagline }) {
   const [hovered, hoverProps] = useHover();
@@ -10,30 +11,55 @@ function ProductChip({ onClick, iconBg, icon, name, tagline }) {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 13,
-        padding: '13px 20px 13px 15px',
-        borderRadius: 13,
-        border: hovered ? '1px solid rgba(255,255,255,0.32)' : '1px solid rgba(255,255,255,0.14)',
-        background: hovered ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.05)',
+        gap: 16,
+        padding: '18px 24px 18px 18px',
+        borderRadius: 12,
+        border: hovered ? '1px solid rgba(255,255,255,0.28)' : '1px solid rgba(255,255,255,0.12)',
+        background: hovered ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)',
         cursor: 'pointer',
         fontFamily: 'inherit',
         textAlign: 'left',
         transform: hovered ? 'translateY(-1px)' : 'none',
         transition: 'background .18s,border-color .18s,transform .18s',
+        minWidth: 'min(100%, 280px)',
       }}
       {...hoverProps}
     >
-      <span style={{ flexShrink: 0, width: 38, height: 38, borderRadius: 10, background: iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <span
+        style={{
+          flexShrink: 0,
+          width: 48,
+          height: 48,
+          borderRadius: 10,
+          background: iconBg,
+          border: '1px solid rgba(255,255,255,0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         {icon}
       </span>
       <span className="product-chip-copy" style={{ minWidth: 0 }}>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 7, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 15.5, fontWeight: 700, color: '#fff', whiteSpace: 'nowrap' }}>
+        <span
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            fontFamily: 'var(--font-display)',
+            fontSize: 20,
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
+            color: '#fff',
+            whiteSpace: 'nowrap',
+          }}
+        >
           {name}
-          <svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none" style={{ transform: hovered ? 'translateX(3px)' : 'none', transition: 'transform .18s' }}>
-            <path d="M2 7h10M8 3l4 4-4 4" stroke="#FF9A57" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ transform: hovered ? 'translateX(3px)' : 'none', transition: 'transform .18s' }}>
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="#FF8A2B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
-        <span className="product-chip-tagline" style={{ display: 'block', marginTop: 2, fontSize: 12.5, color: 'rgba(255,255,255,0.68)' }}>{tagline}</span>
+        <span className="product-chip-tagline" style={{ display: 'block', marginTop: 4, fontSize: 13.5, lineHeight: 1.4, color: 'rgba(255,255,255,0.62)' }}>{tagline}</span>
       </span>
     </button>
   );
@@ -47,7 +73,7 @@ export default function ProductsBanner({ openTrace, openXenAuth }) {
         style={{
           maxWidth: 1300,
           margin: '0 auto',
-          padding: '26px clamp(22px,4vw,44px)',
+          padding: '32px clamp(22px,4vw,44px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -56,43 +82,33 @@ export default function ProductsBanner({ openTrace, openXenAuth }) {
         }}
       >
         <h2
+          className="font-display"
           style={{
             margin: 0,
-            fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
-            fontWeight: 700,
-            fontSize: 'clamp(19px,1.9vw,26px)',
-            lineHeight: 1.2,
+            fontWeight: 800,
+            fontSize: 'clamp(22px,2.2vw,30px)',
+            lineHeight: 1.15,
             letterSpacing: '-0.02em',
             color: '#FFFFFF',
+            maxWidth: '18ch',
           }}
         >
-          Track what moves. <span style={{ color: '#FF9A57' }}>Authenticate what matters.</span>
+          Track what moves. <span style={{ color: '#FF8A2B' }}>Authenticate what matters.</span>
         </h2>
-        <div className="products-banner-actions" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <div className="products-banner-actions" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           <ProductChip
             onClick={openTrace}
-            iconBg="rgba(92,179,248,0.15)"
+            iconBg="rgba(194,65,12,0.22)"
             name="XenTag"
             tagline="Live tracking label · BLE + cellular"
-            icon={
-              <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="10" r="2.6" stroke="#5CB3F8" strokeWidth="1.7" />
-                <path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8z" stroke="#5CB3F8" strokeWidth="1.7" />
-              </svg>
-            }
+            icon={<XenTagMark size={26} color="#FF8A2B" />}
           />
           <ProductChip
             onClick={openXenAuth}
-            iconBg="rgba(0,229,160,0.13)"
+            iconBg="rgba(13,148,136,0.2)"
             name="XenAuth"
             tagline="Tap-to-verify NFC · anti-counterfeit"
-            icon={
-              <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3l7 2.8v5.4c0 4.6-2.9 7.6-7 9.8-4.1-2.2-7-5.2-7-9.8V5.8L12 3z" stroke="#00E5A0" strokeWidth="1.7" strokeLinejoin="round" />
-                <circle cx="12" cy="10.2" r="1.5" fill="#00E5A0" />
-                <path d="M12 11.5v3.4" stroke="#00E5A0" strokeWidth="1.7" strokeLinecap="round" />
-              </svg>
-            }
+            icon={<XenAuthMark size={26} color="#2DD4BF" />}
           />
         </div>
       </div>

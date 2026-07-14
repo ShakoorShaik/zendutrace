@@ -1,4 +1,6 @@
 import { useHover } from '../hooks/useHover';
+import AutoPlayVideo from './AutoPlayVideo.jsx';
+import { AuthBrandStepIcon, AuthCustomerStepIcon, XenAuthMark } from './Icons.jsx';
 
 function BookPilotLink({ closePanel, extraStyle }) {
   const [hovered, hoverProps] = useHover();
@@ -90,16 +92,80 @@ const verticalTiles = [
 ];
 
 const brandSteps = [
-  { img: 'https://xentag.b-cdn.net/wp-content/uploads/2022/11/for-brand-1-1.png', title: '1 · Embed secure NFC labels', desc: 'Create a unique digital identity for every product.' },
-  { img: 'https://xentag.b-cdn.net/wp-content/uploads/2022/11/for-brand-2-v2.png', title: '2 · Build product experiences', desc: 'Pages, microsites and authentication flows with the XenAuth site builder.' },
-  { img: 'https://xentag.b-cdn.net/wp-content/uploads/2022/11/for-brand-3.png', title: '3 · See real-time data', desc: 'Authentication, consumption and demand by product and batch.' },
+  { step: 1, title: 'Embed secure NFC labels', desc: 'Assign a cryptographically unique digital identity to every SKU — at packaging, not at the counterfeit window.' },
+  { step: 2, title: 'Build the moment of proof', desc: 'Pages, microsites and authentication flows with the XenAuth site builder. Own the tap, own the story.' },
+  { step: 3, title: 'See demand in real time', desc: 'Authentication, consumption and demand by product and batch — evidence, not survey guesswork.' },
 ];
 
 const customerSteps = [
-  { img: 'https://xentag.b-cdn.net/wp-content/uploads/2022/11/for-customer-1.png', title: '1 · Tap with a phone', desc: 'Activate the NFC chip with any smartphone.' },
-  { img: 'https://xentag.b-cdn.net/wp-content/uploads/2022/11/Group-8173-2.png', title: '2 · Get product info instantly', desc: 'Full detail and provenance — no app download.' },
-  { img: 'https://xentag.b-cdn.net/wp-content/uploads/2022/11/for-customer-3.png', title: '3 · Verify & own', desc: 'Authenticate resale and returns, validate warranties, track ownership.' },
+  { step: 1, title: 'Tap with any phone', desc: 'Activate the NFC chip with the smartphone already in their pocket. No app store detour.' },
+  { step: 2, title: 'Get the product story instantly', desc: 'Full detail, origin and provenance in one open — then keep scrolling the journey you designed.' },
+  { step: 3, title: 'Verify, claim, protect', desc: 'Authenticate resale and returns, validate warranties, and lock ownership to the rightful buyer.' },
 ];
+
+function JourneyStep({ step, title, desc, accent, Icon }) {
+  return (
+    <div
+      className="xt-journey-step"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'auto 1fr auto',
+        gap: 'clamp(16px,2vw,22px)',
+        alignItems: 'center',
+        padding: 'clamp(22px,2.4vw,28px) 0',
+        borderBottom: '1px solid rgba(255,255,255,0.1)',
+      }}
+    >
+      <span
+        className="font-display"
+        style={{
+          fontWeight: 800,
+          fontSize: 'clamp(36px,4vw,48px)',
+          lineHeight: 0.9,
+          letterSpacing: '-0.03em',
+          color: accent,
+          minWidth: '1.4ch',
+        }}
+      >
+        {String(step).padStart(2, '0')}
+      </span>
+      <div style={{ minWidth: 0 }}>
+        <h5
+          style={{
+            margin: 0,
+            fontFamily: 'var(--font-display)',
+            fontWeight: 800,
+            fontSize: 'clamp(18px,1.7vw,22px)',
+            lineHeight: 1.2,
+            letterSpacing: '-0.02em',
+            color: '#fff',
+          }}
+        >
+          {title}
+        </h5>
+        <p style={{ margin: '10px 0 0', fontSize: 'clamp(14.5px,1.15vw,16px)', lineHeight: 1.55, color: 'rgba(255,255,255,0.68)', maxWidth: '36ch' }}>
+          {desc}
+        </p>
+      </div>
+      <div
+        className="xt-journey-icon"
+        style={{
+          flexShrink: 0,
+          width: 'clamp(72px,9vw,96px)',
+          height: 'clamp(72px,9vw,96px)',
+          borderRadius: 12,
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Icon step={step} size={64} />
+      </div>
+    </div>
+  );
+}
 
 export default function XenAuthModal({ open, closePanel }) {
   if (!open) return null;
@@ -165,8 +231,10 @@ export default function XenAuthModal({ open, closePanel }) {
         </button>
         <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: 'clamp(38px,4vw,60px) clamp(22px,4vw,52px) clamp(40px,5vw,60px)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, marginBottom: 26 }}>
-            <img src="/images/xenauth-mark.svg" alt="XenAuth" style={{ width: 42, height: 42, borderRadius: '50%', display: 'block' }} />
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 13.5, color: 'rgba(255,255,255,0.6)' }}>
+            <span style={{ width: 44, height: 44, borderRadius: 11, background: 'rgba(13,148,136,0.22)', border: '1px solid rgba(45,212,191,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <XenAuthMark size={26} color="#2DD4BF" />
+            </span>
+            <span style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.6)' }}>
               XenAuth &middot; Authentication
             </span>
           </div>
@@ -174,8 +242,8 @@ export default function XenAuthModal({ open, closePanel }) {
           {/* hero */}
           <div className="xt-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px,4vw,56px)', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(36px,5.2vw,68px)', lineHeight: 0.98, letterSpacing: '-0.03em', margin: 0 }}>
-                Verify <span style={{ color: '#5CB3F8' }}>+</span> Protect <span style={{ color: '#5CB3F8' }}>+</span> Trust <span style={{ color: '#5CB3F8' }}>+</span>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(36px,5.2vw,68px)', lineHeight: 0.98, letterSpacing: '-0.03em', margin: 0 }}>
+                Verify <span style={{ color: '#2DD4BF' }}>+</span> Protect <span style={{ color: '#2DD4BF' }}>+</span> Trust
               </h2>
               <p style={{ marginTop: 22, fontSize: 'clamp(16px,1.3vw,19px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.72)', maxWidth: '33rem' }}>
                 Cryptographic NFC tags turn ordinary packaging into unforgeable, item-level proof &mdash; authenticating every product, detecting counterfeits and stopping return fraud at every touchpoint. No app required.
@@ -185,33 +253,32 @@ export default function XenAuthModal({ open, closePanel }) {
                 <ExploreXenAuthLink />
               </div>
             </div>
-            <div style={{ position: 'relative', borderRadius: 22, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 44px 100px -40px rgba(0,0,0,0.85)', background: '#000' }}>
-              <video
-                controls
-                preload="none"
-                playsInline
-                style={{ display: 'block', width: '100%', height: 'auto' }}
+            <div style={{ position: 'relative', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#000' }}>
+              <AutoPlayVideo
                 src="https://xentag.b-cdn.net/wp-content/uploads/2026/04/Xentag-Banner_transition_corner_v13.mp4"
+                controls
+                style={{ display: 'block', width: '100%', height: 'auto', minHeight: 220 }}
+                aria-label="XenAuth product demonstration"
               />
             </div>
           </div>
 
           {/* stats */}
           <div className="xt-stats" style={{ marginTop: 72, display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 18 }}>
-            <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FF7A2E', lineHeight: 1 }}>$76.5B</div>
+            <div style={{ borderRadius: 14, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
+              <div className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FF8A2B', lineHeight: 1 }}>$76.5B</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>2025 return-fraud mark across retail &mdash; 9% of $850B in total returns.</p>
             </div>
-            <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>2B</div>
+            <div style={{ borderRadius: 14, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
+              <div className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>2B</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>NFC-enabled smartphones worldwide. Works with the phone in your pocket, no app.</p>
             </div>
-            <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>64%</div>
+            <div style={{ borderRadius: 14, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
+              <div className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>64%</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Rise in counterfeits at returns. Authentication at intake detects manipulation.</p>
             </div>
-            <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>2030</div>
+            <div style={{ borderRadius: 14, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
+              <div className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>2030</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>EU Digital Product Passport deadline for traceability, repair and recycling.</p>
             </div>
           </div>
@@ -219,71 +286,107 @@ export default function XenAuthModal({ open, closePanel }) {
           {/* passive to active */}
           <div className="xt-flow" style={{ marginTop: 88, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px,4vw,56px)', alignItems: 'center' }}>
             <div>
-              <h3 style={{ margin: 0, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff' }}>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff' }}>
                 From passive packaging to active authentication
               </h3>
               <p style={{ marginTop: 16, fontSize: 16, lineHeight: 1.64, color: 'rgba(255,255,255,0.68)', maxWidth: '30rem' }}>
                 Every XenAuth chip carries a unique, cryptographically-secure digital identity. Brands get a live view of authentication, consumption and demand &mdash; by product and by batch.
               </p>
             </div>
-            <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0A0A0C' }}>
+            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0A0A0C' }}>
               <img src="https://xentag.b-cdn.net/wp-content/uploads/2022/11/xentag-ultimate-platform-v3-1024x736.jpg" alt="XenAuth authentication platform" width="1024" height="736" loading="lazy" decoding="async" style={{ display: 'block', width: '100%', height: 'auto' }} />
             </div>
           </div>
 
-          {/* for brand / for customer */}
-          <div className="xt-flow" style={{ marginTop: 88, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(28px,3vw,44px)' }}>
-            <div>
-              <h4 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 20, color: '#fff', margin: '0 0 20px' }}>For the brand</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {brandSteps.map((s) => (
-                  <div key={s.title} style={{ display: 'flex', gap: 16, alignItems: 'center', padding: 16, borderRadius: 14, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                    <img src={s.img} alt="" width="64" height="64" loading="lazy" decoding="async" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: 15, color: '#fff' }}>{s.title}</div>
-                      <p style={{ marginTop: 4, fontSize: 13.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.6)' }}>{s.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* for brand / for customer — evidence-sheet journey */}
+          <div style={{ marginTop: 96 }}>
+            <div style={{ maxWidth: '40rem', marginBottom: 40 }}>
+              <h3
+                className="font-display"
+                style={{
+                  margin: 0,
+                  fontWeight: 800,
+                  fontSize: 'clamp(28px,3.2vw,42px)',
+                  lineHeight: 1.05,
+                  letterSpacing: '-0.025em',
+                  color: '#fff',
+                }}
+              >
+                One chip. Two journeys.
+              </h3>
+              <p style={{ marginTop: 14, fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.68)' }}>
+                Brands install proof into packaging. Customers unlock it with a tap. Same label — opposite ends of the trust loop.
+              </p>
             </div>
-            <div>
-              <h4 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 20, color: '#fff', margin: '0 0 20px' }}>For the customer</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {customerSteps.map((s) => (
-                  <div key={s.title} style={{ display: 'flex', gap: 16, alignItems: 'center', padding: 16, borderRadius: 14, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                    <img src={s.img} alt="" width="64" height="64" loading="lazy" decoding="async" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: 15, color: '#fff' }}>{s.title}</div>
-                      <p style={{ marginTop: 4, fontSize: 13.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.6)' }}>{s.desc}</p>
-                    </div>
-                  </div>
-                ))}
+
+            <div className="xt-flow" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(36px,5vw,64px)' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: '2px solid #2DD4BF' }}>
+                  <h4
+                    className="font-display"
+                    style={{ margin: 0, fontWeight: 800, fontSize: 'clamp(22px,2.2vw,28px)', letterSpacing: '-0.02em', color: '#fff' }}
+                  >
+                    For the brand
+                  </h4>
+                  <span style={{ fontFamily: 'var(--font-machine)', fontSize: 11, letterSpacing: '0.06em', color: '#2DD4BF' }}>OPERATIONS</span>
+                </div>
+                <div>
+                  {brandSteps.map((s) => (
+                    <JourneyStep key={s.step} {...s} accent="#2DD4BF" Icon={AuthBrandStepIcon} />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: '2px solid #FF8A2B' }}>
+                  <h4
+                    className="font-display"
+                    style={{ margin: 0, fontWeight: 800, fontSize: 'clamp(22px,2.2vw,28px)', letterSpacing: '-0.02em', color: '#fff' }}
+                  >
+                    For the customer
+                  </h4>
+                  <span style={{ fontFamily: 'var(--font-machine)', fontSize: 11, letterSpacing: '0.06em', color: '#FF8A2B' }}>FIELD</span>
+                </div>
+                <div>
+                  {customerSteps.map((s) => (
+                    <JourneyStep key={s.step} {...s} accent="#FF8A2B" Icon={AuthCustomerStepIcon} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* demo videos */}
           <div className="xt-demos" style={{ marginTop: 88, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-            <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#000' }}>
-              <video controls preload="none" playsInline style={{ display: 'block', width: '100%', height: 'auto' }} src="https://xentag.b-cdn.net/wp-content/uploads/2022/11/ASSET2-online-video-cutter.com-1.webm" />
-              <div style={{ padding: '20px 22px' }}>
-                <div style={{ fontWeight: 600, fontSize: 16, color: '#fff' }}>Tap to reveal</div>
-                <p style={{ marginTop: 5, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.6)' }}>Product info, authentication and origin &mdash; one tap, no app.</p>
+            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#000' }}>
+              <AutoPlayVideo
+                src="https://xentag.b-cdn.net/wp-content/uploads/2022/11/ASSET2-online-video-cutter.com-1.webm"
+                controls
+                style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 10', objectFit: 'cover' }}
+                aria-label="Tap to reveal product authentication"
+              />
+              <div style={{ padding: '22px 24px' }}>
+                <div className="font-display" style={{ fontWeight: 800, fontSize: 20, letterSpacing: '-0.02em', color: '#fff' }}>Tap to reveal</div>
+                <p style={{ marginTop: 6, fontSize: 14.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Product info, authentication and origin &mdash; one tap, no app.</p>
               </div>
             </div>
-            <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#000' }}>
-              <video controls preload="none" playsInline style={{ display: 'block', width: '100%', height: 'auto' }} src="https://xentag.b-cdn.net/wp-content/uploads/2022/11/ASSET1_cropped.mp4" />
-              <div style={{ padding: '20px 22px' }}>
-                <div style={{ fontWeight: 600, fontSize: 16, color: '#fff' }}>Verify anywhere</div>
-                <p style={{ marginTop: 5, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.6)' }}>Resale, recycling and warranty checks without manual inspection.</p>
+            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#000' }}>
+              <AutoPlayVideo
+                src="https://xentag.b-cdn.net/wp-content/uploads/2022/11/ASSET1_cropped.mp4"
+                controls
+                style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 10', objectFit: 'cover' }}
+                aria-label="Verify authenticity anywhere"
+              />
+              <div style={{ padding: '22px 24px' }}>
+                <div className="font-display" style={{ fontWeight: 800, fontSize: 20, letterSpacing: '-0.02em', color: '#fff' }}>Verify anywhere</div>
+                <p style={{ marginTop: 6, fontSize: 14.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Resale, recycling and warranty checks without manual inspection.</p>
               </div>
             </div>
           </div>
 
           {/* industry use cases */}
           <div style={{ marginTop: 88 }}>
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(24px,2.6vw,34px)', letterSpacing: '-0.02em', color: '#fff', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(24px,2.6vw,34px)', letterSpacing: '-0.02em', color: '#fff', textAlign: 'center' }}>
               Industry use cases
             </h3>
             <p style={{ marginTop: 12, textAlign: 'center', fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>The applications are endless &mdash; these are the verticals XenAuth serves today.</p>
@@ -309,9 +412,11 @@ export default function XenAuthModal({ open, closePanel }) {
           </div>
 
           {/* CTA */}
-          <div style={{ marginTop: 72, borderRadius: 24, padding: 'clamp(40px,5vw,64px)', textAlign: 'center', background: 'linear-gradient(135deg,#15161A,#0A0A0C)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <img src="/images/xenauth-mark.svg" alt="XenAuth" style={{ width: 52, height: 52, borderRadius: '50%', margin: '0 auto 20px', display: 'block' }} />
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(26px,3.4vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff', maxWidth: '22ch', margin: '0 auto' }}>
+          <div style={{ marginTop: 72, borderRadius: 20, padding: 'clamp(40px,5vw,64px)', textAlign: 'center', background: 'linear-gradient(135deg,#15161A,#0A0A0C)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <span style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(13,148,136,0.22)', border: '1px solid rgba(45,212,191,0.35)', margin: '0 auto 20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <XenAuthMark size={30} color="#2DD4BF" />
+            </span>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(26px,3.4vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff', maxWidth: '22ch', margin: '0 auto' }}>
               Verify authenticity. Detect fraud. Protect your brand.
             </h3>
             <BookPilotLink closePanel={closePanel} extraStyle={{ marginTop: 28 }} />

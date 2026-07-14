@@ -27,34 +27,34 @@ colors:
   label-warm: "#FBF5EF"
 typography:
   display:
-    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "clamp(34px, 3.6vw, 58px)"
     fontWeight: 700
     lineHeight: 0.98
-    letterSpacing: "-0.028em"
+    letterSpacing: "-0.025em"
   headline:
-    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "clamp(28px, 3.6vw, 44px)"
     fontWeight: 700
     lineHeight: 1.06
     letterSpacing: "-0.025em"
   title:
-    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "21px"
     fontWeight: 700
     lineHeight: 1.2
   body:
-    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.62
   label:
-    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "11px"
     fontWeight: 700
     letterSpacing: "0.08em"
   machine:
-    fontFamily: "monospace"
+    fontFamily: "JetBrains Mono, ui-monospace, Menlo, monospace"
     fontSize: "11px"
     fontWeight: 700
 rounded:
@@ -152,21 +152,21 @@ A hi-vis working palette against industrial neutrals — every hue means somethi
 
 ## 3. Typography
 
-**Display/Body Font:** Helvetica Neue (Helvetica, Arial fallback — Arial is the carton-print voice on Windows, an acceptable metric cousin)
-**Machine Font:** monospace (system stack)
+**Display/Body Font:** Source Sans 3 with Helvetica Neue fallback — the original Helvetica Neue workhorse, with a webfont so weight and metrics stay consistent across platforms.
+**Machine Font:** JetBrains Mono (system monospace fallback)
 
-**Character:** One workhorse family doing everything through weight and scale — the typographic equivalent of shipping-carton print. Monospace appears only where a machine is speaking. Form controls inherit the stack globally (`button, input, select, textarea { font: inherit }`).
+**Character:** One neo-grotesk family doing everything through weight and scale — the typographic equivalent of shipping-carton print. Monospace appears only where a machine is speaking. Form controls inherit the stack globally (`button, input, select, textarea { font: inherit }`). CSS tokens: `--font-display`, `--font-body`, `--font-machine`.
 
 ### Hierarchy
-- **Display** (700, clamp(34px, 3.6vw, 58px), 0.98, -0.028em, UPPERCASE): hero headline only. The uppercase treatment is freight-stencil voice; do not reuse it on section headings.
-- **Headline** (700, clamp(28px, 3.6vw, 44px), 1.06, -0.025em): every full-width section h2, sentence case — one scale, no drift. Sanctioned deviations: the final CTA ask (52px max), the quiet risk band (32px max), and panel headlines inside cards (Platform, 40px max).
+- **Display** (700, clamp(34px, 3.6vw, 58px), 0.98, -0.025em): hero and lockup headlines. Prefer sentence case; reserve uppercase for short label/status chips.
+- **Headline** (700, clamp(28px, 3.6vw, 44px), 1.06, -0.025em): every full-width section h2 — one scale, no drift. Sanctioned deviations: the final CTA ask (52px max), the quiet risk band (32px max), and panel headlines inside cards (Platform, 40px max).
 - **Title** (700, 21–30px): card and step titles.
 - **Body** (400–500, 14–16.5px, 1.55–1.65 light / 1.6–1.66 on dark): #4B5259 on light, rgba(255,255,255,0.7) on dark. Max measure ~44rem / 68ch. `text-wrap: pretty` on all paragraphs; `balance` on h1–h3.
 - **Label** (700, 10.5–12px, 0.06–0.14em tracking, UPPERCASE): status chips and category tags — short machine-adjacent labels only.
-- **Machine** (mono 700, 9–12px, tabular-nums): serials (XT-48192), telemetry values (-2.0°C, 94%), FCC IDs.
+- **Machine** (JetBrains Mono 700, 9–12px, tabular-nums): serials (XT-48192), telemetry values (-2.0°C, 94%), FCC IDs.
 
 ### Named Rules
-**The Machine Voice Rule.** If a value comes from a device — a temperature, a battery percentage, a serial, an ETA — set it in monospace with tabular numerals. If a human wrote it, set it in Helvetica. Never mix.
+**The Machine Voice Rule.** If a value comes from a device — a temperature, a battery percentage, a serial, an ETA — set it in monospace with tabular numerals. If a human wrote it, set it in Source Sans 3 / Helvetica Neue. Never mix.
 
 **The One Scale Rule.** Full-width section headings share one clamp. A new section does not get to invent a new heading size; it inherits `clamp(28px, 3.6vw, 44px)` or documents its role-based exception here.
 

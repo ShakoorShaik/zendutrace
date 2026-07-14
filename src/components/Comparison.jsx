@@ -1,53 +1,54 @@
 import { comparison } from '../data.jsx';
 import { useHover } from '../hooks/useHover';
 
-const FEATURE_ICONS = {
-  'Cost per asset': <path d="M12 2v20M17 6.5c-1-1.5-2.9-2-5-2-2.6 0-4.5 1.3-4.5 3.5 0 4.7 9.5 2.6 9.5 7.5 0 2.2-2 3.5-5 3.5-2.4 0-4.3-.8-5-2.5" />,
-  'Battery life': <><rect x="2" y="7" width="17" height="10" rx="2" /><path d="M22 10v4M5 10.5v3M8.5 10.5v3M12 10.5v3" /></>,
-  Setup: <><path d="M12 2 3 7v10l9 5 9-5V7z" /><path d="M12 22V12M3 7l9 5 9-5" /></>,
-  'Temperature sensing': <path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z" />,
-  'BLE + Cellular': <><path d="M2 20a14 14 0 0 1 20 0" opacity="0" /><path d="M5 12.5a10 10 0 0 1 14 0M8.2 15.7a5.5 5.5 0 0 1 7.6 0" /><circle cx="12" cy="19" r="1.4" fill="currentColor" stroke="none" /></>,
-  'Lives in your fleet dashboard': <><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 9h18M8 21h8M12 18v3" /></>,
-};
-
-function FeatureCell({ feature }) {
-  return (
-    <div style={{ padding: '15px 22px', display: 'flex', alignItems: 'center', gap: 12 }}>
-      <span style={{ flexShrink: 0, width: 30, height: 30, borderRadius: 9, background: 'rgba(13,16,20,0.045)', border: '1px solid rgba(13,16,20,0.07)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#5C636B' }}>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          {FEATURE_ICONS[feature]}
-        </svg>
-      </span>
-      <span style={{ fontSize: 14.5, fontWeight: 500, color: '#1C1F23' }}>{feature}</span>
-    </div>
-  );
-}
-
-function CompareRow({ row }) {
+function CompareRow({ row, last }) {
   const [hovered, hoverProps] = useHover();
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '1.3fr 1.15fr 1fr',
+        gridTemplateColumns: '1.35fr 1.1fr 1fr',
         alignItems: 'center',
-        borderBottom: '1px solid rgba(13,16,20,0.06)',
-        background: hovered ? 'rgba(194,65,12,0.03)' : row.bg,
-        transition: 'background .18s',
+        borderBottom: last ? 'none' : '1px solid rgba(13,16,20,0.08)',
+        background: hovered ? 'rgba(194,65,12,0.028)' : 'transparent',
+        transition: 'background .16s',
       }}
       {...hoverProps}
     >
-      <FeatureCell feature={row.feature} />
-      <div style={{ alignSelf: 'stretch', padding: '17px 20px', fontSize: 16, fontWeight: 700, letterSpacing: '-0.01em', color: '#0F1114', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, textAlign: 'center', background: '#FFF7F0', borderLeft: '1.5px solid rgba(194,65,12,0.32)', borderRight: '1.5px solid rgba(194,65,12,0.32)' }}>
-        <span style={{ flexShrink: 0, width: 21, height: 21, borderRadius: '50%', background: 'rgba(30,138,91,0.15)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#1E8A5B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-        </span>
+      <div style={{ padding: '18px 8px 18px 0', fontSize: 15, fontWeight: 500, color: '#2F343A' }}>
+        {row.feature}
+      </div>
+      <div
+        style={{
+          alignSelf: 'stretch',
+          padding: '18px 16px',
+          fontSize: 16,
+          fontWeight: 700,
+          letterSpacing: '-0.015em',
+          color: '#0F1114',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          background: 'rgba(194,65,12,0.04)',
+          borderLeft: '1px solid rgba(194,65,12,0.22)',
+          borderRight: '1px solid rgba(194,65,12,0.22)',
+          fontVariantNumeric: 'tabular-nums',
+        }}
+      >
         {row.us}
       </div>
-      <div style={{ padding: '17px 20px', fontSize: 14, color: '#5C636B', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, textAlign: 'center' }}>
-        <span style={{ flexShrink: 0, width: 20, height: 20, borderRadius: '50%', background: 'rgba(13,16,20,0.05)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="9" height="9" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="#A8AFB8" strokeWidth="2" strokeLinecap="round" /></svg>
-        </span>
+      <div
+        style={{
+          padding: '18px 12px',
+          fontSize: 14.5,
+          color: '#5C636B',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+        }}
+      >
         {row.them}
       </div>
     </div>
@@ -65,14 +66,13 @@ function SaveButton() {
         justifyContent: 'center',
         gap: 8,
         width: '100%',
-        padding: '12px 16px',
-        borderRadius: 10,
-        background: hovered ? '#A8380A' : '#C2410C',
+        padding: '13px 16px',
+        borderRadius: 12,
+        background: hovered ? '#D2470A' : '#C2410C',
         color: '#fff',
-        fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
-        fontSize: 13.5,
+        fontFamily: "var(--font-body)",
+        fontSize: 14.5,
         fontWeight: 700,
-        boxShadow: '0 2px 8px -2px rgba(13,16,20,0.3)',
         transform: hovered ? 'translateY(-1px)' : 'none',
         transition: 'transform .18s,background .18s',
       }}
@@ -86,66 +86,89 @@ function SaveButton() {
 export default function Comparison() {
   return (
     <section id="compare" className="comparison-section section-shell" style={{ maxWidth: 1080, margin: '0 auto', padding: '80px 32px' }}>
-      <div className="section-heading" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 44px' }}>
-        <h2 style={{ margin: 0, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
+      <div className="section-heading" style={{ maxWidth: '40rem', marginBottom: 40 }}>
+        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
           XenTag vs. traditional trackers
         </h2>
-        <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259' }}>
-          A $6 label against a hardwired GPS unit &mdash; on the criteria buyers actually weigh.
+        <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259', maxWidth: '36rem' }}>
+          A $6 peel-and-stick label against a hardwired GPS unit, on cost, battery, setup, and where the signal shows up.
         </p>
       </div>
 
+      {/* Cost lockup — the buyer’s first filter */}
+      <div
+        className="cmp-cost-lockup"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto 1fr',
+          gap: 20,
+          alignItems: 'end',
+          marginBottom: 36,
+          paddingBottom: 28,
+          borderBottom: '1px solid rgba(13,16,20,0.1)',
+        }}
+      >
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#9A3412', marginBottom: 8 }}>XenTag</div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+            <span className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(44px,5.5vw,64px)', lineHeight: 0.9, letterSpacing: '-0.03em', color: '#0F1114', fontVariantNumeric: 'tabular-nums' }}>$6</span>
+            <span className="font-display" style={{ fontSize: 16, fontWeight: 700, color: '#C2410C', textTransform: 'uppercase', letterSpacing: '0.04em' }}>per label</span>
+          </div>
+          <div style={{ marginTop: 8, fontSize: 14, color: '#5C636B' }}>Tracking included · 1-year battery · no install</div>
+        </div>
+        <div className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#878E96', paddingBottom: 14 }}>vs</div>
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#5C636B', marginBottom: 8 }}>Legacy tracker</div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, justifyContent: 'flex-end' }}>
+            <span className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(44px,5.5vw,64px)', lineHeight: 0.9, letterSpacing: '-0.03em', color: '#5C636B', fontVariantNumeric: 'tabular-nums' }}>$30+</span>
+            <span className="font-display" style={{ fontSize: 16, fontWeight: 700, color: '#878E96', textTransform: 'uppercase', letterSpacing: '0.04em' }}>per unit</span>
+          </div>
+          <div style={{ marginTop: 8, fontSize: 14, color: '#878E96' }}>Hardwired · 3–6 month battery · separate portal</div>
+        </div>
+      </div>
+
       <div className="cmp-scroll" style={{ overflowX: 'auto' }}>
-        <div style={{ position: 'relative', minWidth: 640, paddingTop: 14 }}>
-          {/* MOST CHOSEN badge, straddling the card edge — inside the scroll wrapper so it tracks the XenTag column */}
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, display: 'grid', gridTemplateColumns: '1.3fr 1.15fr 1fr', pointerEvents: 'none', zIndex: 2 }}>
-            <div />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 999, background: '#C2410C', color: '#fff', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 10.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'nowrap', boxShadow: '0 2px 6px -1px rgba(13,16,20,0.3)' }}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z" /></svg>
-                Most chosen
-              </span>
+        <div style={{ minWidth: 560 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.35fr 1.1fr 1fr', alignItems: 'end', borderBottom: '1px solid rgba(13,16,20,0.12)', paddingBottom: 12 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5C636B' }}>Criteria</div>
+            <div style={{ textAlign: 'center', padding: '0 12px' }}>
+              <img src="/images/xentag-logo.png" alt="XenTag" style={{ height: 22, width: 'auto', display: 'block', margin: '0 auto 6px' }} />
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#9A3412' }}>$6 smart label</div>
             </div>
-            <div />
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: '#4B5259' }}>Legacy tracker</div>
+              <div style={{ marginTop: 4, fontSize: 12, fontWeight: 600, color: '#5C636B' }}>Hardwired GPS</div>
+            </div>
           </div>
 
-          <div style={{ borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.09)', boxShadow: '0 1px 3px rgba(13,16,20,0.04),0 40px 90px -50px rgba(13,16,20,0.3)' }}>
-            {/* header */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1.15fr 1fr', alignItems: 'stretch', borderBottom: '1px solid rgba(13,16,20,0.1)', background: 'rgba(243,245,247,0.6)' }}>
-              <div style={{ padding: '24px 22px 16px', display: 'flex', alignItems: 'flex-end', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#6B737C' }}>
-                Feature
-              </div>
-              <div style={{ padding: '26px 20px 18px', textAlign: 'center', background: '#FFF7F0', borderLeft: '1.5px solid rgba(194,65,12,0.32)', borderRight: '1.5px solid rgba(194,65,12,0.32)', boxShadow: 'inset 0 3px 0 #C2410C' }}>
-                <img src="/images/xentag-logo.png" alt="XenTag" style={{ height: 26, width: 'auto', display: 'block', margin: '0 auto' }} />
-                <div style={{ marginTop: 8, fontSize: 11, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#C2410C', fontWeight: 700 }}>$6 smart label</div>
-              </div>
-              <div style={{ padding: '24px 20px 16px', textAlign: 'center' }}>
-                <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 15, color: '#4B5259' }}>Legacy tracker</div>
-                <div style={{ marginTop: 8, fontSize: 11, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#6B737C', fontWeight: 600 }}>Hardwired GPS</div>
-              </div>
+          {comparison.map((row, i) => (
+            <CompareRow key={row.feature} row={row} last={i === comparison.length - 1} />
+          ))}
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1.35fr 1.1fr 1fr',
+              alignItems: 'center',
+              marginTop: 4,
+              paddingTop: 18,
+              borderTop: '1px solid rgba(13,16,20,0.12)',
+            }}
+          >
+            <div style={{ padding: '8px 8px 8px 0', fontSize: 14, fontWeight: 600, color: '#2F343A' }}>
+              Total 3-year cost of ownership
             </div>
-            {/* rows */}
-            {comparison.map((row) => (
-              <CompareRow key={row.feature} row={row} />
-            ))}
-            {/* footer */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1.15fr 1fr', alignItems: 'stretch' }}>
-              <div style={{ padding: '22px 22px', display: 'flex', alignItems: 'center', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 13, color: '#5C636B' }}>
-                Total 3-year cost of ownership
-              </div>
-              <div style={{ padding: '16px 14px 20px', background: '#FFF7F0', borderLeft: '1.5px solid rgba(194,65,12,0.32)', borderRight: '1.5px solid rgba(194,65,12,0.32)' }}>
-                <SaveButton />
-              </div>
-              <div style={{ padding: '22px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 15, fontWeight: 700, color: '#5C636B' }}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A8AFB8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 17 9 11l4 4 8-8M21 13V7h-6" /></svg>
-                5&times; higher
-              </div>
+            <div style={{ padding: '8px 12px', background: 'rgba(194,65,12,0.04)', borderLeft: '1px solid rgba(194,65,12,0.22)', borderRight: '1px solid rgba(194,65,12,0.22)' }}>
+              <SaveButton />
+            </div>
+            <div style={{ padding: '8px 12px', textAlign: 'center', fontSize: 15, fontWeight: 700, color: '#5C636B' }}>
+              About 5&times; higher
             </div>
           </div>
         </div>
       </div>
 
-      <p style={{ marginTop: 22, textAlign: 'center', fontSize: 12.5, lineHeight: 1.5, color: '#5C636B', maxWidth: '68ch', marginLeft: 'auto', marginRight: 'auto' }}>
+      <p style={{ marginTop: 22, fontSize: 13, lineHeight: 1.5, color: '#5C636B', maxWidth: '62ch' }}>
         Legacy figures reflect a typical hardwired cellular GPS tracker over a 3-year deployment.
       </p>
     </section>

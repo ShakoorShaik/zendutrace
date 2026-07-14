@@ -2,15 +2,15 @@ export default function HowItWorks() {
   return (
     <section id="how" className="process-section section-shell" style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 32px 80px' }}>
       <div className="section-heading" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 52px' }}>
-        <h2 style={{ margin: 0, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
+        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
           From roll to <span style={{ whiteSpace: 'nowrap' }}>real-time</span> in under a minute
         </h2>
       </div>
       <div className="how-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
         {/* 01 Activate */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-          <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'linear-gradient(135deg,#EAF4FB,#F5FAFE)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 15, color: '#0284C7' }}>01</span>
+          <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: '#0284C7' }}>01</span>
             <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
               <rect x="34" y="26" width="60" height="100" rx="13" fill="#14161C" />
               <rect x="40" y="34" width="48" height="84" rx="8" fill="#16233F" />
@@ -41,21 +41,21 @@ export default function HowItWorks() {
                 <rect x="184" y="92" width="2" height="12" />
               </g>
               <g transform="translate(150,26)">
-                <rect x="0" y="0" width="62" height="20" rx="10" fill="#1E8A5B" />
+                <rect x="0" y="0" width="62" height="20" rx="4" fill="#1E8A5B" />
                 <path d="M10 10l3.4 3.4L20 7" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="27" y="14" fontFamily="Helvetica Neue,Helvetica,Arial,sans-serif" fontSize="9" fontWeight="700" fill="#fff">PAIRED</text>
+                <text x="27" y="14" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="9" fontWeight="700" fill="#fff">PAIRED</text>
               </g>
             </svg>
           </div>
           <div className="process-step-copy" style={{ padding: '24px 26px 28px' }}>
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Activate</h3>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Activate</h3>
             <p style={{ marginTop: 7, fontSize: 14.5, lineHeight: 1.55, color: '#4B5259' }}>Tap with your phone &mdash; it auto-pairs to the live dashboard.</p>
           </div>
         </div>
         {/* 02 Attach */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-          <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'linear-gradient(135deg,#E7F5F2,#F3FBF9)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 15, color: '#0D9488' }}>02</span>
+          <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: '#0D9488' }}>02</span>
             <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
               <path d="M60 66 120 48 180 66 120 84z" fill="#E7CBA6" />
               <path d="M60 66 60 112 120 130 120 84z" fill="#D4B387" />
@@ -79,21 +79,21 @@ export default function HowItWorks() {
                   </g>
                 </g>
               </g>
-              <g transform="translate(150,110)">
-                <rect x="0" y="0" width="74" height="20" rx="10" fill="#0D9488" />
-                <text x="10" y="14" fontFamily="Helvetica Neue,Helvetica,Arial,sans-serif" fontSize="9" fontWeight="700" fill="#fff">ULTRA-THIN</text>
+              <g transform="translate(158,112)">
+                <rect x="0" y="0" width="58" height="16" rx="3" fill="#0F1114" />
+                <text x="8" y="11.5" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="8" fontWeight="700" fill="#fff" letterSpacing="0.4">0.3 mm</text>
               </g>
             </svg>
           </div>
           <div className="process-step-copy" style={{ padding: '24px 26px 28px' }}>
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Attach</h3>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Attach</h3>
             <p style={{ marginTop: 7, fontSize: 14.5, lineHeight: 1.55, color: '#4B5259' }}>Peel &amp; stick to any high-value package, pallet or case.</p>
           </div>
         </div>
         {/* 03 Track */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-          <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'linear-gradient(135deg,#FBEEE6,#FDF6F0)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 15, color: '#C2410C' }}>03</span>
+          <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: '#C2410C' }}>03</span>
             <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
               <rect x="30" y="22" width="180" height="106" rx="12" fill="#FFFFFF" stroke="rgba(13,16,20,0.09)" />
               <g stroke="rgba(13,16,20,0.05)" strokeWidth="1">
@@ -107,17 +107,17 @@ export default function HowItWorks() {
               <g transform="translate(42,96)">
                 <rect x="0" y="0" width="66" height="22" rx="7" fill="#14161C" />
                 <circle cx="13" cy="11" r="3.4" fill="#5CB3F8" />
-                <text x="22" y="15" fontFamily="Helvetica Neue,Helvetica,Arial,sans-serif" fontSize="10" fontWeight="700" fill="#fff">&#8722;2&#176;C</text>
+                <text x="22" y="15" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="10" fontWeight="700" fill="#fff">&#8722;2&#176;C</text>
               </g>
               <g transform="translate(150,30)">
-                <rect x="0" y="0" width="52" height="20" rx="10" fill="#FFFFFF" stroke="rgba(13,16,20,0.1)" />
-                <circle cx="12" cy="10" r="3.4" fill="#1E8A5B" style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'nfcwave 1.4s ease-in-out infinite' }} />
-                <text x="20" y="14" fontFamily="Helvetica Neue,Helvetica,Arial,sans-serif" fontSize="9" fontWeight="700" fill="#0F1114">LIVE</text>
+                <rect x="0" y="0" width="52" height="20" rx="4" fill="#FFFFFF" stroke="rgba(13,16,20,0.1)" />
+                <circle cx="12" cy="10" r="3.4" fill="#1E8A5B" />
+                <text x="20" y="14" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="9" fontWeight="700" fill="#0F1114">LIVE</text>
               </g>
             </svg>
           </div>
           <div className="process-step-copy" style={{ padding: '24px 26px 28px' }}>
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Track</h3>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Track</h3>
             <p style={{ marginTop: 7, fontSize: 14.5, lineHeight: 1.55, color: '#4B5259' }}>Live location, temperature &amp; alerts on your map.</p>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function HowItWorks() {
 
       {/* connectivity choice */}
       <div className="how-conn" style={{ marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-        <div className="connectivity-card connectivity-card--light" style={{ borderRadius: 20, padding: 28, background: 'linear-gradient(135deg,#FBEEE6,#FDF6F0)', border: '1px solid rgba(194,65,12,0.18)', display: 'flex', alignItems: 'center', gap: 24 }}>
+        <div className="connectivity-card connectivity-card--light" style={{ borderRadius: 20, padding: 28, background: '#F1F3F5', border: '1px solid rgba(194,65,12,0.18)', display: 'flex', alignItems: 'center', gap: 24 }}>
           <svg width="118" height="118" viewBox="0 0 120 120" fill="none" style={{ flexShrink: 0 }}>
             <circle cx="60" cy="60" r="52" fill="#fff" stroke="rgba(194,65,12,0.14)" />
             <g stroke="rgba(194,65,12,0.3)" strokeWidth="1.4">
@@ -144,35 +144,35 @@ export default function HowItWorks() {
           </svg>
           <div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 32, lineHeight: 1, letterSpacing: '-0.02em', color: '#0F1114' }}>100M+</span>
+              <span className="font-display" style={{ fontWeight: 800, fontSize: 36, lineHeight: 1, letterSpacing: '-0.02em', color: '#0F1114' }}>100M+</span>
               <span style={{ fontSize: 13, fontWeight: 600, color: '#9A3412' }}>nodes</span>
             </div>
-            <h4 style={{ marginTop: 8, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 17, color: '#0F1114' }}>Bluetooth</h4>
+            <h4 style={{ marginTop: 8, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: '#0F1114' }}>Bluetooth</h4>
             <p style={{ marginTop: 4, fontSize: 13.5, lineHeight: 1.5, color: '#4B5259' }}>Crowdsourced network. No base stations, no setup.</p>
           </div>
         </div>
         <div className="connectivity-card connectivity-card--dark" style={{ borderRadius: 20, padding: 28, background: 'linear-gradient(135deg,#14161C,#08090B)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 24 }}>
           <svg width="118" height="118" viewBox="0 0 120 120" fill="none" style={{ flexShrink: 0 }}>
             <circle cx="60" cy="60" r="52" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" />
-            <ellipse cx="60" cy="60" rx="52" ry="20" stroke="rgba(0,229,160,0.4)" strokeWidth="1.3" fill="none" />
-            <ellipse cx="60" cy="60" rx="20" ry="52" stroke="rgba(0,229,160,0.4)" strokeWidth="1.3" fill="none" />
-            <circle cx="60" cy="60" r="52" stroke="rgba(0,229,160,0.25)" strokeWidth="1.3" fill="none" />
-            <path d="M60 8v104M8 60h104" stroke="rgba(0,229,160,0.18)" strokeWidth="1.1" />
-            <g fill="#00E5A0">
+            <ellipse cx="60" cy="60" rx="52" ry="20" stroke="rgba(255,122,46,0.35)" strokeWidth="1.3" fill="none" />
+            <ellipse cx="60" cy="60" rx="20" ry="52" stroke="rgba(255,122,46,0.35)" strokeWidth="1.3" fill="none" />
+            <circle cx="60" cy="60" r="52" stroke="rgba(255,122,46,0.2)" strokeWidth="1.3" fill="none" />
+            <path d="M60 8v104M8 60h104" stroke="rgba(255,122,46,0.14)" strokeWidth="1.1" />
+            <g fill="#FF7A2E">
               <circle cx="44" cy="46" r="3.5" />
               <circle cx="80" cy="54" r="3.5" />
               <circle cx="66" cy="82" r="3.5" />
             </g>
-            <g stroke="#00E5A0" strokeWidth="1.6" fill="none" strokeLinecap="round">
+            <g stroke="#FF7A2E" strokeWidth="1.6" fill="none" strokeLinecap="round">
               <path d="M84 36a10 10 0 0 1 0 14M90 30a18 18 0 0 1 0 26" />
             </g>
           </svg>
           <div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 32, lineHeight: 1, letterSpacing: '-0.02em', color: '#fff' }}>29</span>
-              <span style={{ fontSize: 13, fontWeight: 600, color: '#6EE7C0' }}>countries</span>
+              <span className="font-display" style={{ fontWeight: 800, fontSize: 36, lineHeight: 1, letterSpacing: '-0.02em', color: '#fff' }}>29</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#FFB37E' }}>countries</span>
             </div>
-            <h4 style={{ marginTop: 8, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 17, color: '#fff' }}>Cellular</h4>
+            <h4 style={{ marginTop: 8, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: '#fff' }}>Cellular</h4>
             <p style={{ marginTop: 4, fontSize: 13.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.6)' }}>Global LTE-M, origin to final mile.</p>
           </div>
         </div>

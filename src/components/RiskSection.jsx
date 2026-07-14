@@ -14,11 +14,11 @@ function IncidentCard({ x, ariaHidden }) {
         alignItems: 'center',
       }}
     >
-      <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 24, lineHeight: 1, letterSpacing: '-0.02em', color: x.color, flexShrink: 0, whiteSpace: 'nowrap' }}>
+      <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 28, lineHeight: 1, letterSpacing: '-0.02em', color: x.color, flexShrink: 0, whiteSpace: 'nowrap' }}>
         {x.stat}
       </div>
       <div style={{ minWidth: 0 }}>
-        <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap' }}>{x.label}</div>
+        <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.88)', whiteSpace: 'nowrap' }}>{x.label}</div>
         <div style={{ marginTop: 3, fontSize: 12, color: 'rgba(255,255,255,0.58)', whiteSpace: 'nowrap' }}>{x.source}</div>
       </div>
     </div>
@@ -37,13 +37,13 @@ function LogoRun({ items, ariaHidden }) {
 
 export default function RiskSection({ incidents }) {
   return (
-    <section id="risk" style={{ background: '#0A0B0E', padding: '52px 0 56px', position: 'relative', overflow: 'hidden' }}>
+    <section id="risk" className="night-surface" style={{ padding: '52px 0 56px', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: '0 clamp(24px,4vw,48px)' }}>
         <div style={{ maxWidth: '46rem', margin: '0 auto 30px', textAlign: 'center' }}>
-          <h2 style={{ margin: 0, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(22px,2.4vw,32px)', lineHeight: 1.1, letterSpacing: '-0.025em', color: '#F5F7FB' }}>
+          <h2 style={{ margin: 0, fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.02, letterSpacing: '-0.02em', color: '#F5F7FB' }}>
             Flying blind is expensive
           </h2>
-          <p style={{ marginTop: 10, fontSize: 'clamp(13.5px,1vw,15px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>
+          <p style={{ marginTop: 10, fontSize: 'clamp(13.5px,1vw,15px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>
             What the public record shows &mdash; and what a $6 label helps prevent.
           </p>
         </div>

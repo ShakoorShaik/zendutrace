@@ -3,6 +3,7 @@ import { useReducedMotion } from 'framer-motion';
 import { useMeshCanvas } from '../hooks/useMeshCanvas';
 import { useHover } from '../hooks/useHover';
 import { CLIENTS } from '../clientLogos.js';
+import AutoPlayVideo from './AutoPlayVideo.jsx';
 
 function SampleButton() {
   const [hovered, hoverProps] = useHover();
@@ -17,7 +18,7 @@ function SampleButton() {
         padding: '16px 30px',
         borderRadius: 12,
         cursor: 'pointer',
-        fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+        fontFamily: "var(--font-body)",
         fontSize: 16.5,
         fontWeight: 700,
         color: '#fff',
@@ -45,7 +46,7 @@ function WatchLink() {
         gap: 9,
         padding: '16px 26px',
         borderRadius: 12,
-        fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+        fontFamily: "var(--font-body)",
         fontSize: 16.5,
         fontWeight: 600,
         color: '#F5F7FB',
@@ -91,18 +92,13 @@ export default function Hero() {
   return (
     <section id="top" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', display: 'flex', background: '#0A0B0E' }}>
       <canvas ref={canvasRef} id="zmesh" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
-      {/* Background montage (pre-graded dark in the render). Fades in over the mesh
-          once playable; the mesh remains the fallback if the file is missing. */}
-      <video
+      <AutoPlayVideo
         className="hero-video"
         src="/assets/hero-loop.mp4"
-        autoPlay={!reduceMotion}
-        muted
-        loop
-        playsInline
-        preload={reduceMotion ? 'none' : 'metadata'}
+        reduceMotion={!!reduceMotion}
+        pauseWhenHidden={false}
+        onReady={() => setVideoReady(true)}
         aria-hidden
-        onCanPlay={() => setVideoReady(true)}
         style={{
           position: 'absolute',
           inset: 0,
@@ -111,10 +107,9 @@ export default function Hero() {
           objectFit: 'cover',
           opacity: videoReady ? 0.92 : 0,
           transition: 'opacity 1.6s ease',
-          filter: 'saturate(1.02) contrast(1.04)',
+          filter: 'saturate(1.08) contrast(1.08) brightness(0.92)',
         }}
       />
-      {/* Left-biased scrim: keeps copy readable, lets the footage breathe on the right */}
       <div
         className="hero-scrim"
         style={{
@@ -122,52 +117,64 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           background:
-            'linear-gradient(90deg,rgba(9,10,13,0.92) 0%,rgba(9,10,13,0.74) 36%,rgba(9,10,13,0.3) 62%,rgba(9,10,13,0.04) 100%),linear-gradient(180deg,rgba(9,10,13,0.42) 0%,transparent 24%,transparent 76%,rgba(9,10,13,0.64) 100%)',
+            'radial-gradient(70% 55% at 18% 42%,rgba(194,65,12,0.22),transparent 62%),linear-gradient(90deg,rgba(9,10,13,0.94) 0%,rgba(9,10,13,0.78) 34%,rgba(9,10,13,0.28) 64%,rgba(9,10,13,0.05) 100%),linear-gradient(180deg,rgba(9,10,13,0.5) 0%,transparent 26%,transparent 72%,rgba(9,10,13,0.72) 100%)',
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          pointerEvents: 'none',
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)',
+          backgroundSize: '56px 56px',
+          maskImage: 'radial-gradient(ellipse 70% 60% at 30% 45%,black,transparent)',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 30% 45%,black,transparent)',
+          animation: reduceMotion ? undefined : 'zbay 7s ease-in-out infinite',
         }}
       />
 
       <div style={{ position: 'relative', zIndex: 2, flex: 1, width: '100%', maxWidth: 1300, margin: '0 auto', padding: '150px clamp(22px,4vw,44px) 148px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'clamp(34px,5vw,72px)', alignItems: 'center' }}>
-          {/* LEFT */}
-          <div style={{ minWidth: 0, animation: 'zrise .7s .05s both' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-              <span style={{ fontSize: 'clamp(15px,1.3vw,18px)', fontWeight: 600, letterSpacing: '0.005em', color: 'rgba(255,255,255,0.92)' }}>
+          <div style={{ minWidth: 0, animation: reduceMotion ? undefined : 'zrise .85s cubic-bezier(0.16,1,0.3,1) both' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
+              <span className="font-display" style={{ fontSize: 'clamp(18px,1.5vw,22px)', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.92)' }}>
                 XenTag&trade;
               </span>
             </div>
             <h1
               style={{
-                fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
-                fontWeight: 700,
-                fontSize: 'clamp(34px,3.6vw,58px)',
-                lineHeight: 0.98,
+                fontSize: 'clamp(36px,4.8vw,64px)',
+                lineHeight: 0.95,
                 letterSpacing: '-0.028em',
-                textTransform: 'uppercase',
                 margin: 0,
-                color: '#F5F7FB',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                animation: reduceMotion ? undefined : 'zstencil 1.05s .08s cubic-bezier(0.16,1,0.3,1) both',
               }}
             >
-              A <span style={{ whiteSpace: 'nowrap' }}>paper-thin</span> label.
-              <br />
-              <span style={{ color: '#FF7A2E' }}>It guards what you can&rsquo;t afford to&nbsp;lose.</span>
+              <span style={{ display: 'block', color: '#F5F7FB' }}>A paper-thin label.</span>
+              <span style={{ display: 'block', color: '#FF7A2E' }}>It guards what you</span>
+              <span style={{ display: 'block', color: '#FF7A2E' }}>can&rsquo;t afford</span>
+              <span style={{ display: 'block', color: '#FF7A2E' }}>to lose.</span>
             </h1>
-            {/* price lockup — the anchor of the hero */}
-            <div style={{ marginTop: 30, display: 'flex', alignItems: 'baseline', gap: 18, flexWrap: 'wrap', animation: 'zrise .7s .16s both' }}>
+            <div style={{ marginTop: 32, display: 'flex', alignItems: 'baseline', gap: 18, flexWrap: 'wrap', animation: reduceMotion ? undefined : 'zrise .8s .2s cubic-bezier(0.16,1,0.3,1) both' }}>
               <span
+                className="font-display"
                 style={{
-                  fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
-                  fontWeight: 700,
-                  fontSize: 'clamp(64px,6.4vw,96px)',
-                  lineHeight: 0.9,
-                  letterSpacing: '-0.04em',
+                  fontWeight: 800,
+                  fontSize: 'clamp(72px,7.5vw,108px)',
+                  lineHeight: 0.86,
+                  letterSpacing: '-0.03em',
                   color: '#FFFFFF',
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
                 $6
               </span>
-              <span style={{ display: 'flex', flexDirection: 'column', gap: 3, paddingBottom: 6 }}>
-                <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 'clamp(18px,1.6vw,23px)', fontWeight: 700, color: '#FF9A57', letterSpacing: '-0.01em' }}>
+              <span style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingBottom: 8 }}>
+                <span className="font-display" style={{ fontSize: 'clamp(20px,1.8vw,26px)', fontWeight: 700, color: '#FFB37E', letterSpacing: '0.01em', textTransform: 'uppercase' }}>
                   per label
                 </span>
                 <span style={{ fontSize: 'clamp(14px,1.15vw,16.5px)', fontWeight: 500, color: 'rgba(255,255,255,0.78)' }}>
@@ -175,14 +182,14 @@ export default function Hero() {
                 </span>
               </span>
             </div>
-            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 34, animation: 'zrise .7s .26s both' }}>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 34, animation: reduceMotion ? undefined : 'zrise .8s .34s cubic-bezier(0.16,1,0.3,1) both' }}>
               <SampleButton />
               <WatchLink />
             </div>
           </div>
           {/* RIGHT: flat render of the label itself */}
-          <div className="hero-sticker" style={{ minWidth: 0, display: 'flex', justifyContent: 'center', padding: '16px 10px', animation: 'zrise .8s .3s both' }}>
-            <div style={{ width: '100%', maxWidth: 410, transform: 'rotate(-3deg)', animation: 'zfloat 7s ease-in-out infinite' }}>
+          <div className="hero-sticker" style={{ minWidth: 0, display: 'flex', justifyContent: 'center', padding: '16px 10px', animation: reduceMotion ? undefined : 'zrise .95s .28s cubic-bezier(0.16,1,0.3,1) both' }}>
+            <div style={{ width: '100%', maxWidth: 410, transform: 'rotate(-3deg)', animation: reduceMotion ? undefined : 'zfloat 7s ease-in-out infinite' }}>
               <div
                 style={{
                   position: 'relative',
@@ -201,7 +208,7 @@ export default function Hero() {
                 {/* header row */}
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
                   <img src="/images/xentag-logo.png" alt="" style={{ height: 'clamp(20px,2.4vw,30px)', width: 'auto', display: 'block' }} />
-                  <span style={{ fontFamily: 'monospace', fontSize: 'clamp(8px,0.8vw,10.5px)', fontWeight: 700, letterSpacing: '0.14em', color: '#4B5259', textTransform: 'uppercase', paddingTop: 4 }}>
+                  <span style={{ fontFamily: 'var(--font-machine)', fontSize: 'clamp(8px,0.8vw,10.5px)', fontWeight: 700, letterSpacing: '0.14em', color: '#4B5259', textTransform: 'uppercase', paddingTop: 4 }}>
                     Smart tracking label
                   </span>
                 </div>
@@ -210,7 +217,7 @@ export default function Hero() {
                   <div style={{ display: 'flex', alignItems: 'flex-end', gap: '7%', flex: 1, minWidth: 0 }}>
                     <div style={{ width: '30%', flexShrink: 0 }}>
                       <img src="/images/label-qr.png" alt="" style={{ display: 'block', width: '100%', height: 'auto', imageRendering: 'pixelated' }} />
-                      <div style={{ marginTop: 5, fontFamily: 'monospace', fontSize: 'clamp(8px,0.85vw,11px)', fontWeight: 700, letterSpacing: '0.1em', color: '#0F1114', textAlign: 'center' }}>6000908</div>
+                      <div style={{ marginTop: 5, fontFamily: 'var(--font-machine)', fontSize: 'clamp(8px,0.85vw,11px)', fontWeight: 700, letterSpacing: '0.1em', color: '#0F1114', textAlign: 'center' }}>6000908</div>
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <svg viewBox="0 0 150 30" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 'clamp(20px,2.6vw,32px)' }} aria-hidden>
@@ -226,20 +233,20 @@ export default function Hero() {
                         </g>
                       </svg>
                       <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-                        <span style={{ fontFamily: 'monospace', fontSize: 'clamp(7px,0.72vw,9.5px)', color: '#4B5259', whiteSpace: 'nowrap' }}>FCC ID: 2A7TQRA0001</span>
-                        <span style={{ fontFamily: 'monospace', fontSize: 'clamp(7px,0.72vw,9.5px)', fontWeight: 700, color: '#0F1114', whiteSpace: 'nowrap' }}>BLE + LTE-M</span>
+                        <span style={{ fontFamily: 'var(--font-machine)', fontSize: 'clamp(7px,0.72vw,9.5px)', color: '#4B5259', whiteSpace: 'nowrap' }}>FCC ID: 2A7TQRA0001</span>
+                        <span style={{ fontFamily: 'var(--font-machine)', fontSize: 'clamp(7px,0.72vw,9.5px)', fontWeight: 700, color: '#0F1114', whiteSpace: 'nowrap' }}>BLE + LTE-M</span>
                       </div>
                     </div>
                   </div>
                   {/* NFC tap target */}
-                  <div style={{ flexShrink: 0, width: '17%', textAlign: 'center' }}>
+                  <div style={{ flexShrink: 0, width: '18%', minWidth: 0, textAlign: 'center' }}>
                     <div style={{ width: '100%', aspectRatio: '1', borderRadius: '14%', border: '1.5px dashed rgba(13,16,20,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <svg viewBox="0 0 24 24" fill="none" style={{ width: '58%', height: '58%' }} aria-hidden>
                         <path d="M6 8a6 6 0 0 1 12 0M9 11a3 3 0 0 1 6 0" stroke="#0F1114" strokeWidth="1.7" strokeLinecap="round" />
                         <circle cx="12" cy="15" r="1.4" fill="#0F1114" />
                       </svg>
                     </div>
-                    <div style={{ marginTop: 5, fontFamily: 'monospace', fontSize: 'clamp(6.5px,0.66vw,9px)', fontWeight: 700, letterSpacing: '0.08em', color: '#0F1114', whiteSpace: 'nowrap' }}>TAP TO ACTIVATE</div>
+                    <div style={{ marginTop: 5, fontFamily: 'var(--font-machine)', fontSize: 'clamp(6px,0.62vw,8.5px)', fontWeight: 700, letterSpacing: '0.04em', color: '#0F1114', lineHeight: 1.2 }}>TAP</div>
                   </div>
                 </div>
               </div>
@@ -250,9 +257,6 @@ export default function Hero() {
 
       {/* client marquee pinned to the hero's bottom edge */}
       <div aria-label="Organizations served across the ZenduIT and GoFleet network" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 2, borderTop: '1px solid rgba(255,255,255,0.09)', background: 'rgba(9,10,13,0.42)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>
-        <span className="hero-network-label" style={{ position: 'absolute', left: 'clamp(22px,4vw,44px)', top: -12, zIndex: 2, padding: '5px 10px', borderRadius: 7, background: '#0A0B0E', border: '1px solid rgba(255,255,255,0.14)', color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          ZenduIT + GoFleet network
-        </span>
         <div className="mq-row mq-mask" style={{ overflow: 'hidden', padding: '20px 0' }}>
           <div className="mq-track" style={{ display: 'flex', alignItems: 'center', animation: 'mqleft 42s linear infinite' }}>
             <HeroLogoRun />

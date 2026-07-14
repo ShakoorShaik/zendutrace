@@ -33,7 +33,9 @@ const INTENTS = {
   },
 };
 
-function IntentChip({ active, onClick, children }) {
+function IntentChip({ active, onClick, children, edge }) {
+  const radius =
+    edge === 'start' ? '9px 0 0 9px' : edge === 'end' ? '0 9px 9px 0' : 0;
   return (
     <button
       type="button"
@@ -41,16 +43,18 @@ function IntentChip({ active, onClick, children }) {
       onClick={onClick}
       aria-pressed={active}
       style={{
-        padding: '9px 18px',
-        borderRadius: 999,
-        border: active ? '1px solid rgba(255,122,46,0.65)' : '1px solid rgba(255,255,255,0.18)',
-        background: active ? 'rgba(255,122,46,0.16)' : 'rgba(255,255,255,0.05)',
-        color: active ? '#FFB37E' : 'rgba(255,255,255,0.7)',
-        fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
-        fontSize: 13.5,
-        fontWeight: 600,
+        padding: '12px 22px',
+        borderRadius: radius,
+        border: 'none',
+        borderRight: edge === 'end' ? 'none' : '1px solid rgba(255,255,255,0.12)',
+        background: active ? '#C2410C' : 'transparent',
+        color: active ? '#FFFFFF' : 'rgba(255,255,255,0.72)',
+        fontFamily: "var(--font-body)",
+        fontSize: 14,
+        fontWeight: active ? 700 : 500,
         cursor: 'pointer',
-        transition: 'all .18s',
+        transition: 'background .18s,color .18s',
+        minWidth: 148,
       }}
     >
       {children}
@@ -70,7 +74,7 @@ function SubmitButton({ label, sending }) {
         borderRadius: 12,
         border: 'none',
         cursor: sending ? 'default' : 'pointer',
-        fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+        fontFamily: "var(--font-body)",
         fontSize: 15.5,
         fontWeight: 700,
         color: '#fff',
@@ -114,24 +118,25 @@ export default function CtaBanner({ openDemo }) {
 
   return (
     <section id="book" className="cta-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 32px 94px' }}>
-      <div className="cta-panel" style={{ position: 'relative', borderRadius: 26, overflow: 'hidden', padding: '66px 44px', textAlign: 'center', background: '#0F1114', border: '1px solid rgba(13,16,20,0.5)' }}>
-        <div
-          aria-hidden
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px)',
-            backgroundSize: '34px 34px',
-            maskImage: 'linear-gradient(180deg,black,transparent 75%)',
-            WebkitMaskImage: 'linear-gradient(180deg,black,transparent 75%)',
-          }}
-        />
-        <div style={{ position: 'relative' }}>
-          <div className="cta-intents" style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 26 }}>
-            <IntentChip active={intent === 'labels'} onClick={() => setIntent('labels')}>{INTENTS.labels.chip}</IntentChip>
-            <IntentChip active={intent === 'demo'} onClick={() => setIntent('demo')}>{INTENTS.demo.chip}</IntentChip>
+      <div className="cta-panel night-surface" style={{ position: 'relative', borderRadius: 26, overflow: 'hidden', padding: '66px 44px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div
+            className="cta-intents"
+            role="group"
+            aria-label="Choose how to get started"
+            style={{
+              display: 'inline-flex',
+              marginBottom: 28,
+              borderRadius: 9,
+              border: '1px solid rgba(255,255,255,0.16)',
+              background: 'rgba(255,255,255,0.04)',
+              overflow: 'hidden',
+            }}
+          >
+            <IntentChip active={intent === 'labels'} onClick={() => setIntent('labels')} edge="start">{INTENTS.labels.chip}</IntentChip>
+            <IntentChip active={intent === 'demo'} onClick={() => setIntent('demo')} edge="end">{INTENTS.demo.chip}</IntentChip>
           </div>
-          <h2 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,4vw,52px)', lineHeight: 1.05, letterSpacing: '-0.025em', color: '#FFFFFF', maxWidth: '20ch', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(34px,4.6vw,60px)', lineHeight: 0.98, letterSpacing: '-0.02em', color: '#FFFFFF', maxWidth: '14ch', margin: '0 auto' }}>
             {copy.heading}
           </h2>
           <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.66, color: '#B9C0C8', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -150,14 +155,14 @@ export default function CtaBanner({ openDemo }) {
                 gap: 12,
                 padding: '18px 32px',
                 borderRadius: 14,
-                background: 'rgba(0,229,160,0.1)',
-                border: '1.5px solid rgba(0,229,160,0.45)',
+                background: 'rgba(47,191,131,0.1)',
+                border: '1.5px solid rgba(47,191,131,0.45)',
               }}
             >
-              <span aria-hidden="true" style={{ width: 28, height: 28, borderRadius: '50%', background: '#00E5A0', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span aria-hidden="true" style={{ width: 28, height: 28, borderRadius: '50%', background: '#2FBF83', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F1114" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
               </span>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 16.5, fontWeight: 600, color: '#FFFFFF' }}>
+              <span style={{ fontFamily: "var(--font-display)", fontSize: 16.5, fontWeight: 600, color: '#FFFFFF' }}>
                 {copy.done}
               </span>
             </div>
@@ -189,12 +194,12 @@ export default function CtaBanner({ openDemo }) {
                   }}
                 />
                 {status === 'error' && (
-                  <div id="cta-email-error" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif" }}>
+                  <div id="cta-email-error" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "var(--font-body)" }}>
                     Enter a valid work email address.
                   </div>
                 )}
                 {status === 'failed' && (
-                  <div id="cta-email-failed" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif" }}>
+                  <div id="cta-email-failed" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "var(--font-body)" }}>
                     Couldn&rsquo;t send right now &mdash;{' '}
                     <a href={fallbackHref} style={{ color: '#FFB37E', textDecoration: 'underline' }}>email sales@zenduit.com</a> instead.
                   </div>
@@ -204,7 +209,7 @@ export default function CtaBanner({ openDemo }) {
             </form>
           )}
 
-          <div className="cta-meta" style={{ marginTop: 18, display: 'flex', gap: '10px 18px', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', fontSize: 13, color: '#A6ADB5' }}>
+          <div className="cta-meta" style={{ marginTop: 18, display: 'flex', gap: '10px 18px', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', fontSize: 13, color: 'rgba(255,255,255,0.68)' }}>
             <span>No credit card</span>
             <span aria-hidden="true">&middot;</span>
             <span>Ships this week</span>

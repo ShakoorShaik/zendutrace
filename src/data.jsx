@@ -106,31 +106,31 @@ export function trustData() {
 // ---- incidentsData() ----
 export function incidentsData() {
   return [
-    { stat: '3,625', label: 'cargo theft incidents in 2024', desc: 'North American cargo theft hit a record high — up 27% year over year.', source: 'Verisk CargoNet, 2025', color: '#C2410C' },
-    { stat: '$202K', label: 'average value per theft', desc: 'The average loss per cargo theft in 2024, rising to ~$274K in 2025.', source: 'Verisk CargoNet', color: '#C2410C' },
+    { stat: '3,625', label: 'cargo theft incidents in 2024', desc: 'North American cargo theft hit a record high — up 27% year over year.', source: 'Verisk CargoNet, 2025', color: '#FF7A2E' },
+    { stat: '$202K', label: 'average value per theft', desc: 'The average loss per cargo theft in 2024, rising to ~$274K in 2025.', source: 'Verisk CargoNet', color: '#FF7A2E' },
     { stat: '$725M', label: 'stolen cargo, 2025', desc: 'Estimated total US & Canada cargo theft losses — a 60% jump in one year.', source: 'Verisk CargoNet, 2026', color: '#EA580C' },
     { stat: '$531M+', label: 'stolen in Canada since 2019', desc: 'Cargo and equipment losses concentrated around Mississauga, Brampton, Toronto & Montreal.', source: 'Burns & Wilcox', color: '#C2410C' },
     { stat: '+78%', label: 'theft spike, Dallas County', desc: 'The hardest-hit US county in 2024; California and Texas drove the surge.', source: 'Verisk CargoNet', color: '#EA580C' },
-    { stat: '$35B', label: 'lost to cold-chain failures / yr', desc: 'Pharma product lost every year to temperature excursions in transit and storage.', source: 'IQVIA / ISPE', color: '#0284C7' },
-    { stat: 'up to 50%', label: 'of vaccines wasted globally', desc: 'Discarded each year, largely due to inadequate temperature control and logistics.', source: 'World Health Organization', color: '#0284C7' },
-    { stat: '~25%', label: 'of vaccines arrive degraded', desc: 'Degraded by the time they reach their destination because of temperature excursions.', source: 'WHO, via FreightWaves', color: '#0284C7' },
-    { stat: '1–2°C', label: 'excursion ruins biologics', desc: 'A deviation of just 1–2°C can make vaccines, insulin and biologics ineffective.', source: 'Cold-chain industry data', color: '#0D9488' },
-    { stat: '~$8B', label: 'from last-mile failures', desc: 'A large, often-preventable share of cold-chain loss happens on the final leg.', source: 'Mordor Intelligence', color: '#0D9488' },
-    { stat: 'majority', label: 'of losses are human error', desc: 'Most temperature losses stem from missing visibility — not equipment failure.', source: 'ISPE', color: '#0284C7' },
-    { stat: 'hours', label: 'not days, to react', desc: 'Cell & gene therapies ship at ‒60 to ‒150°C with delivery windows measured in hours.', source: 'Air Cargo Week', color: '#0D9488' },
+    { stat: '$35B', label: 'lost to cold-chain failures / yr', desc: 'Pharma product lost every year to temperature excursions in transit and storage.', source: 'IQVIA / ISPE', color: '#FFB37E' },
+    { stat: 'up to 50%', label: 'of vaccines wasted globally', desc: 'Discarded each year, largely due to inadequate temperature control and logistics.', source: 'World Health Organization', color: '#FFB37E' },
+    { stat: '~25%', label: 'of vaccines arrive degraded', desc: 'Degraded by the time they reach their destination because of temperature excursions.', source: 'WHO, via FreightWaves', color: '#FF7A2E' },
+    { stat: '1–2°C', label: 'excursion ruins biologics', desc: 'A deviation of just 1–2°C can make vaccines, insulin and biologics ineffective.', source: 'Cold-chain industry data', color: '#EA580C' },
+    { stat: '~$8B', label: 'from last-mile failures', desc: 'A large, often-preventable share of cold-chain loss happens on the final leg.', source: 'Mordor Intelligence', color: '#C2410C' },
+    { stat: 'majority', label: 'of losses are human error', desc: 'Most temperature losses stem from missing visibility — not equipment failure.', source: 'ISPE', color: '#FF7A2E' },
+    { stat: 'hours', label: 'not days, to react', desc: 'Cell & gene therapies ship at ‒60 to ‒150°C with delivery windows measured in hours.', source: 'Air Cargo Week', color: '#FFB37E' },
   ];
 }
 
 // ---- inline arrays from renderVals() ----
 export const integrations = [
-  { name: 'Geotab', cat: 'Telematics', mono: 'GT', color: '#0A3D62', chip: 'rgba(10,61,98,0.1)' },
-  { name: 'Power BI', cat: 'Analytics', mono: 'BI', color: '#B7791F', chip: 'rgba(183,121,31,0.12)' },
-  { name: 'Salesforce', cat: 'CRM', mono: 'SF', color: '#0176D3', chip: 'rgba(1,118,211,0.1)' },
-  { name: 'SAP', cat: 'ERP', mono: 'SAP', color: '#0A6ED1', chip: 'rgba(10,110,209,0.1)' },
-  { name: 'NetSuite', cat: 'ERP', mono: 'NS', color: '#1F7A4D', chip: 'rgba(31,122,77,0.1)' },
-  { name: 'Slack', cat: 'Alerting', mono: 'SL', color: '#611F69', chip: 'rgba(97,31,105,0.1)' },
-  { name: 'Zapier', cat: 'Automation', mono: 'ZP', color: '#C2410C', chip: 'rgba(194,65,12,0.1)' },
-  { name: 'Google Sheets', cat: 'Export', mono: 'GS', color: '#0F9D58', chip: 'rgba(15,157,88,0.1)' },
+  { name: 'Geotab', cat: 'Telematics', mono: 'GT', color: '#FFFFFF', chip: '#0A3D62' },
+  { name: 'Power BI', cat: 'Analytics', mono: 'BI', color: '#FFFFFF', chip: '#8A5A00' },
+  { name: 'Salesforce', cat: 'CRM', mono: 'SF', color: '#FFFFFF', chip: '#0176D3' },
+  { name: 'SAP', cat: 'ERP', mono: 'SAP', color: '#FFFFFF', chip: '#0A6ED1' },
+  { name: 'NetSuite', cat: 'ERP', mono: 'NS', color: '#FFFFFF', chip: '#165C38' },
+  { name: 'Slack', cat: 'Alerting', mono: 'SL', color: '#FFFFFF', chip: '#611F69' },
+  { name: 'Zapier', cat: 'Automation', mono: 'ZP', color: '#FFFFFF', chip: '#C2410C' },
+  { name: 'Google Sheets', cat: 'Export', mono: 'GS', color: '#FFFFFF', chip: '#0B6B3A' },
 ];
 
 export const comparison = [

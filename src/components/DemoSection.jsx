@@ -14,7 +14,7 @@ const DOT_POS = [
 ];
 
 const SPRING = { type: 'spring', stiffness: 170, damping: 17 };
-const SANS = "'Helvetica Neue',Helvetica,Arial,sans-serif";
+const SANS = 'var(--font-body)';
 
 const C = {
   panel: '#0F1114',
@@ -22,8 +22,8 @@ const C = {
   phonePanel: '#101318',
   hairline: 'rgba(255,255,255,0.07)',
   ink: '#F5F7FB',
-  dim: 'rgba(255,255,255,0.68)',
-  faint: 'rgba(255,255,255,0.45)',
+  dim: 'rgba(255,255,255,0.78)',
+  faint: 'rgba(255,255,255,0.55)',
   orange: '#FF7A2E',
   orangeSoft: '#FFB37E',
   green: '#2FBF83',
@@ -73,7 +73,7 @@ function StepRail({ step, cycle, onSelect, paused }) {
                   initial={{ width: '0%' }}
                   animate={{ width: '100%' }}
                   transition={{ duration: STEP_MS / 1000, ease: 'linear' }}
-                  style={{ height: '100%', background: C.orange, boxShadow: '0 0 8px rgba(255,122,46,0.7)' }}
+                  style={{ height: '100%', background: C.orange }}
                 />
               )}
             </div>
@@ -118,14 +118,14 @@ function PackageStage({ step }) {
       {/* corrugation hint on the side edges */}
       <path d="M30 68 H170 M30 156 H170" stroke="rgba(0,0,0,0.08)" strokeWidth="0.8" />
       {/* fragile print */}
-      <text x="42" y="80" fill="rgba(0,0,0,0.32)" fontSize="6" fontWeight="bold" fontFamily="monospace" letterSpacing="1">FRAGILE</text>
+      <text x="42" y="80" fill="#2A241C" fontSize="6.5" fontWeight="bold" fontFamily="JetBrains Mono,monospace" letterSpacing="0.8">FRAGILE</text>
 
       {/* label roll — visible while unboxing */}
       <motion.g animate={{ opacity: step === 0 ? 1 : 0 }} transition={{ duration: 0.45 }}>
         <rect x="6" y="5" width="50" height="32" rx="16" fill="#1A1E24" stroke="rgba(255,255,255,0.16)" strokeWidth="1" />
         <circle cx="22" cy="21" r="7.5" fill="#242A32" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
         <circle cx="22" cy="21" r="2.4" fill="rgba(255,255,255,0.35)" />
-        <text x="33" y="24" fill="#FFB37E" fontSize="6.2" fontWeight="bold" fontFamily="monospace" letterSpacing="0.5">ROLL</text>
+        <text x="33" y="24" fill="#FFB37E" fontSize="6.2" fontWeight="bold" fontFamily="JetBrains Mono,monospace" letterSpacing="0.5">ROLL</text>
         <path d="M56 21 h12" stroke="rgba(255,122,46,0.6)" strokeWidth="1.4" strokeDasharray="3 3" />
       </motion.g>
 
@@ -143,8 +143,8 @@ function PackageStage({ step }) {
           style={{ filter: 'drop-shadow(0 12px 14px rgba(0,0,0,0.45))' }}
         />
         {/* wordmark + live dot */}
-        <text x="58" y="101" fill="#0F1114" fontSize="7.5" fontWeight="bold" fontFamily={SANS} letterSpacing="0.3">XENTAG&#8482;</text>
-        <circle cx="140" cy="98" r="2" fill={labelOnBox ? '#1E8A5B' : '#B9C0C8'} />
+        <text x="58" y="102" fill="#0F1114" fontSize="8.5" fontWeight="bold" fontFamily={SANS} letterSpacing="0.2">XENTAG&#8482;</text>
+        <circle cx="140" cy="98" r="2.2" fill={labelOnBox ? '#1E8A5B' : '#878E96'} />
         {/* barcode */}
         <g fill="#0F1114">
           <rect x="58" y="108" width="2" height="14" /><rect x="61.5" y="108" width="1" height="14" /><rect x="64" y="108" width="2.6" height="14" />
@@ -153,7 +153,7 @@ function PackageStage({ step }) {
           <rect x="90" y="108" width="1" height="14" /><rect x="92.5" y="108" width="1.8" height="14" /><rect x="96" y="108" width="1" height="14" />
           <rect x="98.5" y="108" width="3" height="14" /><rect x="103.5" y="108" width="1.8" height="14" /><rect x="107" y="108" width="1" height="14" />
         </g>
-        <text x="58" y="132" fill="#4B5259" fontSize="5" fontFamily="monospace" letterSpacing="0.6">XT-48192 &#183; BLE+LTE-M</text>
+        <text x="58" y="132" fill="#0F1114" fontSize="6.5" fontFamily="JetBrains Mono,monospace" letterSpacing="0.4" fontWeight="700">XT-48192 &#183; BLE+LTE-M</text>
         {/* QR */}
         <rect x="113" y="106" width="24" height="24" rx="2" fill="rgba(13,16,20,0.05)" stroke="rgba(13,16,20,0.1)" strokeWidth="0.6" />
         <g fill="#1C1F23">
@@ -200,8 +200,8 @@ function PackageStage({ step }) {
             transition={SPRING}
             style={{ transformBox: 'fill-box', transformOrigin: '50% 50%' }}
           >
-            <rect x="50" y="148" width="100" height="18" rx="4" fill="rgba(255,122,46,0.12)" stroke="rgba(255,122,46,0.45)" strokeWidth="1" />
-            <text x="100" y="160" textAnchor="middle" fill="#FFB37E" fontSize="8" fontWeight="bold" fontFamily="monospace">-2.0&#176;C  &#10003; IN RANGE</text>
+            <rect x="50" y="148" width="100" height="18" rx="4" fill="#0F1114" stroke="rgba(255,122,46,0.55)" strokeWidth="1" />
+            <text x="100" y="160" textAnchor="middle" fill="#FFB37E" fontSize="8" fontWeight="bold" fontFamily="JetBrains Mono,monospace">-2.0&#176;C  &#10003; IN RANGE</text>
           </motion.g>
         )}
       </AnimatePresence>
@@ -242,183 +242,139 @@ function PhonePanel({ step }) {
   const temp = step >= 2 ? '-2.0°C' : '--.-°C';
   const eta = delivered ? 'Delivered ✓' : '3h 20min';
   return (
-    <div className="demo-phone-panel" style={{ padding: '40px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: C.phonePanel }}>
-      <div style={{ position: 'relative', width: 224, height: 424, borderRadius: 38, background: '#05070A', border: '1px solid rgba(255,255,255,0.18)', boxShadow: '0 0 0 6px rgba(255,255,255,0.04), 0 34px 70px -20px rgba(0,0,0,0.85)', overflow: 'hidden' }}>
-        {/* side buttons */}
-        <div aria-hidden style={{ position: 'absolute', left: -2, top: 96, width: 2, height: 30, borderRadius: 2, background: 'rgba(255,255,255,0.3)' }} />
-        <div aria-hidden style={{ position: 'absolute', right: -2, top: 120, width: 2, height: 48, borderRadius: 2, background: 'rgba(255,255,255,0.3)' }} />
-        <div style={{ position: 'absolute', top: 11, left: '50%', transform: 'translateX(-50%)', width: 74, height: 8, borderRadius: 8, background: '#000', border: '1px solid rgba(255,255,255,0.08)', zIndex: 5 }} />
-        <div style={{ position: 'absolute', inset: 2, borderRadius: 36, paddingTop: 28, display: 'flex', flexDirection: 'column', background: '#0D1013', overflow: 'hidden' }}>
-          <div style={{ padding: '8px 15px 9px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-            <img src="/images/xentag-logo-white.png" alt="XenTag" style={{ height: 13, width: 'auto', display: 'block' }} />
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={live ? 'live' : 'idle'}
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 4 }}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', borderRadius: 999, border: `1px solid ${live ? 'rgba(47,191,131,0.4)' : 'rgba(255,255,255,0.14)'}`, background: live ? 'rgba(47,191,131,0.12)' : 'rgba(255,255,255,0.05)' }}
-              >
-                <span style={{ width: 5, height: 5, borderRadius: '50%', background: live ? C.green : 'rgba(255,255,255,0.4)', boxShadow: live ? '0 0 6px rgba(47,191,131,0.8)' : 'none' }} />
-                <span style={{ fontFamily: SANS, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', color: live ? C.green : C.faint }}>{live ? 'LIVE' : 'IDLE'}</span>
-              </motion.span>
-            </AnimatePresence>
+    <div className="demo-phone-panel" style={{ padding: '36px 28px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: C.phonePanel }}>
+      {/* Flat device frame — no nested card shadows, no overflow clipping of overlays */}
+      <div
+        style={{
+          position: 'relative',
+          width: 224,
+          borderRadius: 28,
+          background: '#0D1013',
+          border: '1px solid rgba(255,255,255,0.16)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <div style={{ padding: '18px 14px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <img src="/images/xentag-logo-white.png" alt="XenTag" style={{ height: 13, width: 'auto', display: 'block' }} />
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              fontFamily: SANS,
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.06em',
+              color: live ? C.green : 'rgba(255,255,255,0.5)',
+            }}
+          >
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: live ? C.green : 'rgba(255,255,255,0.35)' }} />
+            {live ? 'LIVE' : 'IDLE'}
+          </span>
+        </div>
+
+        <div style={{ margin: '0 10px', borderRadius: 12, background: '#161A20', border: '1px solid rgba(255,255,255,0.08)', padding: '10px 10px 12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+            <span style={{ fontFamily: SANS, fontSize: 11, fontWeight: 700, color: '#FFFFFF' }}>
+              {delivered ? 'Delivered' : 'ETA 3h 20m'}
+            </span>
+            <span style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.55)' }}>Map</span>
           </div>
-          <div style={{ position: 'relative', flex: 1, background: '#161A20', overflow: 'hidden' }}>
-            {/* map base: water, park, streets */}
-            <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-              <path d="M -10 26 Q 42 46 30 92 Q 20 130 -10 144 Z" fill="rgba(56,140,220,0.16)" />
-              <path d="M -10 34 Q 34 52 24 92" fill="none" stroke="rgba(96,170,236,0.25)" strokeWidth="1.2" />
-              <rect x="128" y="118" width="86" height="74" rx="12" fill="rgba(47,191,131,0.1)" />
-              <g fill="rgba(47,191,131,0.32)">
-                <circle cx="146" cy="136" r="2.6" />
-                <circle cx="168" cy="154" r="2.6" />
-                <circle cx="192" cy="132" r="2.6" />
-                <circle cx="152" cy="172" r="2.6" />
-                <circle cx="184" cy="170" r="2.6" />
-              </g>
-              <g stroke="#232932" strokeLinecap="round" fill="none">
-                <path d="M -5 120 H 225" strokeWidth="9" />
-                <path d="M 60 -5 V 260" strokeWidth="9" />
-                <path d="M 140 -5 V 112" strokeWidth="7" />
-                <path d="M -5 55 H 225" strokeWidth="5" />
-                <path d="M -5 188 H 225" strokeWidth="5" />
-                <path d="M 100 55 V 260" strokeWidth="4" />
-              </g>
-              <g stroke="rgba(255,255,255,0.07)" strokeWidth="1" fill="none">
-                <path d="M -5 120 H 225" />
-                <path d="M 60 -5 V 260" />
-              </g>
-              {/* geofence around the drop */}
-              <motion.circle
-                cx="170"
-                cy="34"
-                r="18"
-                strokeWidth="1.4"
-                strokeDasharray="4 4"
-                animate={{
-                  stroke: delivered ? 'rgba(47,191,131,0.75)' : 'rgba(255,122,46,0.5)',
-                  fill: delivered ? 'rgba(47,191,131,0.14)' : 'rgba(255,122,46,0.07)',
-                }}
-                transition={{ duration: 0.5 }}
-              />
-              {/* origin: the yard */}
-              <g>
-                <rect x="17" y="141" width="18" height="18" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-                <path d="M21 154.5 v-5.5 l5-3.4 5 3.4 v5.5" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="26" y="170" textAnchor="middle" fontSize="6.5" fontWeight="700" letterSpacing="1" fill="rgba(255,255,255,0.55)" fontFamily={SANS}>YARD</text>
-              </g>
-              {/* destination pin */}
-              <g transform="translate(162,14)">
-                <motion.path
-                  d="M8 0C3.6 0 0 3.6 0 8c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z"
-                  animate={{ fill: delivered ? '#2FBF83' : '#FF7A2E' }}
-                  transition={{ duration: 0.4 }}
-                />
-                <circle cx="8" cy="8" r="3" fill="#0D1013" opacity="0.9" />
-              </g>
-              <text x="170" y="62" textAnchor="middle" fontSize="6.5" fontWeight="700" letterSpacing="1" fill="rgba(255,255,255,0.55)" fontFamily={SANS}>DROP</text>
-            </svg>
-            {/* route */}
-            <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-              <path d={ROUTE} stroke="rgba(255,122,46,0.28)" strokeWidth="2" strokeDasharray="4 4" fill="none" opacity={live ? 1 : 0} style={{ transition: 'opacity .5s' }} />
-              <motion.path
-                d={ROUTE}
-                stroke="rgba(255,122,46,0.35)"
-                strokeWidth="6"
-                strokeLinecap="round"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: ROUTE_PROGRESS[step], opacity: live ? 1 : 0 }}
-                transition={{ duration: 1.1, ease: 'easeInOut' }}
-                style={{ filter: 'blur(3px)' }}
-              />
-              <motion.path
-                d={ROUTE}
-                stroke={C.orange}
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: ROUTE_PROGRESS[step], opacity: live ? 1 : 0 }}
-                transition={{ duration: 1.1, ease: 'easeInOut' }}
-              />
-            </svg>
-            {/* tracking dot */}
-            <motion.div
-              initial={false}
-              animate={{ left: DOT_POS[step].x, top: DOT_POS[step].y, opacity: live ? 1 : 0 }}
+          <svg viewBox="0 0 200 168" width="100%" height="168" style={{ display: 'block', borderRadius: 8, background: '#12161C' }}>
+            <path d="M -10 26 Q 42 46 30 92 Q 20 130 -10 144 Z" fill="rgba(56,140,220,0.16)" />
+            <rect x="128" y="108" width="72" height="54" rx="10" fill="rgba(47,191,131,0.1)" />
+            <g stroke="#232932" strokeLinecap="round" fill="none">
+              <path d="M -5 110 H 205" strokeWidth="8" />
+              <path d="M 56 -5 V 180" strokeWidth="8" />
+              <path d="M 132 -5 V 100" strokeWidth="6" />
+              <path d="M -5 48 H 205" strokeWidth="4" />
+            </g>
+            <path
+              d={ROUTE}
+              stroke="rgba(255,122,46,0.28)"
+              strokeWidth="2"
+              strokeDasharray="4 4"
+              fill="none"
+              opacity={live ? 1 : 0.25}
+            />
+            <motion.path
+              d={ROUTE}
+              stroke={C.orange}
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: ROUTE_PROGRESS[step], opacity: live ? 1 : 0 }}
               transition={{ duration: 1.1, ease: 'easeInOut' }}
-              style={{ position: 'absolute', marginLeft: -7.5, marginTop: -7.5 }}
-            >
-              <motion.div
-                animate={{ background: delivered ? '#2FBF83' : '#FF7A2E', boxShadow: delivered ? '0 0 14px rgba(47,191,131,0.8)' : '0 0 14px rgba(255,122,46,0.8)' }}
-                style={{ width: 15, height: 15, borderRadius: '50%', border: '2px solid #0D1013', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#0D1013' }} />
-              </motion.div>
-              {!delivered && <div style={{ position: 'absolute', inset: -10, borderRadius: '50%', background: 'rgba(255,122,46,0.14)', animation: 'zping 2s ease-out infinite' }} />}
-            </motion.div>
-            {/* ETA chip */}
-            <div style={{ position: 'absolute', top: 10, left: 10, display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 9px', borderRadius: 8, background: 'rgba(13,16,19,0.82)', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)', boxShadow: '0 6px 16px -6px rgba(0,0,0,0.6)' }}>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={delivered ? C.green : C.orangeSoft} strokeWidth="2.4" strokeLinecap="round">
-                {delivered ? <path d="M4 12.5 9.5 18 20 6" /> : <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" /></>}
-              </svg>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={delivered ? 'done' : 'eta'}
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  style={{ fontFamily: SANS, fontSize: 9.5, fontWeight: 700, letterSpacing: '0.03em', color: delivered ? C.green : '#FFFFFF', whiteSpace: 'nowrap' }}
-                >
-                  {delivered ? 'Delivered' : 'ETA 3h 20m'}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-            {/* compass */}
-            <div style={{ position: 'absolute', bottom: 8, right: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.5 }}>
-              <svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 0 L8 9 5 6.6 2 9 Z" fill="rgba(255,255,255,0.7)" /></svg>
-              <span style={{ fontSize: 6.5, fontWeight: 700, color: 'rgba(255,255,255,0.7)', fontFamily: SANS }}>N</span>
-            </div>
-          </div>
-          <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 8, background: '#0D1013' }}>
-            <StatRow label="Temperature" value={temp} color={step >= 2 ? C.orangeSoft : C.faint} highlight={step === 2} accent />
-            <StatRow label="Battery" value="94%" color={C.green} />
-            <StatRow label="ETA" value={eta} color={delivered ? C.green : C.ink} highlight={delivered} />
-          </div>
+            />
+            <g>
+              <rect x="14" y="128" width="18" height="18" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+              <text x="23" y="160" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(255,255,255,0.7)" fontFamily={SANS}>YARD</text>
+            </g>
+            <g transform="translate(154,18)">
+              <motion.path
+                d="M8 0C3.6 0 0 3.6 0 8c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z"
+                animate={{ fill: delivered ? '#2FBF83' : '#FF7A2E' }}
+                transition={{ duration: 0.4 }}
+              />
+              <circle cx="8" cy="8" r="3" fill="#0D1013" />
+            </g>
+            <text x="162" y="58" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(255,255,255,0.7)" fontFamily={SANS}>DROP</text>
+            <motion.circle
+              r="6"
+              fill={delivered ? '#2FBF83' : '#FF7A2E'}
+              stroke="#0D1013"
+              strokeWidth="2"
+              initial={false}
+              animate={{
+                cx: DOT_POS[step].x,
+                cy: DOT_POS[step].y,
+                opacity: live ? 1 : 0,
+              }}
+              transition={{ duration: 1.1, ease: 'easeInOut' }}
+            />
+          </svg>
+        </div>
+
+        <div style={{ padding: '14px 14px 18px', display: 'flex', flexDirection: 'column', gap: 0 }}>
+          <StatRow label="Temperature" value={temp} color={step >= 2 ? C.orangeSoft : 'rgba(255,255,255,0.45)'} />
+          <StatRow label="Battery" value="94%" color={C.green} />
+          <StatRow label="ETA" value={eta} color={delivered ? C.green : '#F5F7FB'} last />
         </div>
       </div>
-      <p style={{ marginTop: 20, fontSize: 12.5, lineHeight: 1.55, textAlign: 'center', color: 'rgba(255,255,255,0.55)', maxWidth: 216 }}>
-        Illustrative lifecycle view &mdash; deployment data appears in your operational dashboard.
+      <p style={{ marginTop: 18, fontSize: 13, lineHeight: 1.55, textAlign: 'center', color: 'rgba(255,255,255,0.62)', maxWidth: 220 }}>
+        Illustrative lifecycle view. Deployment data appears in your operational dashboard.
       </p>
     </div>
   );
 }
 
-function StatRow({ label, value, color, highlight = false, accent = false }) {
+function StatRow({ label, value, color, last = false }) {
   return (
-    <motion.div
-      animate={{
-        background: highlight ? 'rgba(47,191,131,0.1)' : accent ? 'rgba(255,122,46,0.08)' : 'rgba(255,255,255,0.04)',
-        borderColor: highlight ? 'rgba(47,191,131,0.4)' : accent ? 'rgba(255,122,46,0.25)' : 'rgba(255,255,255,0.09)',
+    <div
+      style={{
+        padding: '10px 0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottom: last ? 'none' : '1px solid rgba(255,255,255,0.08)',
       }}
-      style={{ borderRadius: 10, padding: '9px 11px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid' }}
     >
-      <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{label}</span>
+      <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.68)' }}>{label}</span>
       <AnimatePresence mode="wait">
         <motion.span
           key={value}
-          initial={{ opacity: 0, y: -6 }}
+          initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 6 }}
-          transition={{ duration: 0.25 }}
-          style={{ fontFamily: 'monospace', fontSize: 11, fontWeight: 700, fontVariantNumeric: 'tabular-nums', color }}
+          exit={{ opacity: 0, y: 4 }}
+          transition={{ duration: 0.22 }}
+          style={{ fontFamily: 'var(--font-machine)', fontSize: 12.5, fontWeight: 700, fontVariantNumeric: 'tabular-nums', color }}
         >
           {value}
         </motion.span>
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
@@ -474,8 +430,8 @@ export default function DemoSection() {
           <h2 style={{ margin: 0, fontFamily: SANS, fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.06, letterSpacing: '-0.025em', color: '#0F1114' }}>
             One tap in the yard. Live on the map.
           </h2>
-          <p style={{ marginTop: 16, fontSize: 16.5, lineHeight: 1.6, color: '#4B5259' }}>
-            Watch the full lifecycle &mdash; peel, stick, activate, and monitor location and temperature from any phone.
+          <p style={{ marginTop: 16, fontSize: 16.5, lineHeight: 1.6, color: '#4B5259', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            Watch the full lifecycle: peel, stick, activate, then monitor location and temperature from any phone.
           </p>
           <button
             type="button"
@@ -509,9 +465,8 @@ export default function DemoSection() {
                 borderRight: `1px solid ${C.hairline}`,
               }}
             >
-              <div style={{ position: 'absolute', top: 20, left: 20, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '7px 12px', borderRadius: 999, background: 'rgba(13,16,19,0.7)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.orange, boxShadow: '0 0 8px rgba(255,122,46,0.8)', animation: 'zpulse 1.6s ease-in-out infinite' }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.orangeSoft }}>Illustrated walkthrough</span>
+              <div style={{ position: 'absolute', top: 20, left: 20, fontFamily: SANS, fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: C.orangeSoft }}>
+                Illustrated walkthrough
               </div>
               <PackageStage step={step} />
               <div style={{ position: 'relative', zIndex: 1, marginTop: 26, width: '100%', maxWidth: 360, minHeight: 58 }}>

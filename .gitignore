@@ -26,3 +26,7 @@ demo-video/public/stock/
 *.njsproj
 *.sln
 *.sw?
+
+
+#Ignore cursor AI rules
+.cursor/rules/codacy.mdc

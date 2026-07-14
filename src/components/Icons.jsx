@@ -124,3 +124,111 @@ export function IndustryIcon({ paths, cap, color = 'currentColor', size = 22 }) 
     </svg>
   );
 }
+
+/** Industrial product marks — thick stencil, not thin generic UI icons. */
+export function XenTagMark({ size = 22, color = '#FF8A2B' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden>
+      {/* shipping-label plate */}
+      <rect x="5" y="4" width="16" height="20" rx="2.5" stroke={color} strokeWidth="2.2" />
+      <path d="M21 4v6h6" stroke={color} strokeWidth="2.2" strokeLinejoin="round" />
+      <path d="M21 10l6-6" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+      {/* live pin */}
+      <circle cx="13" cy="13" r="2.4" fill={color} />
+      <path d="M13 16.2c0 0 4.8 4.2 4.8 6.8A4.8 4.8 0 0 1 8.2 23c0-2.6 4.8-6.8 4.8-6.8z" fill={color} />
+      {/* LTE arcs */}
+      <path d="M24.5 16.5a5.5 5.5 0 0 1 0 7.8M27.2 14.2a9 9 0 0 1 0 12.4" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function XenAuthMark({ size = 22, color = '#2DD4BF' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden>
+      <path
+        d="M16 3.5L27 8v7.2c0 6.4-4.2 10.6-11 13.3C9.2 25.8 5 21.6 5 15.2V8L16 3.5z"
+        stroke={color}
+        strokeWidth="2.2"
+        strokeLinejoin="round"
+      />
+      {/* NFC tap arcs */}
+      <path d="M12.2 13.2a5.2 5.2 0 0 1 7.6 0" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      <path d="M10 10.6a8.2 8.2 0 0 1 12 0" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      <circle cx="16" cy="17.2" r="1.8" fill={color} />
+    </svg>
+  );
+}
+
+/** XenAuth journey step glyphs — geometric evidence-sheet, no stock PNGs. */
+export function AuthBrandStepIcon({ step, size = 88 }) {
+  const c = '#2DD4BF';
+  const ink = 'rgba(255,255,255,0.92)';
+  const dim = 'rgba(255,255,255,0.28)';
+  if (step === 1) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 88 88" fill="none" aria-hidden>
+        <rect x="10" y="18" width="48" height="54" rx="6" stroke={dim} strokeWidth="2" />
+        <rect x="18" y="28" width="32" height="34" rx="3" fill={c} fillOpacity="0.18" stroke={c} strokeWidth="2" />
+        <circle cx="34" cy="45" r="7" stroke={c} strokeWidth="2.2" />
+        <circle cx="34" cy="45" r="2.5" fill={c} />
+        <path d="M64 30h14M71 23v14" stroke={ink} strokeWidth="2.4" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (step === 2) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 88 88" fill="none" aria-hidden>
+        <rect x="14" y="16" width="60" height="44" rx="5" stroke={c} strokeWidth="2.2" />
+        <path d="M14 28h60" stroke={dim} strokeWidth="2" />
+        <rect x="22" y="36" width="20" height="14" rx="2" fill={c} fillOpacity="0.35" />
+        <rect x="46" y="36" width="20" height="6" rx="1.5" fill={ink} fillOpacity="0.35" />
+        <rect x="46" y="46" width="14" height="4" rx="1" fill={ink} fillOpacity="0.22" />
+        <rect x="28" y="66" width="32" height="6" rx="3" fill={dim} />
+      </svg>
+    );
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 88 88" fill="none" aria-hidden>
+      <rect x="12" y="14" width="64" height="48" rx="5" stroke={dim} strokeWidth="2" />
+      <path d="M22 48V36l8 6 8-10 10 16" stroke={c} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="28" cy="70" r="3" fill={c} />
+      <circle cx="44" cy="70" r="3" fill={c} fillOpacity="0.55" />
+      <circle cx="60" cy="70" r="3" fill={c} fillOpacity="0.3" />
+    </svg>
+  );
+}
+
+export function AuthCustomerStepIcon({ step, size = 88 }) {
+  const c = '#FF8A2B';
+  const ink = 'rgba(255,255,255,0.92)';
+  const dim = 'rgba(255,255,255,0.28)';
+  if (step === 1) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 88 88" fill="none" aria-hidden>
+        <rect x="28" y="10" width="32" height="54" rx="6" stroke={ink} strokeWidth="2.2" />
+        <rect x="34" y="18" width="20" height="34" rx="2" fill={dim} />
+        <circle cx="44" cy="58" r="2.5" fill={c} />
+        <path d="M18 42a14 14 0 0 1 12-8M14 42a20 20 0 0 1 16-12" stroke={c} strokeWidth="2.2" strokeLinecap="round" />
+        <rect x="16" y="68" width="22" height="10" rx="2" stroke={c} strokeWidth="2" />
+        <circle cx="27" cy="73" r="2" fill={c} />
+      </svg>
+    );
+  }
+  if (step === 2) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 88 88" fill="none" aria-hidden>
+        <rect x="22" y="8" width="44" height="64" rx="8" stroke={ink} strokeWidth="2.2" />
+        <rect x="30" y="20" width="28" height="36" rx="3" fill={c} fillOpacity="0.15" stroke={c} strokeWidth="2" />
+        <path d="M36 34h16M36 42h12" stroke={ink} strokeWidth="2" strokeLinecap="round" />
+        <circle cx="44" cy="64" r="2.5" fill={c} />
+      </svg>
+    );
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 88 88" fill="none" aria-hidden>
+      <rect x="22" y="8" width="44" height="64" rx="8" stroke={dim} strokeWidth="2" />
+      <circle cx="44" cy="40" r="14" stroke={c} strokeWidth="2.4" />
+      <path d="M38 40.5l4.2 4.2L51 36" stroke={c} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

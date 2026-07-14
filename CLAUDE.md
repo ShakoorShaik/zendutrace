@@ -43,7 +43,7 @@ Visual QA scripts (`scripts/`, run against a live `npm run dev` server on :5173 
 **`DESIGN.md` and `PRODUCT.md` are the design/brand source of truth** — read them before any visual or copy change. Key constraints from those files that aren't obvious from the code:
 - Two themes only: night console (`#0A0B0E`–`#15171B`, live-platform moments) and daylight warehouse (white/`#F1F3F5`, explaining moments). No third/mid-gray theme.
 - Cargo Ember (`#C2410C`) is a signal color (CTAs, live/active states) capped at ~10% of any daylight surface — not a decorative wash.
-- Monospace/tabular-nums text is reserved for machine-sourced values (serials, temperatures, battery %); everything human-written is Helvetica Neue.
+- Monospace/tabular-nums text is reserved for machine-sourced values (serials, temperatures, battery %); everything human-written is Source Sans 3 / Helvetica Neue.
 - No fabricated dashboards, reviews, or "success" UI shown before a real 2xx from the capture endpoint.
 - Avoid generic-SaaS patterns explicitly banned in `PRODUCT.md`: uppercase eyebrow labels on every section, identical icon+heading+text grids, glassmorphism, gradient text, emoji-as-icon.
 

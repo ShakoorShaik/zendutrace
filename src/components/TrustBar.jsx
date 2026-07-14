@@ -7,7 +7,7 @@ export default function TrustBar({ trustLoop }) {
             <div key={i} style={{ display: 'contents' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '0 30px', whiteSpace: 'nowrap', flexShrink: 0 }}>
                 <span style={{ display: 'inline-flex' }}>{t.iconEl}</span>
-                <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 14, letterSpacing: '0.01em', color: '#2F343A' }}>{t.textEl}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 14, letterSpacing: '0.01em', color: '#2F343A' }}>{t.textEl}</span>
               </div>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#CBD1D8', flexShrink: 0 }} />
             </div>

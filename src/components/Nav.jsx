@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHover } from '../hooks/useHover';
+import { XenAuthMark, XenTagMark } from './Icons.jsx';
 
 const demoIntent = () => window.dispatchEvent(new CustomEvent('xt-intent', { detail: 'demo' }));
 
@@ -81,11 +82,8 @@ function ProductsLink({ openTrace, openXenAuth }) {
             }}
             {...traceHoverProps}
           >
-            <span style={{ flexShrink: 0, width: 36, height: 36, borderRadius: 9, background: 'rgba(92,179,248,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="10" r="2.6" stroke="#5CB3F8" strokeWidth="1.7" />
-                <path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8z" stroke="#5CB3F8" strokeWidth="1.7" />
-              </svg>
+            <span style={{ flexShrink: 0, width: 40, height: 40, borderRadius: 9, background: 'rgba(194,65,12,0.22)', border: '1px solid rgba(255,138,43,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <XenTagMark size={22} color="#FF8A2B" />
             </span>
             <span>
               <span style={{ display: 'block', fontSize: 14.5, fontWeight: 600, color: '#fff' }}>XenTag</span>
@@ -111,12 +109,8 @@ function ProductsLink({ openTrace, openXenAuth }) {
             }}
             {...xenAuthHoverProps}
           >
-            <span style={{ flexShrink: 0, width: 36, height: 36, borderRadius: 9, background: 'rgba(0,229,160,0.13)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3l7 2.8v5.4c0 4.6-2.9 7.6-7 9.8-4.1-2.2-7-5.2-7-9.8V5.8L12 3z" stroke="#00E5A0" strokeWidth="1.7" strokeLinejoin="round" />
-                <circle cx="12" cy="10.2" r="1.5" fill="#00E5A0" />
-                <path d="M12 11.5v3.4" stroke="#00E5A0" strokeWidth="1.7" strokeLinecap="round" />
-              </svg>
+            <span style={{ flexShrink: 0, width: 40, height: 40, borderRadius: 9, background: 'rgba(13,148,136,0.2)', border: '1px solid rgba(45,212,191,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <XenAuthMark size={22} color="#2DD4BF" />
             </span>
             <span>
               <span style={{ display: 'block', fontSize: 14.5, fontWeight: 600, color: '#fff' }}>XenAuth</span>

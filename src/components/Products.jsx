@@ -1,4 +1,5 @@
 import { useHover } from '../hooks/useHover';
+import { XenAuthMark } from './Icons.jsx';
 
 function ExploreXenTagButton({ openTrace }) {
   const [hovered, hoverProps] = useHover();
@@ -65,7 +66,7 @@ export default function Products({ openTrace, openXenAuth }) {
         <h2
           style={{
             margin: 0,
-            fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+            fontFamily: "var(--font-display)",
             fontWeight: 700,
             fontSize: 'clamp(28px,3.6vw,44px)',
             lineHeight: 1.06,
@@ -100,7 +101,7 @@ export default function Products({ openTrace, openXenAuth }) {
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <img src="/images/xentag-logo.png" alt="XenTag" style={{ height: 15, width: 'auto', display: 'block' }} />
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', color: '#1E8A5B' }}>
-                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#1E8A5B', boxShadow: '0 0 6px rgba(30,138,91,0.7)' }} />
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#1E8A5B' }} />
                     LIVE
                   </span>
                 </div>
@@ -142,14 +143,14 @@ export default function Products({ openTrace, openXenAuth }) {
                       <rect x="89" width="3" height="24" />
                     </g>
                   </svg>
-                  <div style={{ fontFamily: 'monospace', fontSize: 11, fontWeight: 700, color: '#2F343A' }}>XT-48192</div>
+                  <div style={{ fontFamily: 'var(--font-machine)', fontSize: 11, fontWeight: 700, color: '#2F343A' }}>XT-48192</div>
                 </div>
               </div>
             </div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', borderRadius: 8, background: 'rgba(194,65,12,0.1)', color: '#9A3412', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.06em' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', borderRadius: 8, background: 'rgba(194,65,12,0.1)', color: '#9A3412', fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 700, letterSpacing: '0.06em' }}>
               BLE + CELLULAR
             </div>
-            <h3 style={{ marginTop: 18, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenTag&#8482;</h3>
+            <h3 style={{ marginTop: 18, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenTag&#8482;</h3>
             <p style={{ marginTop: 10, fontSize: 15, lineHeight: 1.62, color: '#4B5259', maxWidth: '26rem' }}>
               Peel-and-stick tracking for high-value goods with real-time location, temperature and shock &mdash; a full year on one charge, no line of sight, no infrastructure to install.
             </p>
@@ -193,12 +194,12 @@ export default function Products({ openTrace, openXenAuth }) {
           <div style={{ position: 'relative' }}>
             <div className="product-card-visual" style={{ marginBottom: 26, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 22, borderRadius: 16, background: '#F1F7F5' }}>
               <div className="xenauth-card-mock" style={{ width: '100%', maxWidth: 300, borderRadius: 14, background: '#FFFFFF', boxShadow: '0 18px 44px -16px rgba(13,16,20,0.4)', border: '1px solid rgba(13,16,20,0.08)', padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 16, transform: 'rotate(2.5deg)' }}>
-                <div className="xenauth-card-mark" style={{ position: 'relative', flexShrink: 0, width: 78, height: 78, borderRadius: 16, overflow: 'hidden' }}>
-                  <img src="/images/xenauth-mark.svg" alt="XenAuth" style={{ width: '100%', height: '100%', display: 'block' }} />
+                <div className="xenauth-card-mark" style={{ position: 'relative', flexShrink: 0, width: 78, height: 78, borderRadius: 14, overflow: 'hidden', background: '#111111', border: '1px solid rgba(13,16,20,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <XenAuthMark size={42} color="#2DD4BF" />
                 </div>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                    <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 13.5, fontWeight: 700, color: '#0F1114' }}>XenAuth&#8482;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, fontWeight: 700, color: '#0F1114' }}>XenAuth&#8482;</span>
                     <span style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: '0.05em', color: '#0D9488', background: 'rgba(13,148,136,0.12)', padding: '2px 6px', borderRadius: 5 }}>VERIFIED</span>
                   </div>
                   <div style={{ marginTop: 5, fontSize: 10.5, color: '#5C636B' }}>NTAG 424 DNA &middot; secure element</div>
@@ -212,10 +213,10 @@ export default function Products({ openTrace, openXenAuth }) {
                 </div>
               </div>
             </div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', borderRadius: 8, background: 'rgba(42,37,33,0.08)', color: '#1C1F23', fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.06em' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', borderRadius: 8, background: 'rgba(42,37,33,0.08)', color: '#1C1F23', fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 700, letterSpacing: '0.06em' }}>
               SECURE NFC CHIP
             </div>
-            <h3 style={{ marginTop: 18, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenAuth&#8482;</h3>
+            <h3 style={{ marginTop: 18, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenAuth&#8482;</h3>
             <p style={{ marginTop: 10, fontSize: 15, lineHeight: 1.62, color: '#4B5259', maxWidth: '26rem' }}>
               Tap-to-verify authentication on a secure NFC chip &mdash; product information, origin and proof of custody, accessible with no app download. Cryptographically signed and ready for the EU Digital Product Passport.
             </p>

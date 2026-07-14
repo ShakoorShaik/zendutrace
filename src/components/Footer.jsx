@@ -8,7 +8,7 @@ function FooterLink({ href, onClick, children }) {
       className="footer-link"
       href={href}
       onClick={onClick}
-      style={{ fontSize: 14, color: hovered ? '#FF9A57' : 'rgba(255,255,255,0.74)', transition: 'color .16s' }}
+      style={{ fontSize: 14, color: hovered ? '#FFB37E' : 'rgba(255,255,255,0.74)', transition: 'color .16s' }}
       {...hoverProps}
     >
       {children}
@@ -24,7 +24,7 @@ function ContactLink({ href, icon, children }) {
     <a
       className="contact-link"
       href={href}
-      style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontSize: 13.5, color: hovered ? '#FF9A57' : 'rgba(255,255,255,0.7)', transition: 'color .16s' }}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontSize: 13.5, color: hovered ? '#FFB37E' : 'rgba(255,255,255,0.7)', transition: 'color .16s' }}
       {...hoverProps}
     >
       <span aria-hidden="true" style={{ display: 'inline-flex' }}>{icon}</span>
@@ -77,7 +77,7 @@ function ColumnHeading({ accent = '#FF7A2E', children }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
       <span style={{ width: 16, height: 2, borderRadius: 2, background: accent }} />
-      <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
+      <span style={{ fontFamily: "var(--font-body)", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
         {children}
       </span>
     </div>
@@ -88,8 +88,8 @@ function NewsletterForm() {
   const { email, status, submit, onChange, fallbackHref } = useEmailCapture('XenTag newsletter signup');
   if (status === 'done') {
     return (
-      <div role="status" aria-live="polite" style={{ marginTop: 12, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 9, background: 'rgba(0,229,160,0.1)', border: '1px solid rgba(0,229,160,0.4)' }}>
-        <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
+      <div role="status" aria-live="polite" style={{ marginTop: 12, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 9, background: 'rgba(47,191,131,0.1)', border: '1px solid rgba(47,191,131,0.4)' }}>
+        <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2FBF83" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
         <span style={{ fontSize: 12.5, fontWeight: 600, color: 'rgba(255,255,255,0.8)' }}>You&rsquo;re on the list.</span>
       </div>
     );
@@ -127,7 +127,7 @@ function NewsletterForm() {
 
 export default function Footer() {
   return (
-    <footer style={{ position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)', background: '#0A0B0E' }}>
+    <footer className="night-surface" style={{ position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       {/* Link columns */}
       <div className="footer-grid" style={{ maxWidth: 1480, margin: '0 auto', padding: '56px 48px 48px', display: 'grid', gridTemplateColumns: '1.7fr 1fr 1fr 1.1fr', gap: 'clamp(40px,6vw,96px)' }}>
         <div>
@@ -135,9 +135,9 @@ export default function Footer() {
           <p style={{ marginTop: 18, fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.68)', maxWidth: '25rem' }}>
             Smart labels for goods worth protecting. XenTag&#8482; and XenAuth&#8482; bring live location, condition and cryptographic authenticity to high-value, high-security shipments &mdash; from a label. Built by ZenduIT &amp; GoFleet.
           </p>
-          <div style={{ marginTop: 22, display: 'inline-flex', alignItems: 'center', gap: 9, padding: '9px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#00E5A0', boxShadow: '0 0 8px rgba(0,229,160,0.8)' }} />
-            <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.7)' }}>Live in 29 countries</span>
+          <div style={{ marginTop: 22, display: 'inline-flex', alignItems: 'center', gap: 9, fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>
+            <span aria-hidden style={{ width: 7, height: 7, borderRadius: '50%', background: '#2FBF83' }} />
+            Live coverage across 29 countries
           </div>
           <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 9 }}>
             <ContactLink
@@ -198,7 +198,7 @@ export default function Footer() {
             <FooterLink href="mailto:sales@zenduit.com">Talk to sales</FooterLink>
           </div>
           <div style={{ marginTop: 26 }}>
-            <ColumnHeading accent="linear-gradient(90deg,#00E5A0,#00C4A0)">Newsletter</ColumnHeading>
+            <ColumnHeading accent="#FF7A2E">Newsletter</ColumnHeading>
           </div>
           <p style={{ marginTop: 10, fontSize: 12.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.62)' }}>
             Field notes on high-value goods tracking. Monthly, no spam.

@@ -1,4 +1,5 @@
 import { useHover } from '../hooks/useHover';
+import AutoPlayVideo from './AutoPlayVideo.jsx';
 
 function GetFreeLabelsLink({ closePanel, extraStyle }) {
   const [hovered, hoverProps] = useHover();
@@ -88,7 +89,7 @@ function NetworkGraphic({ mode }) {
         <circle cx="320" cy="140" r="19" fill={accent} />
         <circle cx="320" cy="140" r="34" fill="none" stroke={accent} strokeWidth="2" opacity="0.28" />
       </svg>
-      <div style={{ position: 'absolute', left: 22, top: 20, fontFamily: 'monospace', fontWeight: 700, fontSize: 12, color: accent, letterSpacing: '0.08em' }}>
+      <div style={{ position: 'absolute', left: 22, top: 20, fontFamily: 'var(--font-machine)', fontWeight: 700, fontSize: 12, color: accent, letterSpacing: '0.08em' }}>
         {cellular ? '29 COUNTRIES LIVE' : '100M+ RELAY DEVICES'}
       </div>
     </div>
@@ -160,7 +161,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
         <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: 'clamp(38px,4vw,60px) clamp(22px,4vw,52px) clamp(40px,5vw,60px)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, marginBottom: 26 }}>
             <img src="/images/xentag-logo-white.png" alt="XenTag" style={{ height: 30, width: 'auto', display: 'block' }} />
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 13.5, color: 'rgba(255,255,255,0.6)' }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: 13.5, color: 'rgba(255,255,255,0.6)' }}>
               Global tracking
             </span>
           </div>
@@ -168,7 +169,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
           {/* hero */}
           <div className="xt-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px,4vw,56px)', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(36px,5.2vw,68px)', lineHeight: 0.98, letterSpacing: '-0.03em', margin: 0 }}>
+              <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(36px,5.2vw,68px)', lineHeight: 0.98, letterSpacing: '-0.03em', margin: 0 }}>
                 Track. <span style={{ color: '#5CB3F8' }}>Trace.</span> Deliver.
               </h2>
               <p style={{ marginTop: 22, fontSize: 'clamp(16px,1.3vw,19px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.72)', maxWidth: '33rem' }}>
@@ -180,13 +181,12 @@ export default function TraceModal({ open, closePanel, openDemo }) {
               </div>
             </div>
             <div style={{ position: 'relative', borderRadius: 22, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 44px 100px -40px rgba(0,0,0,0.85)', background: '#0B0C10' }}>
-              <video
+              <AutoPlayVideo
                 src="/assets/xentag-film.mp4"
                 poster="/assets/xentag-film-poster.webp"
                 controls
-                preload="metadata"
-                playsInline
                 style={{ display: 'block', width: '100%', height: 'auto' }}
+                aria-label="XenTag product film"
               />
             </div>
           </div>
@@ -194,19 +194,19 @@ export default function TraceModal({ open, closePanel, openDemo }) {
           {/* stats */}
           <div className="xt-stats" style={{ marginTop: 72, display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 18 }}>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#5CB3F8', lineHeight: 1 }}>100M+</div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#5CB3F8', lineHeight: 1 }}>100M+</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Crowdsourced BLE nodes in the XenTag network &mdash; coverage that already exists.</p>
             </div>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FB8B24', lineHeight: 1 }}>29</div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FB8B24', lineHeight: 1 }}>29</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Countries live today &mdash; global reach across Bluetooth and cellular coverage.</p>
             </div>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#00E5A0', lineHeight: 1 }}>1 yr</div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#00E5A0', lineHeight: 1 }}>1 yr</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Battery life from a paper-thin label &mdash; peel, stick and forget.</p>
             </div>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>&minus;60&deg;</div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>&minus;60&deg;</div>
               <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Temperature logging built in &mdash; from cold chain to cell &amp; gene therapies.</p>
             </div>
           </div>
@@ -214,7 +214,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
           {/* how it works */}
           <div style={{ marginTop: 88 }}>
             <div style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 36px' }}>
-              <h3 style={{ margin: 0, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff' }}>
+              <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff' }}>
                 Apply. Move. Monitor.
               </h3>
             </div>
@@ -251,7 +251,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '5px 12px', borderRadius: 999, background: 'rgba(92,179,248,0.14)', border: '1px solid rgba(92,179,248,0.3)', fontSize: 11.5, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: '#9CCDFA' }}>
                   Bluetooth
                 </div>
-                <h4 style={{ marginTop: 14, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 20, color: '#fff' }}>XenTag network labels</h4>
+                <h4 style={{ marginTop: 14, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 20, color: '#fff' }}>XenTag network labels</h4>
                 <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>Ultra-thin, year-long battery. Location relayed by 100M+ crowdsourced nodes &mdash; no gateways to buy.</p>
               </div>
             </div>
@@ -261,7 +261,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '5px 12px', borderRadius: 999, background: 'rgba(0,229,160,0.14)', border: '1px solid rgba(0,229,160,0.3)', fontSize: 11.5, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: '#6EE7C0' }}>
                   Cellular
                 </div>
-                <h4 style={{ marginTop: 14, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 20, color: '#fff' }}>Independent cellular labels</h4>
+                <h4 style={{ marginTop: 14, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 20, color: '#fff' }}>Independent cellular labels</h4>
                 <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>For remote routes with no node density &mdash; report position over the mobile network anywhere.</p>
               </div>
             </div>
@@ -269,7 +269,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
 
           {/* solutions */}
           <div style={{ marginTop: 88 }}>
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(24px,2.6vw,34px)', letterSpacing: '-0.02em', color: '#fff', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(24px,2.6vw,34px)', letterSpacing: '-0.02em', color: '#fff', textAlign: 'center' }}>
               Built for every leg of the chain
             </h3>
             <p style={{ marginTop: 12, textAlign: 'center', fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>From the plant floor to the final mile &mdash; and everything in between.</p>
@@ -286,7 +286,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
 
           {/* CTA */}
           <div style={{ marginTop: 72, borderRadius: 24, padding: 'clamp(40px,5vw,64px)', textAlign: 'center', background: 'linear-gradient(135deg,#14161C,#08090B)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <h3 style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(26px,3.4vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff', maxWidth: '24ch', margin: '0 auto' }}>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(26px,3.4vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff', maxWidth: '24ch', margin: '0 auto' }}>
               See every shipment. Prove every cold chain.
             </h3>
             <GetFreeLabelsLink closePanel={closePanel} extraStyle={{ marginTop: 28 }} />

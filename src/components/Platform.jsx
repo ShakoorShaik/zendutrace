@@ -15,7 +15,7 @@ export default function Platform() {
         }}
       >
         <div className="platform-copy" style={{ padding: '56px 46px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h2 style={{ margin: 0, fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 700, fontSize: 'clamp(28px,3.2vw,40px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
+          <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(28px,3.2vw,40px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
             XenTag signals, inside the platform your team already knows
           </h2>
           <p style={{ marginTop: 16, fontSize: 16, lineHeight: 1.64, color: '#4B5259', maxWidth: '26rem' }}>
@@ -32,7 +32,7 @@ export default function Platform() {
             ))}
           </div>
         </div>
-        <div className="platform-shot" style={{ position: 'relative', padding: '48px 40px 48px 8px', background: 'linear-gradient(160deg,#F3F5F7,#EFE9DE)', alignSelf: 'stretch', display: 'flex', alignItems: 'center' }}>
+        <div className="platform-shot" style={{ position: 'relative', padding: '48px 40px 56px 8px', background: '#F1F3F5', alignSelf: 'stretch', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <img
             src="/images/platform-dashboard.webp"
             alt="Production ZenduIT asset-monitoring dashboard showing mapped assets and trip status"
@@ -42,29 +42,23 @@ export default function Platform() {
             decoding="async"
             style={{ display: 'block', width: '100%', height: 'auto', filter: 'drop-shadow(0 30px 50px rgba(13,16,20,0.28))' }}
           />
-          <div
+          <p
+            className="platform-caption"
             style={{
-              position: 'absolute',
-              bottom: 18,
-              right: 22,
+              marginTop: 14,
+              alignSelf: 'flex-end',
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 600,
+              color: '#5C636B',
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
-              background: 'rgba(255,255,255,0.85)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              border: '1px solid rgba(13,16,20,0.1)',
-              borderRadius: 10,
-              padding: '7px 12px',
-              fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif",
-              fontSize: 11.5,
-              fontWeight: 700,
-              color: '#0F1114',
             }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#1E8A5B' }} />
+            <span aria-hidden style={{ width: 7, height: 7, borderRadius: '50%', background: '#1E8A5B' }} />
             Production platform view
-          </div>
+          </p>
         </div>
       </div>
     </section>
