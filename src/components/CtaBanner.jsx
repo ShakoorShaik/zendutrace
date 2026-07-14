@@ -150,12 +150,12 @@ export default function CtaBanner({ openDemo }) {
                 gap: 12,
                 padding: '18px 32px',
                 borderRadius: 14,
-                background: 'rgba(30,138,91,0.16)',
-                border: '1.5px solid rgba(30,138,91,0.55)',
+                background: 'rgba(0,229,160,0.1)',
+                border: '1.5px solid rgba(0,229,160,0.45)',
               }}
             >
-              <span aria-hidden="true" style={{ width: 28, height: 28, borderRadius: '50%', background: '#1E8A5B', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
+              <span aria-hidden="true" style={{ width: 28, height: 28, borderRadius: '50%', background: '#00E5A0', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F1114" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
               </span>
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontSize: 16.5, fontWeight: 600, color: '#FFFFFF' }}>
                 {copy.done}

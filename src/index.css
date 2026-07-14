@@ -58,7 +58,7 @@ main:focus{outline:none}
 .industry-tabs{gap:0!important;border-top:1px solid var(--line)}
 .industry-tab{border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;min-height:62px}
 .industry-tab:hover{background:rgba(255,255,255,.58)!important}
-.industry-tab[aria-pressed="true"]{background:var(--surface)!important;box-shadow:inset 3px 0 0 var(--ember)!important}
+.industry-tab[aria-pressed="true"]{background:rgba(194,65,12,0.05)!important}
 .industry-stage{border-radius:var(--radius-md)!important;border:0!important;box-shadow:none!important;min-height:470px!important}
 .industry-grid-overlay{display:none}
 

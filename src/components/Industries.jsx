@@ -45,10 +45,10 @@ export default function Industries({ activeInd, setActiveInd }) {
                   boxShadow: active ? '0 16px 40px -26px rgba(13,16,20,0.4)' : 'none',
                 }}
               >
-                <span style={{ flexShrink: 0, width: 42, height: 42, borderRadius: 11, display: 'flex', alignItems: 'center', justifyContent: 'center', background: t.chipBg, color: t.color }}>
+                <span style={{ flexShrink: 0, width: 42, height: 42, borderRadius: 11, display: 'flex', alignItems: 'center', justifyContent: 'center', background: t.chipBg, color: t.color, boxShadow: active ? '0 0 0 2px rgba(194,65,12,0.35)' : 'none', transition: 'box-shadow .18s' }}>
                   {t.iconEl}
                 </span>
-                <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 600, fontSize: 16, color: '#0F1114' }}>{t.name}</span>
+                <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: active ? 700 : 600, fontSize: 16, color: active ? '#9A3412' : '#0F1114' }}>{t.name}</span>
               </button>
             );
           })}
