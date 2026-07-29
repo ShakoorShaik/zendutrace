@@ -1,5 +1,4 @@
 import { useHover } from '../hooks/useHover';
-import { useEmailCapture } from '../hooks/useEmailCapture';
 
 function FooterLink({ href, onClick, children }) {
   const [hovered, hoverProps] = useHover();
@@ -84,47 +83,6 @@ function ColumnHeading({ accent = '#FF7A2E', children }) {
   );
 }
 
-function NewsletterForm() {
-  const { email, status, submit, onChange, fallbackHref } = useEmailCapture('XenTag newsletter signup');
-  if (status === 'done') {
-    return (
-      <div role="status" aria-live="polite" style={{ marginTop: 12, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 9, background: 'rgba(47,191,131,0.1)', border: '1px solid rgba(47,191,131,0.4)' }}>
-        <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2FBF83" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5 9.5 18 20 6" /></svg>
-        <span style={{ fontSize: 12.5, fontWeight: 600, color: 'rgba(255,255,255,0.8)' }}>You&rsquo;re on the list.</span>
-      </div>
-    );
-  }
-  return (
-    <form onSubmit={submit} noValidate style={{ marginTop: 12 }}>
-      <div className="newsletter-row" style={{ display: 'flex', gap: 8 }}>
-        <label className="sr-only" htmlFor="newsletter-email">Work email for newsletter</label>
-        <input
-          id="newsletter-email"
-          type="email"
-          required
-          autoComplete="email"
-          inputMode="email"
-          value={email}
-          onChange={onChange}
-          placeholder="Work email"
-          aria-invalid={status === 'error'}
-          aria-describedby={status === 'error' ? 'newsletter-email-error' : status === 'failed' ? 'newsletter-email-failed' : undefined}
-          style={{ flex: 1, minWidth: 0, padding: '10px 12px', borderRadius: 9, background: 'rgba(255,255,255,0.05)', border: status === 'error' ? '1px solid #E5484D' : '1px solid rgba(255,255,255,0.12)', color: '#fff', fontSize: 13, outline: 'none' }}
-        />
-        <button className="newsletter-submit" type="submit" disabled={status === 'sending'} style={{ padding: '10px 14px', borderRadius: 9, border: 'none', background: status === 'sending' ? 'rgba(194,65,12,0.6)' : '#C2410C', color: '#fff', fontWeight: 600, fontSize: 13, cursor: status === 'sending' ? 'default' : 'pointer', whiteSpace: 'nowrap' }}>
-          {status === 'sending' ? '…' : 'Join'}
-        </button>
-      </div>
-      {status === 'error' && <div id="newsletter-email-error" role="alert" style={{ marginTop: 7, fontSize: 12, color: '#FF9AA0' }}>Enter a valid email.</div>}
-      {status === 'failed' && (
-        <div id="newsletter-email-failed" role="alert" style={{ marginTop: 7, fontSize: 12, color: '#FF9AA0' }}>
-          Couldn&rsquo;t send &mdash; <a href={fallbackHref} style={{ color: '#FFB37E', textDecoration: 'underline' }}>email us</a> instead.
-        </div>
-      )}
-    </form>
-  );
-}
-
 export default function Footer() {
   return (
     <footer className="night-surface" style={{ position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
@@ -197,13 +155,6 @@ export default function Footer() {
             <FooterLink href="#book" onClick={setIntent('labels')}>Get 10 free labels</FooterLink>
             <FooterLink href="mailto:sales@zenduit.com">Talk to sales</FooterLink>
           </div>
-          <div style={{ marginTop: 26 }}>
-            <ColumnHeading accent="#FF7A2E">Newsletter</ColumnHeading>
-          </div>
-          <p style={{ marginTop: 10, fontSize: 12.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.62)' }}>
-            Field notes on high-value goods tracking. Monthly, no spam.
-          </p>
-          <NewsletterForm />
         </div>
       </div>
 
@@ -213,9 +164,7 @@ export default function Footer() {
           &copy; 2026 ZenduIT. All rights reserved.
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
-          <LegalLink href="#">Privacy</LegalLink>
-          <LegalLink href="#">Terms</LegalLink>
-          <LegalLink href="#">Security</LegalLink>
+          <LegalLink href="https://www.zenduit.com/privacy-policy/">Privacy</LegalLink>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <SocialLink href="https://www.linkedin.com/company/zenduit" label="LinkedIn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

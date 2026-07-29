@@ -94,7 +94,7 @@ function SubmitButton({ label, sending }) {
 export default function CtaBanner({ openDemo }) {
   const [intent, setIntentState] = useState('labels');
   const copy = INTENTS[intent];
-  const { email, status, submit, onChange, reset, fallbackHref } = useEmailCapture(copy.request);
+  const { email, status, submit, onChange, reset, fallbackHref, honeypotProps } = useEmailCapture(copy.request);
   const resetRef = useRef(reset);
   resetRef.current = reset;
 
@@ -168,6 +168,7 @@ export default function CtaBanner({ openDemo }) {
             </div>
           ) : (
             <form className="cta-form" onSubmit={submit} noValidate style={{ marginTop: 32, maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
+              <input type="text" {...honeypotProps} />
               <div className="cta-field" style={{ flex: 1, minWidth: 0 }}>
                 <label className="sr-only" htmlFor="cta-email">Work email</label>
                 <input

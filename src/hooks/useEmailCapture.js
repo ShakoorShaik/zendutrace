@@ -9,6 +9,7 @@ const CAPTURE_ENDPOINT = import.meta.env.VITE_CAPTURE_ENDPOINT || '';
 
 export function useEmailCapture(request) {
   const [email, setEmail] = useState('');
+  const [honey, setHoney] = useState('');
   const [status, setStatus] = useState('idle'); // idle | error | sending | done | failed
 
   const fallbackHref = `mailto:sales@zenduit.com?subject=${encodeURIComponent(request)}&body=${encodeURIComponent(`Work email: ${email.trim()}\n\nRequest: ${request}`)}`;
@@ -25,9 +26,14 @@ export function useEmailCapture(request) {
       const res = await fetch(CAPTURE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: value, request, page: window.location.href, at: new Date().toISOString() }),
+        // _honey: FormSubmit silently discards submissions where this is non-empty;
+        // real users never see the offscreen input, bots that autofill it get filtered.
+        body: JSON.stringify({ email: value, request, page: window.location.href, at: new Date().toISOString(), _subject: `XenTag lead: ${request}`, _honey: honey }),
       });
       if (!res.ok) throw new Error(`capture endpoint responded ${res.status}`);
+      // FormSubmit reports rejections (e.g. unactivated form) as 200 + {success:"false"}
+      const body = await res.json().catch(() => null);
+      if (body && String(body.success) === 'false') throw new Error(body.message || 'capture endpoint rejected the submission');
       try {
         const leads = JSON.parse(localStorage.getItem('xt-leads') || '[]');
         leads.push({ email: value, request, at: new Date().toISOString() });
@@ -48,5 +54,16 @@ export function useEmailCapture(request) {
 
   const reset = () => setStatus('idle');
 
-  return { email, status, submit, onChange, reset, fallbackHref };
+  // Spread onto a visually hidden text input inside the form (spam trap).
+  const honeypotProps = {
+    name: '_honey',
+    value: honey,
+    onChange: (e) => setHoney(e.target.value),
+    tabIndex: -1,
+    autoComplete: 'off',
+    'aria-hidden': true,
+    style: { position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0, pointerEvents: 'none' },
+  };
+
+  return { email, status, submit, onChange, reset, fallbackHref, honeypotProps };
 }
