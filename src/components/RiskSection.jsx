@@ -5,7 +5,7 @@ function IncidentCard({ x, ariaHidden }) {
       aria-hidden={ariaHidden || undefined}
       style={{
         flexShrink: 0,
-        borderRadius: 13,
+        borderRadius: 12,
         padding: '14px 20px',
         background: 'rgba(255,255,255,0.045)',
         border: '1px solid rgba(255,255,255,0.09)',
@@ -40,11 +40,11 @@ export default function RiskSection({ incidents }) {
     <section id="risk" className="night-surface" style={{ padding: '52px 0 56px', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: '0 clamp(24px,4vw,48px)' }}>
         <div style={{ maxWidth: '46rem', margin: '0 auto 30px', textAlign: 'center' }}>
-          <h2 style={{ margin: 0, fontSize: 'clamp(26px,3vw,40px)', lineHeight: 1.02, letterSpacing: '-0.02em', color: '#F5F7FB' }}>
+          <h2 style={{ margin: 0, fontSize: 'clamp(26px,2.6vw,32px)', lineHeight: 1.02, letterSpacing: '-0.02em', color: '#F5F7FB' }}>
             Flying blind is expensive
           </h2>
           <p style={{ marginTop: 10, fontSize: 'clamp(13.5px,1vw,15px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>
-            What the public record shows &mdash; and what a $6 label helps prevent.
+            What the public record shows &mdash; and what a $10 label helps prevent.
           </p>
         </div>
       </div>

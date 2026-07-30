@@ -4,7 +4,7 @@ export default function VideoSection() {
   return (
     <section id="video" className="video-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '80px 32px 48px' }}>
       <div className="section-heading" style={{ textAlign: 'center', maxWidth: '42rem', margin: '0 auto 44px' }}>
-        <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
+        <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
           Watch a label go to work
         </h2>
         <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259' }}>

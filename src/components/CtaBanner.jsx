@@ -8,7 +8,7 @@ const INTENTS = {
     heading: 'Get 10 free labels',
     sub: (
       <>
-        Starter roll ships free. First shipments live on the map the same week &mdash; then <strong style={{ color: '#FFFFFF' }}>$6 per label, tracking included</strong>.
+        Starter roll ships free. First shipments live on the map the same week &mdash; then <strong style={{ color: '#FFFFFF' }}>$10 per label, tracking included</strong>.
       </>
     ),
     request: '10 free XenTag labels',
@@ -136,7 +136,7 @@ export default function CtaBanner({ openDemo }) {
             <IntentChip active={intent === 'labels'} onClick={() => setIntent('labels')} edge="start">{INTENTS.labels.chip}</IntentChip>
             <IntentChip active={intent === 'demo'} onClick={() => setIntent('demo')} edge="end">{INTENTS.demo.chip}</IntentChip>
           </div>
-          <h2 style={{ fontSize: 'clamp(34px,4.6vw,60px)', lineHeight: 0.98, letterSpacing: '-0.02em', color: '#FFFFFF', maxWidth: '14ch', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(34px,4.2vw,52px)', lineHeight: 0.98, letterSpacing: '-0.025em', color: '#FFFFFF', maxWidth: '14ch', margin: '0 auto' }}>
             {copy.heading}
           </h2>
           <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.66, color: '#B9C0C8', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>

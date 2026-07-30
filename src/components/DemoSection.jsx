@@ -427,10 +427,10 @@ export default function DemoSection() {
     <MotionConfig reducedMotion="user">
       <section ref={sectionRef} id="demo" style={{ maxWidth: 1240, margin: '0 auto', padding: 'clamp(88px,9vw,116px) 32px' }}>
         <div style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 40px' }}>
-          <h2 style={{ margin: 0, fontFamily: SANS, fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.06, letterSpacing: '-0.025em', color: '#0F1114' }}>
+          <h2 style={{ margin: 0, fontFamily: SANS, fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 0.98, letterSpacing: '-0.025em', color: '#0F1114' }}>
             One tap in the yard. Live on the map.
           </h2>
-          <p style={{ marginTop: 16, fontSize: 16.5, lineHeight: 1.6, color: '#4B5259', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
+          <p style={{ marginTop: 16, fontSize: 16, lineHeight: 1.6, color: '#4B5259', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
             Watch the full lifecycle: peel, stick, activate, then monitor location and temperature from any phone.
           </p>
           <button
@@ -445,7 +445,7 @@ export default function DemoSection() {
             {paused ? 'Play walkthrough' : 'Pause walkthrough'}
           </button>
         </div>
-        <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', border: '1px solid rgba(13,16,20,0.16)', background: C.panel, boxShadow: '0 2px 6px rgba(13,16,20,0.08),0 60px 130px -60px rgba(13,16,20,0.55)' }}>
+        <div style={{ position: 'relative', borderRadius: 22, overflow: 'hidden', border: '1px solid rgba(13,16,20,0.16)', background: C.panel, boxShadow: '0 2px 6px rgba(13,16,20,0.08),0 60px 130px -60px rgba(13,16,20,0.55)' }}>
           <StepRail step={step} cycle={cycle} onSelect={selectStep} paused={paused} />
           <div className="demo-inline-grid" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr' }}>
             {/* LEFT: package scene */}

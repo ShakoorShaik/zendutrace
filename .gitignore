@@ -30,3 +30,5 @@ demo-video/public/stock/
 
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
+.vercel
+.env*

@@ -171,7 +171,7 @@ export default function Hero() {
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
-                $6
+                $10
               </span>
               <span style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingBottom: 8 }}>
                 <span className="font-display" style={{ fontSize: 'clamp(20px,1.8vw,26px)', fontWeight: 700, color: '#FFB37E', letterSpacing: '0.01em', textTransform: 'uppercase' }}>

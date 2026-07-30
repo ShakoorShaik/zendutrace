@@ -139,7 +139,7 @@ function BookDemoButton() {
         fontSize: 15,
         fontWeight: 600,
         padding: '12px 20px',
-        borderRadius: 10,
+        borderRadius: 12,
         flexShrink: 0,
         boxShadow: '0 2px 8px -2px rgba(0,0,0,0.4)',
         transform: hovered ? 'translateY(-1px)' : 'none',

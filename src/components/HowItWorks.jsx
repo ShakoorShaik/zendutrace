@@ -10,7 +10,7 @@ export default function HowItWorks() {
         {/* 01 Activate */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: '#0284C7' }}>01</span>
+            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-machine)", fontWeight: 700, fontSize: 13, letterSpacing: '0.08em', color: '#9A3412' }}>01</span>
             <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
               <rect x="34" y="26" width="60" height="100" rx="13" fill="#14161C" />
               <rect x="40" y="34" width="48" height="84" rx="8" fill="#16233F" />
@@ -55,7 +55,7 @@ export default function HowItWorks() {
         {/* 02 Attach */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: '#0D9488' }}>02</span>
+            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-machine)", fontWeight: 700, fontSize: 13, letterSpacing: '0.08em', color: '#9A3412' }}>02</span>
             <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
               <path d="M60 66 120 48 180 66 120 84z" fill="#E7CBA6" />
               <path d="M60 66 60 112 120 130 120 84z" fill="#D4B387" />
@@ -65,8 +65,8 @@ export default function HowItWorks() {
               <g style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'zfloat 3s ease-in-out infinite' }}>
                 <rect x="86" y="20" width="76" height="46" rx="9" fill="#FFFFFF" stroke="rgba(13,16,20,0.12)" transform="rotate(-5 124 43)" />
                 <g transform="rotate(-5 124 43)">
-                  <circle cx="102" cy="36" r="6.5" fill="none" stroke="#0D9488" strokeWidth="1.8" />
-                  <path d="M99 36a3 3 0 0 1 6 0" stroke="#0D9488" strokeWidth="1.6" fill="none" />
+                  <circle cx="102" cy="36" r="6.5" fill="none" stroke="#0284C7" strokeWidth="1.8" />
+                  <path d="M99 36a3 3 0 0 1 6 0" stroke="#0284C7" strokeWidth="1.6" fill="none" />
                   <g fill="#0F1114">
                     <rect x="120" y="30" width="1.6" height="14" />
                     <rect x="123" y="30" width="1" height="14" />
@@ -93,7 +93,7 @@ export default function HowItWorks() {
         {/* 03 Track */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 15, color: '#C2410C' }}>03</span>
+            <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-machine)", fontWeight: 700, fontSize: 13, letterSpacing: '0.08em', color: '#9A3412' }}>03</span>
             <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
               <rect x="30" y="22" width="180" height="106" rx="12" fill="#FFFFFF" stroke="rgba(13,16,20,0.09)" />
               <g stroke="rgba(13,16,20,0.05)" strokeWidth="1">

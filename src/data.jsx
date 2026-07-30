@@ -134,7 +134,7 @@ export const integrations = [
 ];
 
 export const comparison = [
-  { feature: 'Cost per asset', us: '$6', them: '$30+', bg: '#FFFFFF' },
+  { feature: 'Cost per asset', us: '$10', them: '$30+', bg: '#FFFFFF' },
   { feature: 'Battery life', us: '1 year', them: '3–6 months', bg: 'rgba(243,245,247,0.5)' },
   { feature: 'Setup', us: 'Peel & stick', them: 'Hardwired install', bg: '#FFFFFF' },
   { feature: 'Temperature sensing', us: 'Built-in', them: 'Paid add-on', bg: 'rgba(243,245,247,0.5)' },

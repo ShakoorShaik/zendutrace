@@ -80,7 +80,7 @@ body::after{
 }
 
 .section-shell{padding-top:var(--section-space)!important;padding-bottom:var(--section-space)!important}
-.section-heading{text-align:left!important;margin-left:0!important;margin-right:0!important;max-width:50rem!important}
+.section-heading{text-align:left!important;margin-left:0!important;margin-right:0!important;margin-bottom:48px!important;max-width:50rem!important}
 .section-heading h2{max-width:18ch;font-size:clamp(32px,4.2vw,52px)!important;line-height:.98!important}
 .section-heading p{max-width:62ch}
 
@@ -258,7 +258,7 @@ input::placeholder{color:rgba(255,255,255,.62);opacity:1}
 
 @media(max-width:640px){
   .cta-section{padding:40px 16px 76px!important}
-  .cta-panel{padding:50px 20px!important;border-radius:22px!important}
+  .cta-panel{padding:50px 20px!important;border-radius:var(--radius-md)!important}
   .cta-intents{flex-wrap:wrap}
   .cta-form{flex-direction:column;width:100%}
   .cta-field,.cta-submit,.cta-success{width:100%}

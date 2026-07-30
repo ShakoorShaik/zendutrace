@@ -91,7 +91,7 @@ export default function Comparison() {
           XenTag vs. traditional trackers
         </h2>
         <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259', maxWidth: '36rem' }}>
-          A $6 peel-and-stick label against a hardwired GPS unit, on cost, battery, setup, and where the signal shows up.
+          A $10 peel-and-stick label against a hardwired GPS unit, on cost, battery, setup, and where the signal shows up.
         </p>
       </div>
 
@@ -111,7 +111,7 @@ export default function Comparison() {
         <div>
           <div style={{ fontSize: 13, fontWeight: 600, color: '#9A3412', marginBottom: 8 }}>XenTag</div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-            <span className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(44px,5.5vw,64px)', lineHeight: 0.9, letterSpacing: '-0.03em', color: '#0F1114', fontVariantNumeric: 'tabular-nums' }}>$6</span>
+            <span className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(44px,5.5vw,64px)', lineHeight: 0.9, letterSpacing: '-0.03em', color: '#0F1114', fontVariantNumeric: 'tabular-nums' }}>$10</span>
             <span className="font-display" style={{ fontSize: 16, fontWeight: 700, color: '#C2410C', textTransform: 'uppercase', letterSpacing: '0.04em' }}>per label</span>
           </div>
           <div style={{ marginTop: 8, fontSize: 14, color: '#5C636B' }}>Tracking included · 1-year battery · no install</div>
@@ -133,7 +133,7 @@ export default function Comparison() {
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5C636B' }}>Criteria</div>
             <div style={{ textAlign: 'center', padding: '0 12px' }}>
               <img src="/images/xentag-logo.png" alt="XenTag" style={{ height: 22, width: 'auto', display: 'block', margin: '0 auto 6px' }} />
-              <div style={{ fontSize: 12, fontWeight: 700, color: '#9A3412' }}>$6 smart label</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#9A3412' }}>$10 smart label</div>
             </div>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#4B5259' }}>Legacy tracker</div>
