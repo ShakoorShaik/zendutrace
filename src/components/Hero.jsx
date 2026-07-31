@@ -159,6 +159,19 @@ export default function Hero() {
               <span style={{ display: 'block', color: '#FF7A2E' }}>can&rsquo;t afford</span>
               <span style={{ display: 'block', color: '#FF7A2E' }}>to lose.</span>
             </h1>
+            <p
+              style={{
+                margin: '20px 0 0',
+                maxWidth: '44ch',
+                fontSize: 'clamp(15px,1.2vw,16.5px)',
+                lineHeight: 1.55,
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.85)',
+                animation: reduceMotion ? undefined : 'zrise .8s .16s cubic-bezier(0.16,1,0.3,1) both',
+              }}
+            >
+              A peel-and-stick tracking label with live location, temperature monitoring, and global LTE&#8209;M&nbsp;+&nbsp;BLE connectivity.
+            </p>
             <div style={{ marginTop: 32, display: 'flex', alignItems: 'baseline', gap: 18, flexWrap: 'wrap', animation: reduceMotion ? undefined : 'zrise .8s .2s cubic-bezier(0.16,1,0.3,1) both' }}>
               <span
                 className="font-display"
