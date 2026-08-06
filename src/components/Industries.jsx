@@ -21,8 +21,8 @@ export default function Industries({ activeInd, setActiveInd }) {
   return (
     <section id="industries" className="industries-section section-shell" style={{ maxWidth: 1240, margin: '0 auto', padding: '80px 32px' }}>
       <div className="section-heading" style={{ textAlign: 'center', maxWidth: '42rem', margin: '0 auto 48px' }}>
-        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
-          One label, every operation
+        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#0F1114' }}>
+          One label, <span style={{ color: '#C2410C' }}>every operation</span>
         </h2>
         <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259', maxWidth: '42rem' }}>
           Pick an operation to see exactly how a single XenTag label works in the field.
@@ -88,12 +88,12 @@ export default function Industries({ activeInd, setActiveInd }) {
               height="1024"
               loading="lazy"
               decoding="async"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', animation: 'zfade .28s ease' }}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', animation: 'imgsettle .5s cubic-bezier(.22,1,.36,1)' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(9,10,13,0.12),rgba(9,10,13,0.88))' }} />
           </div>
           <div style={{ position: 'relative', padding: 40 }}>
-            <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(24px,2.6vw,32px)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#fff' }}>
+            <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(22px,2.6vw,32px)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#fff' }}>
               {aInd.name}
             </h3>
             <p style={{ marginTop: 12, fontSize: 'clamp(15px,1.15vw,17px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.82)', maxWidth: '34rem' }}>{aInd.long}</p>

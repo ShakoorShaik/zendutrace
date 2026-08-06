@@ -3,7 +3,7 @@
 
 function demoIcon(children) {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       {children}
     </svg>
   );
@@ -38,7 +38,7 @@ export const DEMO = [
 ];
 
 // ---- industryData() ----
-function indSvg(paths, cap) {
+function indSvg(paths) {
   return (
     <svg width={22} height={22} viewBox="0 0 24 24" fill="none">
       {paths.map((d, i) => (
@@ -46,9 +46,9 @@ function indSvg(paths, cap) {
           key={i}
           d={d}
           stroke="currentColor"
-          strokeWidth={1.6}
-          strokeLinecap={cap === 'round' ? 'round' : undefined}
-          strokeLinejoin={cap === 'round' ? 'round' : undefined}
+          strokeWidth={1.7}
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       ))}
     </svg>
@@ -57,12 +57,12 @@ function indSvg(paths, cap) {
 
 export function industryData() {
   return [
-    { name: 'Cold Chain', slotId: 'ind-coldchain', color: '#0284C7', chipBg: 'rgba(2,132,199,0.12)', photo: '/images/industries/cold-chain.webp', tint: 'rgba(2,132,199,0.34)', iconEl: indSvg(['M12 2v20M4 7l16 10M20 7L4 17'], 'round'), long: 'Vaccines, food and biologics ride inside a 1–2°C window. XenTag logs temperature end to end and fires a breach alert before a single pallet spoils.' },
-    { name: 'Logistics & Freight', slotId: 'ind-logistics', color: '#C2410C', chipBg: 'rgba(194,65,12,0.12)', photo: '/images/industries/logistics-freight.webp', tint: 'rgba(194,65,12,0.32)', iconEl: indSvg(['M3 21h18M6 21V9l6-4 6 4v12']), long: 'Every pallet, parcel and container reports its own arrivals, departures and dwell time — piece-level visibility from origin to the final mile.' },
+    { name: 'Cold Chain', slotId: 'ind-coldchain', color: '#0284C7', chipBg: 'rgba(2,132,199,0.12)', photo: '/images/industries/cold-chain.webp', tint: 'rgba(2,132,199,0.34)', iconEl: indSvg(['M12 2v20M4 7l16 10M20 7L4 17']), long: 'Vaccines, food and biologics ride inside a 1–2°C window. XenTag logs temperature end to end and fires a breach alert before a single pallet spoils.' },
+    { name: 'Logistics & Freight', slotId: 'ind-logistics', color: '#C2410C', chipBg: 'rgba(194,65,12,0.12)', photo: '/images/industries/logistics-freight.webp', tint: 'rgba(194,65,12,0.32)', iconEl: indSvg(['M3 21h18M6 21V9l6-4 6 4v12']), long: 'Every pallet, parcel and container reports its own arrivals, departures and dwell time, giving you piece-level visibility from origin to the final mile.' },
     { name: 'Warehousing', slotId: 'ind-warehousing', color: '#0D9488', chipBg: 'rgba(13,148,136,0.12)', photo: '/images/industries/warehousing.webp', tint: 'rgba(13,148,136,0.3)', iconEl: indSvg(['M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13']), long: 'Bluetooth positioning counts and locates stock automatically indoors, so cycle counts and misplaced-asset hunts stop consuming the shift.' },
-    { name: 'Aerospace & Airport Ops', slotId: 'ind-aerospace', color: '#0284C7', chipBg: 'rgba(2,132,199,0.12)', photo: '/images/industries/aerospace.webp', tint: 'rgba(2,132,199,0.34)', iconEl: indSvg(['M2 16l20-7-7 13-3-5-5-1z']), long: 'Ground equipment, ULDs and high-value cargo stay visible airside — no line of sight and no manual scans required.' },
-    { name: 'Manufacturing', slotId: 'ind-manufacturing', color: '#C2410C', chipBg: 'rgba(194,65,12,0.12)', photo: '/images/industries/manufacturing.webp', tint: 'rgba(194,65,12,0.3)', iconEl: indSvg(['M3 20h18V9l-6 4V9l-6 4V4H3v16z']), long: 'Follow work-in-progress and returnable containers through every station — and stop them walking out the gate.' },
-    { name: 'Healthcare & Pharma', slotId: 'ind-healthcare', color: '#0D9488', chipBg: 'rgba(13,148,136,0.12)', photo: '/images/industries/healthcare-pharma.webp', tint: 'rgba(13,148,136,0.3)', iconEl: indSvg(['M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z', 'M12 9v6M9 12h6'], 'round'), long: 'Track equipment, specimens and pharma inventory with an audit-ready chain of custody and EU DPP-ready records.' },
+    { name: 'Aerospace & Airport Ops', slotId: 'ind-aerospace', color: '#0284C7', chipBg: 'rgba(2,132,199,0.12)', photo: '/images/industries/aerospace.webp', tint: 'rgba(2,132,199,0.34)', iconEl: indSvg(['M2 16l20-7-7 13-3-5-5-1z']), long: 'Ground equipment, ULDs and high-value cargo stay visible airside, with no line of sight and no manual scans required.' },
+    { name: 'Manufacturing', slotId: 'ind-manufacturing', color: '#C2410C', chipBg: 'rgba(194,65,12,0.12)', photo: '/images/industries/manufacturing.webp', tint: 'rgba(194,65,12,0.3)', iconEl: indSvg(['M3 20h18V9l-6 4V9l-6 4V4H3v16z']), long: 'Follow work-in-progress and returnable containers through every station, and stop them walking out the gate.' },
+    { name: 'Healthcare & Pharma', slotId: 'ind-healthcare', color: '#0D9488', chipBg: 'rgba(13,148,136,0.12)', photo: '/images/industries/healthcare-pharma.webp', tint: 'rgba(13,148,136,0.3)', iconEl: indSvg(['M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z', 'M12 9v6M9 12h6']), long: 'Track equipment, specimens and pharma inventory with an audit-ready chain of custody and EU DPP-ready records.' },
   ];
 }
 
@@ -106,9 +106,9 @@ export function trustData() {
 // ---- incidentsData() ----
 export function incidentsData() {
   return [
-    { stat: '3,625', label: 'cargo theft incidents in 2024', desc: 'North American cargo theft hit a record high — up 27% year over year.', source: 'Verisk CargoNet, 2025', color: '#FF7A2E' },
+    { stat: '3,625', label: 'cargo theft incidents in 2024', desc: 'North American cargo theft hit a record high, up 27% year over year.', source: 'Verisk CargoNet, 2025', color: '#FF7A2E' },
     { stat: '$202K', label: 'average value per theft', desc: 'The average loss per cargo theft in 2024, rising to ~$274K in 2025.', source: 'Verisk CargoNet', color: '#FF7A2E' },
-    { stat: '$725M', label: 'stolen cargo, 2025', desc: 'Estimated total US & Canada cargo theft losses — a 60% jump in one year.', source: 'Verisk CargoNet, 2026', color: '#EA580C' },
+    { stat: '$725M', label: 'stolen cargo, 2025', desc: 'Estimated total US & Canada cargo theft losses, a 60% jump in one year.', source: 'Verisk CargoNet, 2026', color: '#EA580C' },
     { stat: '$531M+', label: 'stolen in Canada since 2019', desc: 'Cargo and equipment losses concentrated around Mississauga, Brampton, Toronto & Montreal.', source: 'Burns & Wilcox', color: '#C2410C' },
     { stat: '+78%', label: 'theft spike, Dallas County', desc: 'The hardest-hit US county in 2024; California and Texas drove the surge.', source: 'Verisk CargoNet', color: '#EA580C' },
     { stat: '$35B', label: 'lost to cold-chain failures / yr', desc: 'Pharma product lost every year to temperature excursions in transit and storage.', source: 'IQVIA / ISPE', color: '#FFB37E' },
@@ -116,7 +116,7 @@ export function incidentsData() {
     { stat: '~25%', label: 'of vaccines arrive degraded', desc: 'Degraded by the time they reach their destination because of temperature excursions.', source: 'WHO, via FreightWaves', color: '#FF7A2E' },
     { stat: '1–2°C', label: 'excursion ruins biologics', desc: 'A deviation of just 1–2°C can make vaccines, insulin and biologics ineffective.', source: 'Cold-chain industry data', color: '#EA580C' },
     { stat: '~$8B', label: 'from last-mile failures', desc: 'A large, often-preventable share of cold-chain loss happens on the final leg.', source: 'Mordor Intelligence', color: '#C2410C' },
-    { stat: 'majority', label: 'of losses are human error', desc: 'Most temperature losses stem from missing visibility — not equipment failure.', source: 'ISPE', color: '#FF7A2E' },
+    { stat: 'majority', label: 'of losses are human error', desc: 'Most temperature losses stem from missing visibility rather than equipment failure.', source: 'ISPE', color: '#FF7A2E' },
     { stat: 'hours', label: 'not days, to react', desc: 'Cell & gene therapies ship at ‒60 to ‒150°C with delivery windows measured in hours.', source: 'Air Cargo Week', color: '#FFB37E' },
   ];
 }
@@ -144,10 +144,10 @@ export const comparison = [
 
 export const proof = [
   { tag: 'Pilot', tagColor: '#0284C7', title: '2 school-bus pilots live', desc: 'BLE boarding-detection pilots running today, with the service-confirmation UI already designed.' },
-  { tag: 'Coverage', tagColor: '#1E8A5B', title: '100M+ BLE nodes, 29 countries', desc: 'The XenTag network gives crowdsourced coverage that already exists — no new hardware to deploy.' },
-  { tag: 'Hardware', tagColor: '#C2410C', title: 'Reads on GoFleet AT+ gateways', desc: 'The AT+ BLE gateway picks up XenTag label signals with no firmware changes — room to move fast.' },
-  { tag: 'In testing', tagColor: '#B7791F', title: 'QR activate → map in 5 min', desc: 'Basic API test: a label activates from a QR scan and appears on the live map within five minutes — almost confirmed.' },
-  { tag: 'Live client', tagColor: '#1E8A5B', title: 'Texas Instruments in production', desc: 'An existing indoor asset-tracking client — proof of the indoor and asset use case in production.' },
+  { tag: 'Coverage', tagColor: '#1E8A5B', title: '100M+ BLE nodes, 29 countries', desc: 'The XenTag network gives crowdsourced coverage that already exists, with no new hardware to deploy.' },
+  { tag: 'Hardware', tagColor: '#C2410C', title: 'Reads on GoFleet AT+ gateways', desc: 'The AT+ BLE gateway picks up XenTag label signals with no firmware changes, leaving room to move fast.' },
+  { tag: 'In testing', tagColor: '#B7791F', title: 'QR activate → map in 5 min', desc: 'Basic API test: a label activates from a QR scan and appears on the live map within five minutes, with final confirmation in progress.' },
+  { tag: 'Live client', tagColor: '#1E8A5B', title: 'Texas Instruments in production', desc: 'An existing indoor asset-tracking client, proving the indoor and asset use case in production.' },
   { tag: 'Economics', tagColor: '#9A3412', title: 'Native temp logging at $6/label', desc: 'XenTag includes temperature logging at $6/label, so the economics work at an $8–10 list price.' },
 ];
 
@@ -157,4 +157,4 @@ export const pricing = [
   { name: 'Enterprise', pre: '', price: 'Custom', unit: '', track: 'Volume label + Track pricing', note: 'annual agreement', pad: '34px 30px', scale: '1', featsLabel: 'Everything in Fleet Pro, plus', desc: 'For multi-site, compliance-driven deployments.', bg: '#FFFFFF', border: 'rgba(13,16,20,0.1)', shadow: '0 1px 2px rgba(13,16,20,0.03),0 18px 44px -34px rgba(13,16,20,0.2)', feats: ['Volume pricing', 'XenAuth authentication + EU DPP', 'SSO & audit logs', 'SLA & dedicated CSM', 'Custom integrations'], cta: 'Talk to sales', ctaBg: '#F1F3F5', ctaColor: '#0F1114', ctaBorder: 'rgba(13,16,20,0.12)', ctaShadow: 'none' },
 ];
 
-export const pricingTrust = ['Peel & stick — no installers', 'Recyclable labels', 'No long-term contract', 'Tracking live the same week'];
+export const pricingTrust = ['Peel and stick, no installers', 'Recyclable labels', 'No long-term contract', 'Tracking live the same week'];

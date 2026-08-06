@@ -68,16 +68,16 @@ export default function Products({ openTrace, openXenAuth }) {
             margin: 0,
             fontFamily: "var(--font-display)",
             fontWeight: 700,
-            fontSize: 'clamp(28px,3.6vw,44px)',
-            lineHeight: 1.06,
+            fontSize: 'clamp(32px,4.2vw,52px)',
+            lineHeight: 1.02,
             letterSpacing: '-0.025em',
             color: '#0F1114',
           }}
         >
-          Two labels. One job.
+          Two labels. <span style={{ color: '#C2410C' }}>One job.</span>
         </h2>
         <p style={{ marginTop: 16, fontSize: 16, lineHeight: 1.6, color: '#4B5259' }}>
-          Keep high-value goods tracked in transit &mdash; and provably authentic on arrival.
+          Keep high-value goods tracked in transit and provably authentic on arrival.
         </p>
       </div>
       <div className="products-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
@@ -90,14 +90,13 @@ export default function Products({ openTrace, openXenAuth }) {
             padding: 36,
             background: '#FBF5EF',
             border: '1px solid rgba(194,65,12,0.22)',
-            boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 24px 60px -34px rgba(194,65,12,0.35)',
+            boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 24px 60px -34px rgba(13,16,20,0.28)',
             overflow: 'hidden',
           }}
         >
-          <div className="product-card-glow" style={{ position: 'absolute', top: -40, right: -40, width: 180, height: 180, background: 'radial-gradient(circle,rgba(194,65,12,0.14),transparent 70%)', filter: 'blur(22px)' }} />
           <div style={{ position: 'relative' }}>
             <div className="product-card-visual" style={{ marginBottom: 26, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 22, borderRadius: 16, background: '#FBF3EC' }}>
-              <div style={{ width: '100%', maxWidth: 300, borderRadius: 14, background: '#FFFFFF', boxShadow: '0 18px 44px -16px rgba(13,16,20,0.4)', border: '1px solid rgba(13,16,20,0.08)', padding: '15px 17px', transform: 'rotate(-3deg)' }}>
+              <div aria-hidden="true" style={{ width: '100%', maxWidth: 300, borderRadius: 14, background: '#FFFFFF', filter: 'drop-shadow(0 18px 22px rgba(13,16,20,0.28))', border: '1px solid rgba(13,16,20,0.08)', padding: '15px 17px', transform: 'rotate(-3deg)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <img src="/images/xentag-logo.png" alt="XenTag" style={{ height: 15, width: 'auto', display: 'block' }} />
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', color: '#1E8A5B' }}>
@@ -147,12 +146,9 @@ export default function Products({ openTrace, openXenAuth }) {
                 </div>
               </div>
             </div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', borderRadius: 8, background: 'rgba(194,65,12,0.1)', color: '#9A3412', fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 700, letterSpacing: '0.06em' }}>
-              BLE + CELLULAR
-            </div>
-            <h3 style={{ marginTop: 18, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenTag&#8482;</h3>
+            <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenTag&#8482;</h3>
             <p style={{ marginTop: 10, fontSize: 15, lineHeight: 1.62, color: '#4B5259', maxWidth: '26rem' }}>
-              Peel-and-stick tracking for high-value goods with real-time location, temperature and shock &mdash; a full year on one charge, no line of sight, no infrastructure to install.
+              Peel-and-stick tracking for high-value goods with real-time location, temperature and shock. One charge lasts a full year, with no line of sight and no infrastructure to install.
             </p>
             <ul style={{ listStyle: 'none', marginTop: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 14.5, color: '#2F343A' }}>
@@ -190,10 +186,9 @@ export default function Products({ openTrace, openXenAuth }) {
             overflow: 'hidden',
           }}
         >
-          <div className="product-card-glow" style={{ position: 'absolute', top: -40, right: -40, width: 180, height: 180, background: 'radial-gradient(circle,rgba(42,37,33,0.08),transparent 70%)', filter: 'blur(22px)' }} />
           <div style={{ position: 'relative' }}>
             <div className="product-card-visual" style={{ marginBottom: 26, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 22, borderRadius: 16, background: '#F1F7F5' }}>
-              <div className="xenauth-card-mock" style={{ width: '100%', maxWidth: 300, borderRadius: 14, background: '#FFFFFF', boxShadow: '0 18px 44px -16px rgba(13,16,20,0.4)', border: '1px solid rgba(13,16,20,0.08)', padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 16, transform: 'rotate(2.5deg)' }}>
+              <div className="xenauth-card-mock" aria-hidden="true" style={{ width: '100%', maxWidth: 300, borderRadius: 14, background: '#FFFFFF', filter: 'drop-shadow(0 18px 22px rgba(13,16,20,0.28))', border: '1px solid rgba(13,16,20,0.08)', padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 16, transform: 'rotate(2.5deg)' }}>
                 <div className="xenauth-card-mark" style={{ position: 'relative', flexShrink: 0, width: 78, height: 78, borderRadius: 14, overflow: 'hidden', background: '#111111', border: '1px solid rgba(13,16,20,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <XenAuthMark size={42} color="#2DD4BF" />
                 </div>
@@ -213,29 +208,26 @@ export default function Products({ openTrace, openXenAuth }) {
                 </div>
               </div>
             </div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 12px', borderRadius: 8, background: 'rgba(42,37,33,0.08)', color: '#1C1F23', fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 700, letterSpacing: '0.06em' }}>
-              SECURE NFC CHIP
-            </div>
-            <h3 style={{ marginTop: 18, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenAuth&#8482;</h3>
+            <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: '#0F1114' }}>XenAuth&#8482;</h3>
             <p style={{ marginTop: 10, fontSize: 15, lineHeight: 1.62, color: '#4B5259', maxWidth: '26rem' }}>
-              Tap-to-verify authentication on a secure NFC chip &mdash; product information, origin and proof of custody, accessible with no app download. Cryptographically signed and ready for the EU Digital Product Passport.
+              Tap-to-verify authentication on a secure NFC chip puts product information, origin and proof of custody one tap away, with no app download. Cryptographically signed and ready for the EU Digital Product Passport.
             </p>
             <ul style={{ listStyle: 'none', marginTop: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 14.5, color: '#2F343A' }}>
-                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: 'rgba(42,37,33,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#1C1F23" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: 'rgba(13,148,136,0.12)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#0D9488" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>
                 Unclonable, tamper-evident secure element
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 14.5, color: '#2F343A' }}>
-                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: 'rgba(42,37,33,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#1C1F23" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: 'rgba(13,148,136,0.12)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#0D9488" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>
                 Tap-to-verify with any phone, no app needed
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: 11, fontSize: 14.5, color: '#2F343A' }}>
-                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: 'rgba(42,37,33,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#1C1F23" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: 'rgba(13,148,136,0.12)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.4 4.6 9 10 3" fill="none" stroke="#0D9488" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>
                 EU DPP-ready &middot; resale, warranty &amp; loyalty
               </li>

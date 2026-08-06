@@ -5,13 +5,7 @@ import { DEMO } from '../data.jsx';
 const STEP_MS = 3400;
 const ROUTE = 'M 26 150 Q 70 90 100 66 Q 130 42 170 34';
 const ROUTE_PROGRESS = [0, 0.25, 0.5, 0.78, 1];
-const DOT_POS = [
-  { x: 26, y: 150 },
-  { x: 56, y: 105 },
-  { x: 88, y: 74 },
-  { x: 124, y: 50 },
-  { x: 168, y: 34 },
-];
+const ROUTE_SPRING = { type: 'spring', stiffness: 55, damping: 18 };
 
 const SPRING = { type: 'spring', stiffness: 170, damping: 17 };
 const SANS = 'var(--font-body)';
@@ -42,9 +36,16 @@ function StepRail({ step, cycle, onSelect, paused }) {
             onClick={() => onSelect(i)}
             aria-label={`Step ${i + 1}: ${d.title}`}
             aria-current={active ? 'step' : undefined}
-            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' }}
+            style={{ position: 'relative', background: 'none', border: 'none', padding: '8px 10px', margin: '-8px -10px', borderRadius: 12, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 9, minHeight: 32 }}>
+            {active && (
+              <motion.span
+                layoutId="rail-active"
+                transition={SPRING}
+                style={{ position: 'absolute', inset: 0, borderRadius: 12, background: 'rgba(255,122,46,0.08)', border: '1px solid rgba(255,122,46,0.22)' }}
+              />
+            )}
+            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 9, minHeight: 32 }}>
               <motion.span
                 animate={{
                   scale: active ? 1.06 : 1,
@@ -87,7 +88,7 @@ function StepRail({ step, cycle, onSelect, paused }) {
 function PackageStage({ step }) {
   const labelOnBox = step >= 1;
   return (
-    <svg className="demo-package-stage" width="300" height="270" viewBox="0 0 200 180" fill="none" style={{ position: 'relative', zIndex: 1, overflow: 'visible', maxWidth: '100%', height: 'auto' }}>
+    <svg className="demo-package-stage" aria-hidden="true" width="300" height="270" viewBox="0 0 200 180" fill="none" style={{ position: 'relative', zIndex: 1, overflow: 'visible', maxWidth: '100%', height: 'auto' }}>
       <defs>
         <linearGradient id="dsBoxFront" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#CBB58E" />
@@ -118,14 +119,14 @@ function PackageStage({ step }) {
       {/* corrugation hint on the side edges */}
       <path d="M30 68 H170 M30 156 H170" stroke="rgba(0,0,0,0.08)" strokeWidth="0.8" />
       {/* fragile print */}
-      <text x="42" y="80" fill="#2A241C" fontSize="6.5" fontWeight="bold" fontFamily="JetBrains Mono,monospace" letterSpacing="0.8">FRAGILE</text>
+      <text x="42" y="80" fill="#2A241C" style={{ color: '#2A241C', backgroundColor: '#CBB58E' }} fontSize="6.5" fontWeight="bold" fontFamily="JetBrains Mono,monospace" letterSpacing="0.8">FRAGILE</text>
 
       {/* label roll — visible while unboxing */}
       <motion.g animate={{ opacity: step === 0 ? 1 : 0 }} transition={{ duration: 0.45 }}>
         <rect x="6" y="5" width="50" height="32" rx="16" fill="#1A1E24" stroke="rgba(255,255,255,0.16)" strokeWidth="1" />
         <circle cx="22" cy="21" r="7.5" fill="#242A32" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
         <circle cx="22" cy="21" r="2.4" fill="rgba(255,255,255,0.35)" />
-        <text x="33" y="24" fill="#FFB37E" fontSize="6.2" fontWeight="bold" fontFamily="JetBrains Mono,monospace" letterSpacing="0.5">ROLL</text>
+        <text x="33" y="24" fill="#FFB37E" style={{ color: '#FFB37E', backgroundColor: '#1A1E24' }} fontSize="6.2" fontWeight="bold" fontFamily="JetBrains Mono,monospace" letterSpacing="0.5">ROLL</text>
         <path d="M56 21 h12" stroke="rgba(255,122,46,0.6)" strokeWidth="1.4" strokeDasharray="3 3" />
       </motion.g>
 
@@ -143,7 +144,7 @@ function PackageStage({ step }) {
           style={{ filter: 'drop-shadow(0 12px 14px rgba(0,0,0,0.45))' }}
         />
         {/* wordmark + live dot */}
-        <text x="58" y="102" fill="#0F1114" fontSize="8.5" fontWeight="bold" fontFamily={SANS} letterSpacing="0.2">XENTAG&#8482;</text>
+        <text x="58" y="102" fill="#0F1114" style={{ color: '#0F1114', backgroundColor: '#FFFFFF' }} fontSize="8.5" fontWeight="bold" fontFamily={SANS} letterSpacing="0.2">XENTAG&#8482;</text>
         <circle cx="140" cy="98" r="2.2" fill={labelOnBox ? '#1E8A5B' : '#878E96'} />
         {/* barcode */}
         <g fill="#0F1114">
@@ -153,7 +154,7 @@ function PackageStage({ step }) {
           <rect x="90" y="108" width="1" height="14" /><rect x="92.5" y="108" width="1.8" height="14" /><rect x="96" y="108" width="1" height="14" />
           <rect x="98.5" y="108" width="3" height="14" /><rect x="103.5" y="108" width="1.8" height="14" /><rect x="107" y="108" width="1" height="14" />
         </g>
-        <text x="58" y="132" fill="#0F1114" fontSize="6.5" fontFamily="JetBrains Mono,monospace" letterSpacing="0.4" fontWeight="700">XT-48192 &#183; BLE+LTE-M</text>
+        <text x="58" y="132" fill="#0F1114" style={{ color: '#0F1114', backgroundColor: '#FFFFFF' }} fontSize="6.5" fontFamily="JetBrains Mono,monospace" letterSpacing="0.4" fontWeight="700">XT-48192 &#183; BLE+LTE-M</text>
         {/* QR */}
         <rect x="113" y="106" width="24" height="24" rx="2" fill="rgba(13,16,20,0.05)" stroke="rgba(13,16,20,0.1)" strokeWidth="0.6" />
         <g fill="#1C1F23">
@@ -201,7 +202,7 @@ function PackageStage({ step }) {
             style={{ transformBox: 'fill-box', transformOrigin: '50% 50%' }}
           >
             <rect x="50" y="148" width="100" height="18" rx="4" fill="#0F1114" stroke="rgba(255,122,46,0.55)" strokeWidth="1" />
-            <text x="100" y="160" textAnchor="middle" fill="#FFB37E" fontSize="8" fontWeight="bold" fontFamily="JetBrains Mono,monospace">-2.0&#176;C  &#10003; IN RANGE</text>
+            <text x="100" y="160" textAnchor="middle" fill="#FFB37E" style={{ color: '#FFB37E', backgroundColor: '#0F1114' }} fontSize="8" fontWeight="bold" fontFamily="JetBrains Mono,monospace">-2.0&#176;C  &#10003; IN RANGE</text>
           </motion.g>
         )}
       </AnimatePresence>
@@ -243,19 +244,36 @@ function PhonePanel({ step }) {
   const eta = delivered ? 'Delivered ✓' : '3h 20min';
   return (
     <div className="demo-phone-panel" style={{ padding: '36px 28px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: C.phonePanel }}>
-      {/* Flat device frame — no nested card shadows, no overflow clipping of overlays */}
+      {/* Drawn device: shell ring, side keys, island. Object lift via filter —
+          box-shadow would read as a nested card inside the console. */}
       <div
         style={{
           position: 'relative',
-          width: 224,
-          borderRadius: 28,
-          background: '#0D1013',
-          border: '1px solid rgba(255,255,255,0.16)',
-          display: 'flex',
-          flexDirection: 'column',
+          width: 264,
+          borderRadius: 44,
+          background: '#1C1F23',
+          border: '1px solid rgba(255,255,255,0.18)',
+          padding: 9,
+          filter: 'drop-shadow(0 34px 44px rgba(10,11,14,0.7))',
         }}
       >
-        <div style={{ padding: '18px 14px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span aria-hidden style={{ position: 'absolute', left: -2.5, top: 96, width: 2.5, height: 24, borderRadius: 2, background: '#2F343A' }} />
+        <span aria-hidden style={{ position: 'absolute', left: -2.5, top: 128, width: 2.5, height: 38, borderRadius: 2, background: '#2F343A' }} />
+        <span aria-hidden style={{ position: 'absolute', right: -2.5, top: 110, width: 2.5, height: 54, borderRadius: 2, background: '#2F343A' }} />
+        <div style={{ position: 'relative', borderRadius: 35, background: '#0A0B0E', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 20px 0', minHeight: 26 }}>
+            <span style={{ fontFamily: SANS, fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>9:41</span>
+            <span aria-hidden style={{ position: 'absolute', left: '50%', top: 8, transform: 'translateX(-50%)', width: 64, height: 18, borderRadius: 999, background: '#000', border: '1px solid rgba(255,255,255,0.07)' }} />
+            <svg width="34" height="10" viewBox="0 0 34 10" aria-hidden="true">
+              <g fill="rgba(255,255,255,0.9)">
+                <rect x="0" y="6" width="2.4" height="4" rx="0.8" /><rect x="3.6" y="4" width="2.4" height="6" rx="0.8" /><rect x="7.2" y="2" width="2.4" height="8" rx="0.8" /><rect x="10.8" y="0" width="2.4" height="10" rx="0.8" />
+              </g>
+              <rect x="19" y="1.5" width="12" height="7" rx="2" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1" />
+              <rect x="20.5" y="3" width="7" height="4" rx="1" fill="rgba(255,255,255,0.9)" />
+              <rect x="31.6" y="3.5" width="1.6" height="3" rx="0.8" fill="rgba(255,255,255,0.5)" />
+            </svg>
+          </div>
+        <div style={{ padding: '14px 16px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <img src="/images/xentag-logo-white.png" alt="XenTag" style={{ height: 13, width: 'auto', display: 'block' }} />
           <span
             style={{
@@ -274,12 +292,12 @@ function PhonePanel({ step }) {
           </span>
         </div>
 
-        <div style={{ margin: '0 10px', borderRadius: 12, background: '#161A20', border: '1px solid rgba(255,255,255,0.08)', padding: '10px 10px 12px' }}>
+        <div style={{ margin: '0 12px', borderRadius: 12, background: '#161A20', border: '1px solid rgba(255,255,255,0.08)', padding: '10px 10px 12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
             <span style={{ fontFamily: SANS, fontSize: 11, fontWeight: 700, color: '#FFFFFF' }}>
               {delivered ? 'Delivered' : 'ETA 3h 20m'}
             </span>
-            <span style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.55)' }}>Map</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.55)' }}>Map</span>
           </div>
           <svg viewBox="0 0 200 168" width="100%" height="168" style={{ display: 'block', borderRadius: 8, background: '#12161C' }}>
             <path d="M -10 26 Q 42 46 30 92 Q 20 130 -10 144 Z" fill="rgba(56,140,220,0.16)" />
@@ -306,11 +324,11 @@ function PhonePanel({ step }) {
               fill="none"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: ROUTE_PROGRESS[step], opacity: live ? 1 : 0 }}
-              transition={{ duration: 1.1, ease: 'easeInOut' }}
+              transition={ROUTE_SPRING}
             />
             <g>
               <rect x="14" y="128" width="18" height="18" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-              <text x="23" y="160" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(255,255,255,0.7)" fontFamily={SANS}>YARD</text>
+              <text x="23" y="160" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(255,255,255,0.7)" style={{ color: 'rgba(255,255,255,0.7)', backgroundColor: '#12161C' }} fontFamily={SANS}>YARD</text>
             </g>
             <g transform="translate(154,18)">
               <motion.path
@@ -320,30 +338,28 @@ function PhonePanel({ step }) {
               />
               <circle cx="8" cy="8" r="3" fill="#0D1013" />
             </g>
-            <text x="162" y="58" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(255,255,255,0.7)" fontFamily={SANS}>DROP</text>
+            <text x="162" y="58" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(255,255,255,0.7)" style={{ color: 'rgba(255,255,255,0.7)', backgroundColor: '#12161C' }} fontFamily={SANS}>DROP</text>
             <motion.circle
               r="6"
               fill={delivered ? '#2FBF83' : '#FF7A2E'}
               stroke="#0D1013"
               strokeWidth="2"
               initial={false}
-              animate={{
-                cx: DOT_POS[step].x,
-                cy: DOT_POS[step].y,
-                opacity: live ? 1 : 0,
-              }}
-              transition={{ duration: 1.1, ease: 'easeInOut' }}
+              style={{ offsetPath: `path("${ROUTE}")`, offsetRotate: '0deg' }}
+              animate={{ offsetDistance: `${ROUTE_PROGRESS[step] * 100}%`, opacity: live ? 1 : 0 }}
+              transition={ROUTE_SPRING}
             />
           </svg>
         </div>
 
-        <div style={{ padding: '14px 14px 18px', display: 'flex', flexDirection: 'column', gap: 0 }}>
+        <div style={{ padding: '14px 16px 20px', display: 'flex', flexDirection: 'column', gap: 0 }}>
           <StatRow label="Temperature" value={temp} color={step >= 2 ? C.orangeSoft : 'rgba(255,255,255,0.45)'} />
           <StatRow label="Battery" value="94%" color={C.green} />
           <StatRow label="ETA" value={eta} color={delivered ? C.green : '#F5F7FB'} last />
         </div>
+        </div>
       </div>
-      <p style={{ marginTop: 18, fontSize: 13, lineHeight: 1.55, textAlign: 'center', color: 'rgba(255,255,255,0.62)', maxWidth: 220 }}>
+      <p style={{ marginTop: 18, fontSize: 13, lineHeight: 1.55, textAlign: 'center', color: 'rgba(255,255,255,0.62)', maxWidth: 240 }}>
         Illustrative lifecycle view. Deployment data appears in your operational dashboard.
       </p>
     </div>
@@ -427,8 +443,8 @@ export default function DemoSection() {
     <MotionConfig reducedMotion="user">
       <section ref={sectionRef} id="demo" style={{ maxWidth: 1240, margin: '0 auto', padding: 'clamp(88px,9vw,116px) 32px' }}>
         <div style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 40px' }}>
-          <h2 style={{ margin: 0, fontFamily: SANS, fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 0.98, letterSpacing: '-0.025em', color: '#0F1114' }}>
-            One tap in the yard. Live on the map.
+          <h2 style={{ margin: 0, fontFamily: SANS, fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#0F1114' }}>
+            One tap in the yard. <span style={{ color: '#C2410C' }}>Live on the map.</span>
           </h2>
           <p style={{ marginTop: 16, fontSize: 16, lineHeight: 1.6, color: '#4B5259', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
             Watch the full lifecycle: peel, stick, activate, then monitor location and temperature from any phone.
@@ -458,8 +474,8 @@ export default function DemoSection() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundImage: `radial-gradient(ellipse 70% 55% at 50% 38%, rgba(255,122,46,0.09), transparent 70%), radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1.4px)`,
-                backgroundSize: 'auto, 22px 22px',
+                backgroundImage: `radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1.4px)`,
+                backgroundSize: '22px 22px',
                 backgroundColor: C.stage,
                 minHeight: 480,
                 borderRight: `1px solid ${C.hairline}`,

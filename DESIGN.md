@@ -22,32 +22,85 @@ colors:
   trace-blue: "#5CB3F8"
   nfc-blue: "#0284C7"
   verified-teal: "#0D9488"
+  verified-teal-bright: "#2DD4BF"
   paper: "#FFFFFF"
   cloud: "#F1F3F5"
   label-warm: "#FBF5EF"
 typography:
   display:
-    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
-    fontSize: "clamp(34px, 3.6vw, 58px)"
-    fontWeight: 700
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(32px, 4vw, 54px)"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.02em"
+  modal-display:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(36px, 5.2vw, 68px)"
+    fontWeight: 800
     lineHeight: 0.98
-    letterSpacing: "-0.025em"
-  headline:
+    letterSpacing: "-0.03em"
+  modal-lead:
     fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
-    fontSize: "clamp(28px, 3.6vw, 44px)"
+    fontSize: "clamp(16px, 1.3vw, 19px)"
+    fontWeight: 400
+    lineHeight: 1.62
+  price-anchor:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(72px, 7.5vw, 108px)"
+    fontWeight: 800
+    lineHeight: 0.86
+    letterSpacing: "-0.03em"
+  headline:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(32px, 4.2vw, 52px)"
     fontWeight: 700
-    lineHeight: 1.06
-    letterSpacing: "-0.025em"
+    lineHeight: 1.02
+    letterSpacing: "-0.03em"
   title:
     fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "21px"
     fontWeight: 700
     lineHeight: 1.2
+  title-fluid:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(22px, 2.2vw, 30px)"
+    fontWeight: 700
+    lineHeight: 1.15
+  panel-headline:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(28px, 3.2vw, 40px)"
+    fontWeight: 700
+    lineHeight: 1.08
+  price-anchor-compact:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(44px, 5.5vw, 64px)"
+    fontWeight: 800
+    lineHeight: 0.9
+  lead:
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: 1.65
   body:
     fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.62
+  body-fluid:
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(14px, 1.2vw, 16.5px)"
+    fontWeight: 500
+    lineHeight: 1.55
+  body-small:
+    fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.6
+  price-unit:
+    fontFamily: "Archivo, Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
+    fontSize: "clamp(20px, 1.8vw, 26px)"
+    fontWeight: 700
+    lineHeight: 1.1
   label:
     fontFamily: "Source Sans 3, Helvetica Neue, Helvetica, sans-serif"
     fontSize: "11px"
@@ -63,6 +116,7 @@ rounded:
   lg: "16px"
   card: "20px"
   xl: "22px"
+  band: "28px"
   pill: "999px"
 spacing:
   xs: "8px"
@@ -115,6 +169,10 @@ Vertical rhythm is tiered, not uniform: an 80px section baseline, a 44px tight c
 
 **Key Characteristics:**
 - The label artifact (barcode + QR + NFC + serial) recurs as the brand's signature illustration
+- Isometric hairline "dieline" drawings are the illustration system: ink wireframes of cartons, plates, and map planes with one ember accent each
+- Spec-sheet seams: daylight sections meet at a hairline rule with registration crosses, like trim marks on a dieline sheet
+- Night consoles carry a lit top edge: a 1px ember hairline with a soft light fall beneath it
+- The footer signs off with a giant low-opacity XENTAG wordmark watermark
 - Two committed themes — night console and daylight warehouse — never a third
 - Cargo Ember is a working color: CTAs and live signals, not washes
 - Machine text (mono, tabular) whenever a number comes from a device
@@ -152,7 +210,8 @@ A hi-vis working palette against industrial neutrals — every hue means somethi
 
 ## 3. Typography
 
-**Display/Body Font:** Source Sans 3 with Helvetica Neue fallback — the original Helvetica Neue workhorse, with a webfont so weight and metrics stay consistent across platforms.
+**Display Font:** Archivo (700/800) — a grotesk with print heritage for headlines and the hero's freight-stencil voice; falls back to Source Sans 3 / Helvetica Neue.
+**Body Font:** Source Sans 3 with Helvetica Neue fallback — the original Helvetica Neue workhorse, with a webfont so weight and metrics stay consistent across platforms.
 **Machine Font:** JetBrains Mono (system monospace fallback)
 
 **Character:** One neo-grotesk family doing everything through weight and scale — the typographic equivalent of shipping-carton print. Monospace appears only where a machine is speaking. Form controls inherit the stack globally (`button, input, select, textarea { font: inherit }`). CSS tokens: `--font-display`, `--font-body`, `--font-machine`.
@@ -168,7 +227,9 @@ A hi-vis working palette against industrial neutrals — every hue means somethi
 ### Named Rules
 **The Machine Voice Rule.** If a value comes from a device — a temperature, a battery percentage, a serial, an ETA — set it in monospace with tabular numerals. If a human wrote it, set it in Source Sans 3 / Helvetica Neue. Never mix.
 
-**The One Scale Rule.** Full-width section headings share one clamp. A new section does not get to invent a new heading size; it inherits `clamp(28px, 3.6vw, 44px)` or documents its role-based exception here.
+**The One Scale Rule.** Full-width section headings share one clamp. A new section does not get to invent a new heading size; it inherits `clamp(32px, 4.2vw, 52px)` or documents its role-based exception here.
+
+**The Lead-In Rule.** Each major section heading may carry exactly one ember-colored phrase — `#C2410C` on daylight, `#FF7A2E` on night — naming the section's payoff ("One job.", "Live on the map."). One phrase, never a whole heading, never a second hue.
 
 ## 4. Elevation
 
@@ -177,7 +238,7 @@ Ambient lift. Surfaces carry large, soft, heavily-negative-spread shadows that r
 ### Shadow Vocabulary
 - **Card ambient** (`0 1px 2px rgba(13,16,20,0.03), 0 24px 60px -34px rgba(13,16,20,0.28)`): daylight cards at rest.
 - **Panel ambient** (`0 2px 6px rgba(13,16,20,0.08), 0 60px 130px -60px rgba(13,16,20,0.55)`): the big framed consoles (walkthrough, media frames).
-- **Object lift** (`0 18px 44px -16px rgba(13,16,20,0.4)`): label renders and floating artifacts.
+- **Object lift** (`filter: drop-shadow(0 18px 22px rgba(13,16,20,0.28))`): label renders and floating artifacts. Physical objects take `drop-shadow`, never `box-shadow` — surface shadows belong to containers, object shadows to the things sitting on them.
 - **Live glow** (`0 0 8–14px` of the signal's own color at 0.7–0.8 alpha): status dots, tracking dots, active progress.
 
 ### Named Rules
@@ -188,7 +249,7 @@ Ambient lift. Surfaces carry large, soft, heavily-negative-spread shadows that r
 Tactile confidence: chunky, pressable, firmly bordered — equipment you'd operate with gloves on.
 
 ### Buttons
-- **Shape:** confidently rounded (12px)
+- **Shape:** primary CTAs are pills (999px) — nav Book a demo, hero actions, form submits, floating play controls; secondary/utility buttons stay confidently rounded (12px)
 - **Primary:** Cargo Ember face (#C2410C), white 600–700 text, 14–16px padding blocks (`14px 26px`)
 - **Hover:** lighter face (#D2470A) + `translateY(-1px)`, .18s ease — a press, not a glide
 - **Sending/disabled:** face at 0.6 alpha, cursor default, label swaps to "Sending…"
@@ -203,8 +264,8 @@ Tactile confidence: chunky, pressable, firmly bordered — equipment you'd opera
 
 ### Cards / Containers
 - **Evidence layouts:** Product dossiers, process steps, and integration matrices share straight 1px separators with no outer radius or ambient shadow. They read as one technical sheet, not a grid of floating marketing cards.
-- **Framed proof:** Platform captures, product film, API console, and the final CTA use the 12px medium radius. The screenshot or physical label may carry object lift inside the frame; the frame itself stays quiet.
-- **Utility panels:** 20–22px is reserved for self-contained interactive consoles, modals, and product walkthrough stages where the object genuinely needs enclosure.
+- **Framed proof:** Platform captures, product film, and the industry photo stage carry a generous 20px curve; the API console 16px. The screenshot or physical label may carry object lift inside the frame; the frame itself stays quiet.
+- **Utility panels:** 20–22px is reserved for self-contained interactive consoles, modals, and product walkthrough stages where the object genuinely needs enclosure. Full-width bands that read as one curved console — the risk stat band, the final CTA panel, the footer's top shoulder — use the 28px band radius.
 - **Background:** Paper on daylight; Cloud for neutral working fields; #15171B on night; Label Warm is reserved for XenTag product artifacts.
 - **Border:** rgba(13,16,20,0.08–0.12) on light; rgba(255,255,255,0.08–0.16) on dark.
 - **Internal Padding:** 40px product dossiers, 24–30px process and utility regions.

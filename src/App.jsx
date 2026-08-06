@@ -19,6 +19,7 @@ import TraceModal from './components/TraceModal.jsx';
 import XenAuthModal from './components/XenAuthModal.jsx';
 import { trustData, incidentsData } from './data.jsx';
 import { useRevealOnScroll } from './hooks/useRevealOnScroll.js';
+import { useSmoothScroll } from './hooks/useSmoothScroll.js';
 
 const TRUST_LOOP = [...trustData(), ...trustData()];
 const INCIDENTS = incidentsData();
@@ -30,6 +31,7 @@ export default function App() {
   const [xenAuthOpen, setXenAuthOpen] = useState(false);
 
   useRevealOnScroll();
+  useSmoothScroll(traceOpen || xenAuthOpen);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

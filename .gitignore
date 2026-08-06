@@ -32,3 +32,14 @@ demo-video/public/stock/
 .cursor/rules/codacy.mdc
 .vercel
 .env*
+
+# Local AI-tooling directories (agent skills, editor assistants) — not part of the site
+.agents/
+.claude/
+.codex/
+.cursor/
+
+# Impeccable design-tool caches (config.json + design.json stay tracked as shared design artifacts)
+.impeccable/critique/
+.impeccable/live/
+.impeccable/hook.cache.json

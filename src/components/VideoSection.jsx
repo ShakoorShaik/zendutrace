@@ -4,11 +4,11 @@ export default function VideoSection() {
   return (
     <section id="video" className="video-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '80px 32px 48px' }}>
       <div className="section-heading" style={{ textAlign: 'center', maxWidth: '42rem', margin: '0 auto 44px' }}>
-        <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
-          Watch a label go to work
+        <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#0F1114' }}>
+          Watch a label <span style={{ color: '#C2410C' }}>go to work</span>
         </h2>
         <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259' }}>
-          From peel-and-stick to a live signal on the map &mdash; the complete lifecycle in 30 seconds.
+          From peel-and-stick to a live signal on the map, the complete lifecycle runs 30 seconds.
         </p>
       </div>
       <div
@@ -17,7 +17,7 @@ export default function VideoSection() {
           position: 'relative',
           borderRadius: 22,
           overflow: 'hidden',
-          background: '#000',
+          background: '#0A0B0E',
           border: '1px solid rgba(13,16,20,0.1)',
           boxShadow: '0 1px 3px rgba(13,16,20,0.05),0 46px 100px -50px rgba(13,16,20,0.4)',
         }}

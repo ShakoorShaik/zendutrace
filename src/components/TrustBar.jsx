@@ -9,7 +9,7 @@ export default function TrustBar({ trustLoop }) {
                 <span style={{ display: 'inline-flex' }}>{t.iconEl}</span>
                 <span style={{ fontFamily: "var(--font-body)", fontSize: 14, letterSpacing: '0.01em', color: '#2F343A' }}>{t.textEl}</span>
               </div>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#CBD1D8', flexShrink: 0 }} />
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.55)', flexShrink: 0 }} />
             </div>
           ))}
         </div>

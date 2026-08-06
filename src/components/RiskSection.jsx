@@ -41,10 +41,10 @@ export default function RiskSection({ incidents }) {
       <div style={{ position: 'relative', maxWidth: 1480, margin: '0 auto', padding: '0 clamp(24px,4vw,48px)' }}>
         <div style={{ maxWidth: '46rem', margin: '0 auto 30px', textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontSize: 'clamp(26px,2.6vw,32px)', lineHeight: 1.02, letterSpacing: '-0.02em', color: '#F5F7FB' }}>
-            Flying blind is expensive
+            Flying blind is <span style={{ color: '#FF7A2E' }}>expensive</span>
           </h2>
           <p style={{ marginTop: 10, fontSize: 'clamp(13.5px,1vw,15px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>
-            What the public record shows &mdash; and what a $10 label helps prevent.
+            What the public record shows, and what a $10 label helps prevent.
           </p>
         </div>
       </div>

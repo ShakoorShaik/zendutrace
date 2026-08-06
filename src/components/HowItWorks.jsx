@@ -2,8 +2,8 @@ export default function HowItWorks() {
   return (
     <section id="how" className="process-section section-shell" style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 32px 80px' }}>
       <div className="section-heading" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 52px' }}>
-        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
-          From roll to <span style={{ whiteSpace: 'nowrap' }}>real-time</span> in under a minute
+        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#0F1114' }}>
+          From roll to <span style={{ whiteSpace: 'nowrap' }}>real-time</span> <span style={{ color: '#C2410C' }}>in under a minute</span>
         </h2>
       </div>
       <div className="how-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
@@ -11,77 +11,76 @@ export default function HowItWorks() {
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
             <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-machine)", fontWeight: 700, fontSize: 13, letterSpacing: '0.08em', color: '#9A3412' }}>01</span>
-            <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
-              <rect x="34" y="26" width="60" height="100" rx="13" fill="#14161C" />
-              <rect x="40" y="34" width="48" height="84" rx="8" fill="#16233F" />
-              <circle cx="64" cy="76" r="4" fill="#5CB3F8" />
-              <circle cx="64" cy="76" r="9" fill="none" stroke="#5CB3F8" strokeWidth="1.5" style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'pulsering 2s ease-out infinite' }} />
-              <g stroke="#0284C7" strokeWidth="2.4" fill="none" strokeLinecap="round">
-                <path d="M112 60a26 26 0 0 1 0 30" style={{ animation: 'nfcwave 1.6s ease-in-out infinite' }} />
-                <path d="M122 52a40 40 0 0 1 0 46" style={{ animation: 'nfcwave 1.6s ease-in-out infinite', animationDelay: '.25s' }} />
-                <path d="M132 44a54 54 0 0 1 0 62" style={{ animation: 'nfcwave 1.6s ease-in-out infinite', animationDelay: '.5s' }} />
+            <svg width="240" height="150" viewBox="0 0 240 150" fill="none" aria-hidden="true">
+              {/* ground plane */}
+              <path d="M120 70 L196 114 L120 158 L44 114 Z" stroke="rgba(15,17,20,0.14)" strokeWidth="1" />
+              {/* label plate on the plane */}
+              <g stroke="rgba(15,17,20,0.42)" strokeWidth="1.1">
+                <path d="M100 92 L145 118 L117 134 L72 108 Z" fill="#FFFFFF" />
+                <path d="M72 108 L72 111 L117 137 L117 134" />
+                <path d="M117 137 L145 121 L145 118" />
               </g>
-              <rect x="150" y="40" width="78" height="72" rx="11" fill="#FFFFFF" stroke="rgba(13,16,20,0.12)" />
-              <g fill="#0F1114">
-                <rect x="160" y="50" width="7" height="7" />
-                <rect x="170" y="50" width="7" height="7" />
-                <rect x="160" y="60" width="7" height="7" />
-                <rect x="183" y="50" width="7" height="7" />
-                <rect x="173" y="63" width="6" height="6" />
-                <rect x="183" y="63" width="7" height="7" />
+              {/* barcode ticks along the plate */}
+              <g stroke="rgba(15,17,20,0.42)" strokeWidth="1.1">
+                <path d="M104 98 l-11 6.4M109 101 l-11 6.4M114 104 l-7 4M119 107 l-11 6.4M124 110 l-7 4" />
               </g>
-              <g fill="#0F1114">
-                <rect x="160" y="92" width="1.6" height="12" />
-                <rect x="163" y="92" width="1" height="12" />
-                <rect x="165" y="92" width="2.4" height="12" />
-                <rect x="169" y="92" width="1" height="12" />
-                <rect x="172" y="92" width="1.6" height="12" />
-                <rect x="176" y="92" width="3" height="12" />
-                <rect x="181" y="92" width="1" height="12" />
-                <rect x="184" y="92" width="2" height="12" />
+              {/* iso QR corner */}
+              <path d="M130 113 l6 3.5 l-6 3.5 l-6 -3.5 Z" stroke="rgba(15,17,20,0.42)" strokeWidth="1.1" />
+              {/* phone slab above */}
+              <g stroke="rgba(15,17,20,0.42)" strokeWidth="1.1">
+                <path d="M122 18 L149 33.5 L108 57 L81 41.5 Z" />
+                <path d="M81 41.5 L81 46 L108 61.5 L108 57" />
+                <path d="M108 61.5 L149 38 L149 33.5" />
+                <path d="M126 22.5 L142 31.7 L112 49 L96 39.8 Z" opacity="0.5" />
               </g>
-              <g transform="translate(150,26)">
-                <rect x="0" y="0" width="62" height="20" rx="4" fill="#1E8A5B" />
-                <path d="M10 10l3.4 3.4L20 7" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="27" y="14" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="9" fontWeight="700" fill="#fff">PAIRED</text>
+              {/* NFC handshake */}
+              <g stroke="#C2410C" strokeWidth="1.6" strokeLinecap="round" fill="none">
+                <path d="M104 70 a9 9 0 0 1 9 5.2" style={{ animation: 'nfcwave 1.6s ease-in-out infinite' }} />
+                <path d="M100 78 a15 15 0 0 1 15 8.6" style={{ animation: 'nfcwave 1.6s ease-in-out infinite', animationDelay: '.3s' }} />
+              </g>
+              <circle cx="110" cy="88" r="2.2" fill="#C2410C" />
+              {/* machine chip */}
+              <g transform="translate(156,58)">
+                <rect x="0" y="0" width="62" height="20" rx="4" fill="#FFFFFF" stroke="rgba(15,17,20,0.2)" />
+                <circle cx="11" cy="10" r="3" fill="#1E8A5B" />
+                <text x="19" y="13.5" fontFamily="JetBrains Mono,monospace" fontSize="9" fontWeight="700" fill="#0F1114">PAIRED</text>
               </g>
             </svg>
           </div>
           <div className="process-step-copy" style={{ padding: '24px 26px 28px' }}>
             <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 21, color: '#0F1114' }}>Activate</h3>
-            <p style={{ marginTop: 7, fontSize: 14.5, lineHeight: 1.55, color: '#4B5259' }}>Tap with your phone &mdash; it auto-pairs to the live dashboard.</p>
+            <p style={{ marginTop: 7, fontSize: 14.5, lineHeight: 1.55, color: '#4B5259' }}>Tap with your phone and it auto-pairs to the live dashboard.</p>
           </div>
         </div>
         {/* 02 Attach */}
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
             <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-machine)", fontWeight: 700, fontSize: 13, letterSpacing: '0.08em', color: '#9A3412' }}>02</span>
-            <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
-              <path d="M60 66 120 48 180 66 120 84z" fill="#E7CBA6" />
-              <path d="M60 66 60 112 120 130 120 84z" fill="#D4B387" />
-              <path d="M180 66 180 112 120 130 120 84z" fill="#C9A574" />
-              <path d="M120 48 120 84M120 84 120 130" stroke="rgba(13,16,20,0.12)" strokeWidth="1.4" />
-              <path d="M108 55 108 90 132 96 132 61z" fill="rgba(255,255,255,0.22)" />
-              <g style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'zfloat 3s ease-in-out infinite' }}>
-                <rect x="86" y="20" width="76" height="46" rx="9" fill="#FFFFFF" stroke="rgba(13,16,20,0.12)" transform="rotate(-5 124 43)" />
-                <g transform="rotate(-5 124 43)">
-                  <circle cx="102" cy="36" r="6.5" fill="none" stroke="#0284C7" strokeWidth="1.8" />
-                  <path d="M99 36a3 3 0 0 1 6 0" stroke="#0284C7" strokeWidth="1.6" fill="none" />
-                  <g fill="#0F1114">
-                    <rect x="120" y="30" width="1.6" height="14" />
-                    <rect x="123" y="30" width="1" height="14" />
-                    <rect x="125" y="30" width="2.6" height="14" />
-                    <rect x="129" y="30" width="1" height="14" />
-                    <rect x="132" y="30" width="1.6" height="14" />
-                    <rect x="136" y="30" width="3" height="14" />
-                    <rect x="141" y="30" width="1" height="14" />
-                    <rect x="144" y="30" width="2" height="14" />
-                  </g>
-                </g>
+            <svg width="240" height="150" viewBox="0 0 240 150" fill="none" aria-hidden="true">
+              {/* carton wireframe */}
+              <g stroke="rgba(15,17,20,0.42)" strokeWidth="1.1">
+                <path d="M120 22 L172 52 L120 82 L68 52 Z" />
+                <path d="M68 52 L68 98 L120 128 L120 82" />
+                <path d="M120 128 L172 98 L172 52" />
+                {/* top flap seam + tape */}
+                <path d="M94 37 L146 67" opacity="0.55" />
+                <path d="M120 82 L120 128" opacity="0.55" />
               </g>
-              <g transform="translate(158,112)">
-                <rect x="0" y="0" width="58" height="16" rx="3" fill="#0F1114" />
-                <text x="8" y="11.5" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="8" fontWeight="700" fill="#fff" letterSpacing="0.4">0.3 mm</text>
+              {/* corrugation hints */}
+              <path d="M76 62 L112 83 M76 74 L112 95" stroke="rgba(15,17,20,0.16)" strokeWidth="1" />
+              {/* label on the right face — the ember moment */}
+              <g stroke="#C2410C" strokeWidth="1.6">
+                <path d="M132 92 L160 76 L160 96 L132 112 Z" fill="rgba(255,255,255,0.85)" />
+              </g>
+              <g stroke="#C2410C" strokeWidth="1.2">
+                <path d="M137 95.5 l0 9M141 93.2 l0 9M145 90.9 l0 9M149 88.6 l0 9M153 86.3 l0 9" />
+              </g>
+              {/* peel motion path */}
+              <path d="M170 40 Q186 46 178 64" stroke="rgba(194,65,12,0.45)" strokeWidth="1.3" strokeDasharray="3 4" fill="none" />
+              {/* spec chip */}
+              <g transform="translate(30,110)">
+                <rect x="0" y="0" width="58" height="20" rx="4" fill="#FFFFFF" stroke="rgba(15,17,20,0.2)" />
+                <text x="9" y="13.5" fontFamily="JetBrains Mono,monospace" fontSize="9" fontWeight="700" fill="#0F1114">0.3 mm</text>
               </g>
             </svg>
           </div>
@@ -94,25 +93,27 @@ export default function HowItWorks() {
         <div className="process-step" style={{ borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(13,16,20,0.08)', boxShadow: '0 1px 2px rgba(13,16,20,0.03),0 22px 54px -34px rgba(13,16,20,0.24)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="process-step-visual" style={{ position: 'relative', height: 180, background: 'var(--cloud)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
             <span style={{ position: 'absolute', top: 16, left: 18, fontFamily: "var(--font-machine)", fontWeight: 700, fontSize: 13, letterSpacing: '0.08em', color: '#9A3412' }}>03</span>
-            <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
-              <rect x="30" y="22" width="180" height="106" rx="12" fill="#FFFFFF" stroke="rgba(13,16,20,0.09)" />
-              <g stroke="rgba(13,16,20,0.05)" strokeWidth="1">
-                <path d="M30 56h180M30 90h180M90 22v106M150 22v106" />
+            <svg width="240" height="150" viewBox="0 0 240 150" fill="none" aria-hidden="true">
+              {/* map plane */}
+              <path d="M120 18 L208 68 L120 118 L32 68 Z" stroke="rgba(15,17,20,0.42)" strokeWidth="1.1" />
+              <g stroke="rgba(15,17,20,0.14)" strokeWidth="1">
+                <path d="M91 34.5 L179 84.5M62 51 L150 101M149 34.5 L61 84.5M178 51 L90 101" />
               </g>
-              <path d="M56 104 Q88 60 120 84 T196 44" fill="none" stroke="#C2410C" strokeWidth="2.6" strokeLinecap="round" strokeDasharray="6 7" style={{ animation: 'zdash 1s linear infinite' }} />
-              <circle cx="56" cy="104" r="4.5" fill="#C2410C" />
-              <circle cx="196" cy="44" r="7" fill="none" stroke="#C2410C" strokeWidth="2" style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'pulsering 2s ease-out infinite' }} />
-              <path d="M196 32a10 10 0 0 1 10 10c0 7-10 16-10 16s-10-9-10-16a10 10 0 0 1 10-10z" fill="#C2410C" />
-              <circle cx="196" cy="42" r="3.4" fill="#fff" />
-              <g transform="translate(42,96)">
-                <rect x="0" y="0" width="66" height="22" rx="7" fill="#14161C" />
-                <circle cx="13" cy="11" r="3.4" fill="#5CB3F8" />
-                <text x="22" y="15" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="10" fontWeight="700" fill="#fff">&#8722;2&#176;C</text>
+              {/* two iso block buildings */}
+              <g stroke="rgba(15,17,20,0.3)" strokeWidth="1">
+                <path d="M78 56 L96 66 L78 76 L60 66 Z M60 66 L60 74 L78 84 L78 76 M78 84 L96 74 L96 66" />
+                <path d="M156 74 L170 82 L156 90 L142 82 Z M142 82 L142 88 L156 96 L156 90 M156 96 L170 88 L170 82" />
               </g>
-              <g transform="translate(150,30)">
-                <rect x="0" y="0" width="52" height="20" rx="4" fill="#FFFFFF" stroke="rgba(13,16,20,0.1)" />
-                <circle cx="12" cy="10" r="3.4" fill="#1E8A5B" />
-                <text x="20" y="14" fontFamily="Source Sans 3,Helvetica Neue,sans-serif" fontSize="9" fontWeight="700" fill="#0F1114">LIVE</text>
+              {/* route */}
+              <path d="M66 88 Q100 62 126 76 T182 60" fill="none" stroke="#C2410C" strokeWidth="2.2" strokeLinecap="round" strokeDasharray="6 7" style={{ animation: 'zdash 1s linear infinite' }} />
+              <circle cx="66" cy="88" r="4" fill="#C2410C" />
+              <circle cx="182" cy="60" r="7" fill="none" stroke="#C2410C" strokeWidth="1.6" style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'pulsering 2s ease-out infinite' }} />
+              <circle cx="182" cy="60" r="3.4" fill="#C2410C" />
+              {/* machine chip */}
+              <g transform="translate(42,106)">
+                <rect x="0" y="0" width="60" height="20" rx="4" fill="#14161C" />
+                <circle cx="11" cy="10" r="3" fill="#5CB3F8" />
+                <text x="19" y="13.5" fontFamily="JetBrains Mono,monospace" fontSize="9" fontWeight="700" fill="#fff">&#8722;2&#176;C</text>
               </g>
             </svg>
           </div>

@@ -53,6 +53,7 @@ function ProductsLink({ openTrace, openXenAuth }) {
       </a>
       <div className="znav-menu" style={{ position: 'absolute', top: '100%', left: '50%', marginLeft: -158, width: 316, paddingTop: 16 }}>
         <div
+          className="znav-menu-panel"
           style={{
             padding: 10,
             borderRadius: 16,
@@ -194,8 +195,8 @@ function MobileMenu({ open, close, openTrace, openXenAuth }) {
         animation: 'zfade .18s ease',
       }}
     >
-      <button type="button" style={item} onClick={() => { close(); openTrace(); }}>XenTag &mdash; live tracking labels</button>
-      <button type="button" style={item} onClick={() => { close(); openXenAuth(); }}>XenAuth &mdash; NFC authentication</button>
+      <button type="button" style={item} onClick={() => { close(); openTrace(); }}>XenTag &middot; live tracking labels</button>
+      <button type="button" style={item} onClick={() => { close(); openXenAuth(); }}>XenAuth &middot; NFC authentication</button>
       <div style={{ height: 1, margin: '6px 4px', background: 'rgba(255,255,255,0.08)' }} />
       <a style={item} href="#how" onClick={close}>How it works</a>
       <a style={item} href="#industries" onClick={close}>Industries</a>

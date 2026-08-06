@@ -87,8 +87,8 @@ export default function Comparison() {
   return (
     <section id="compare" className="comparison-section section-shell" style={{ maxWidth: 1080, margin: '0 auto', padding: '80px 32px' }}>
       <div className="section-heading" style={{ maxWidth: '40rem', marginBottom: 40 }}>
-        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(28px,3.6vw,44px)', lineHeight: 1.08, letterSpacing: '-0.025em', color: '#0F1114' }}>
-          XenTag vs. traditional trackers
+        <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 1.02, letterSpacing: '-0.025em', color: '#0F1114' }}>
+          <span style={{ color: '#C2410C' }}>XenTag</span> vs. traditional trackers
         </h2>
         <p style={{ marginTop: 14, fontSize: 16, lineHeight: 1.6, color: '#4B5259', maxWidth: '36rem' }}>
           A $10 peel-and-stick label against a hardwired GPS unit, on cost, battery, setup, and where the signal shows up.
@@ -116,14 +116,14 @@ export default function Comparison() {
           </div>
           <div style={{ marginTop: 8, fontSize: 14, color: '#5C636B' }}>Tracking included · 1-year battery · no install</div>
         </div>
-        <div className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#878E96', paddingBottom: 14 }}>vs</div>
+        <div className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5C636B', paddingBottom: 14 }}>vs</div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: '#5C636B', marginBottom: 8 }}>Legacy tracker</div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, justifyContent: 'flex-end' }}>
             <span className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(44px,5.5vw,64px)', lineHeight: 0.9, letterSpacing: '-0.03em', color: '#5C636B', fontVariantNumeric: 'tabular-nums' }}>$30+</span>
-            <span className="font-display" style={{ fontSize: 16, fontWeight: 700, color: '#878E96', textTransform: 'uppercase', letterSpacing: '0.04em' }}>per unit</span>
+            <span className="font-display" style={{ fontSize: 16, fontWeight: 700, color: '#5C636B', textTransform: 'uppercase', letterSpacing: '0.04em' }}>per unit</span>
           </div>
-          <div style={{ marginTop: 8, fontSize: 14, color: '#878E96' }}>Hardwired · 3–6 month battery · separate portal</div>
+          <div style={{ marginTop: 8, fontSize: 14, color: '#5C636B' }}>Hardwired · 3–6 month battery · separate portal</div>
         </div>
       </div>
 

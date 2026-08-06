@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useReducedMotion } from 'framer-motion';
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import { useMeshCanvas } from '../hooks/useMeshCanvas';
 import { useHover } from '../hooks/useHover';
 import { CLIENTS } from '../clientLogos.js';
@@ -16,14 +16,14 @@ function SampleButton() {
         justifyContent: 'center',
         gap: 10,
         padding: '16px 30px',
-        borderRadius: 12,
+        borderRadius: 999,
         cursor: 'pointer',
         fontFamily: "var(--font-body)",
         fontSize: 16.5,
         fontWeight: 700,
         color: '#fff',
         background: hovered ? '#D2470A' : '#C2410C',
-        boxShadow: '0 2px 10px -2px rgba(0,0,0,0.45)',
+        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.16), 0 2px 10px -2px rgba(0,0,0,0.45)',
         transform: hovered ? 'translateY(-1px)' : 'none',
         transition: 'transform .18s,background .18s',
       }}
@@ -45,15 +45,15 @@ function WatchLink() {
         justifyContent: 'center',
         gap: 9,
         padding: '16px 26px',
-        borderRadius: 12,
+        borderRadius: 999,
         fontFamily: "var(--font-body)",
         fontSize: 16.5,
         fontWeight: 600,
-        color: '#F5F7FB',
-        background: hovered ? 'rgba(255,255,255,0.1)' : 'rgba(9,10,13,0.25)',
-        border: hovered ? '1px solid rgba(255,255,255,0.5)' : '1px solid rgba(255,255,255,0.3)',
+        color: '#0F1114',
+        background: hovered ? '#FFFFFF' : 'rgba(255,255,255,0.92)',
+        border: '1px solid rgba(255,255,255,0.5)',
         transform: hovered ? 'translateY(-1px)' : 'none',
-        transition: 'background .18s,border-color .18s,transform .18s',
+        transition: 'background .18s,transform .18s',
       }}
       {...hoverProps}
     >
@@ -80,6 +80,31 @@ function HeroLogoRun({ ariaHidden }) {
         />
       ))}
     </div>
+  );
+}
+
+function LabelTilt({ children, disabled }) {
+  const px = useMotionValue(0.5);
+  const py = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(py, [0, 1], [7, -7]), { stiffness: 160, damping: 18 });
+  const rotateY = useSpring(useTransform(px, [0, 1], [-9, 9]), { stiffness: 160, damping: 18 });
+
+  if (disabled) return children;
+  return (
+    <motion.div
+      style={{ rotateX, rotateY, transformPerspective: 900, willChange: 'transform' }}
+      onPointerMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        px.set((e.clientX - r.left) / r.width);
+        py.set((e.clientY - r.top) / r.height);
+      }}
+      onPointerLeave={() => {
+        px.set(0.5);
+        py.set(0.5);
+      }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
@@ -117,44 +142,25 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           background:
-            'radial-gradient(70% 55% at 18% 42%,rgba(194,65,12,0.22),transparent 62%),linear-gradient(90deg,rgba(9,10,13,0.94) 0%,rgba(9,10,13,0.78) 34%,rgba(9,10,13,0.28) 64%,rgba(9,10,13,0.05) 100%),linear-gradient(180deg,rgba(9,10,13,0.5) 0%,transparent 26%,transparent 72%,rgba(9,10,13,0.72) 100%)',
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          pointerEvents: 'none',
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)',
-          backgroundSize: '56px 56px',
-          maskImage: 'radial-gradient(ellipse 70% 60% at 30% 45%,black,transparent)',
-          WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 30% 45%,black,transparent)',
-          animation: reduceMotion ? undefined : 'zbay 7s ease-in-out infinite',
+            'linear-gradient(90deg,rgba(9,10,13,0.94) 0%,rgba(9,10,13,0.78) 34%,rgba(9,10,13,0.28) 64%,rgba(9,10,13,0.05) 100%),linear-gradient(180deg,rgba(9,10,13,0.5) 0%,transparent 26%,transparent 72%,rgba(9,10,13,0.72) 100%)',
         }}
       />
 
       <div style={{ position: 'relative', zIndex: 2, flex: 1, width: '100%', maxWidth: 1300, margin: '0 auto', padding: '150px clamp(22px,4vw,44px) 148px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'clamp(34px,5vw,72px)', alignItems: 'center' }}>
           <div style={{ minWidth: 0, animation: reduceMotion ? undefined : 'zrise .85s cubic-bezier(0.16,1,0.3,1) both' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
-              <span className="font-display" style={{ fontSize: 'clamp(18px,1.5vw,22px)', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.92)' }}>
-                XenTag&trade;
-              </span>
-            </div>
             <h1
               style={{
-                fontSize: 'clamp(36px,4.8vw,64px)',
-                lineHeight: 0.95,
-                letterSpacing: '-0.028em',
+                fontSize: 'clamp(32px,4vw,54px)',
+                lineHeight: 1,
+                letterSpacing: '-0.02em',
                 margin: 0,
                 fontWeight: 800,
                 textTransform: 'uppercase',
                 animation: reduceMotion ? undefined : 'zstencil 1.05s .08s cubic-bezier(0.16,1,0.3,1) both',
               }}
             >
-              <span style={{ display: 'block', color: '#F5F7FB' }}>A paper-thin label.</span>
+              <span style={{ display: 'block', color: '#F5F7FB' }}><span style={{ whiteSpace: 'nowrap' }}>A paper-thin</span> label.</span>
               <span style={{ display: 'block', color: '#FF7A2E' }}>It guards what you</span>
               <span style={{ display: 'block', color: '#FF7A2E' }}>can&rsquo;t afford</span>
               <span style={{ display: 'block', color: '#FF7A2E' }}>to lose.</span>
@@ -201,7 +207,8 @@ export default function Hero() {
             </div>
           </div>
           {/* RIGHT: flat render of the label itself */}
-          <div className="hero-sticker" style={{ minWidth: 0, display: 'flex', justifyContent: 'center', padding: '16px 10px', animation: reduceMotion ? undefined : 'zrise .95s .28s cubic-bezier(0.16,1,0.3,1) both' }}>
+          <div className="hero-sticker" aria-hidden="true" style={{ minWidth: 0, display: 'flex', justifyContent: 'center', padding: '16px 10px', animation: reduceMotion ? undefined : 'zrise .95s .28s cubic-bezier(0.16,1,0.3,1) both' }}>
+            <LabelTilt disabled={!!reduceMotion}>
             <div style={{ width: '100%', maxWidth: 410, transform: 'rotate(-3deg)', animation: reduceMotion ? undefined : 'zfloat 7s ease-in-out infinite' }}>
               <div
                 style={{
@@ -264,6 +271,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+            </LabelTilt>
           </div>
         </div>
       </div>

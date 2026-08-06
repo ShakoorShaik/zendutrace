@@ -91,7 +91,7 @@ export default function Footer() {
         <div>
           <img src="/images/xentag-logo-white.png" alt="XenTag" style={{ height: 32, width: 'auto', display: 'block' }} />
           <p style={{ marginTop: 18, fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.68)', maxWidth: '25rem' }}>
-            Smart labels for goods worth protecting. XenTag&#8482; and XenAuth&#8482; bring live location, condition and cryptographic authenticity to high-value, high-security shipments &mdash; from a label. Built by ZenduIT &amp; GoFleet.
+            Smart labels for goods worth protecting. XenTag&#8482; and XenAuth&#8482; bring live location, condition and cryptographic authenticity to high-value, high-security shipments, all from a label. Built by ZenduIT &amp; GoFleet.
           </p>
           <div style={{ marginTop: 22, display: 'inline-flex', alignItems: 'center', gap: 9, fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>
             <span aria-hidden style={{ width: 7, height: 7, borderRadius: '50%', background: '#2FBF83' }} />
@@ -101,7 +101,7 @@ export default function Footer() {
             <ContactLink
               href="mailto:sales@zenduit.com"
               icon={
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m2 7 10 6 10-6" />
                 </svg>
@@ -112,7 +112,7 @@ export default function Footer() {
             <ContactLink
               href="tel:+18559363848"
               icon={
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
               }
@@ -120,7 +120,7 @@ export default function Footer() {
               +1 (855) 936-3848
             </ContactLink>
             <address style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontSize: 13.5, fontStyle: 'normal', color: 'rgba(255,255,255,0.64)' }}>
-              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
@@ -158,6 +158,21 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Giant wordmark: the brand signs the page off */}
+      <div
+        aria-hidden="true"
+        style={{
+          maxWidth: 1480,
+          margin: '0 auto',
+          height: 'clamp(64px, 11vw, 150px)',
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 120'%3E%3Ctext x='50%25' y='98' text-anchor='middle' font-family='Archivo,Helvetica,Arial,sans-serif' font-weight='800' font-size='118' letter-spacing='4' fill='white' fill-opacity='0.055'%3EXENTAG%3C/text%3E%3C/svg%3E\")",
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center bottom',
+          backgroundSize: 'contain',
+        }}
+      />
+
       {/* Bottom bar */}
       <div className="footer-bottom" style={{ maxWidth: 1480, margin: '0 auto', padding: '26px 48px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
         <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.58)' }}>
@@ -166,19 +181,16 @@ export default function Footer() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
           <LegalLink href="https://www.zenduit.com/privacy-policy/">Privacy</LegalLink>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <SocialLink href="https://www.linkedin.com/company/zenduit" label="LinkedIn">
+            <SocialLink href="https://www.linkedin.com/company/xentag" label="XenTag on LinkedIn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z" />
               </svg>
             </SocialLink>
-            <SocialLink href="https://www.youtube.com/@zenduit6752" label="YouTube">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23 12s0-3.7-.46-5.48a2.78 2.78 0 0 0-1.94-1.96C18.9 4.1 12 4.1 12 4.1s-6.9 0-8.6.46A2.78 2.78 0 0 0 1.46 6.5C1 8.3 1 12 1 12s0 3.7.46 5.48a2.78 2.78 0 0 0 1.94 1.96c1.7.46 8.6.46 8.6.46s6.9 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96C23 15.7 23 12 23 12zM9.75 15.5v-7l6 3.5z" />
-              </svg>
-            </SocialLink>
-            <SocialLink href="https://x.com/zenduit" label="X">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.24 2h3.3l-7.2 8.23L23 22h-6.63l-5.19-6.79L5.24 22H1.94l7.7-8.8L1 2h6.8l4.69 6.2zm-1.16 18h1.83L7.01 3.9H5.05z" />
+            <SocialLink href="https://www.instagram.com/xentag_/" label="XenTag on Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+                <circle cx="12" cy="12" r="4.2" />
+                <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none" />
               </svg>
             </SocialLink>
           </div>

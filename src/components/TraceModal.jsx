@@ -105,6 +105,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
       onClick={closePanel}
       role="dialog"
       aria-modal="true"
+      data-lenis-prevent="true"
       aria-label="XenTag overview"
       style={{
         position: 'fixed',
@@ -173,14 +174,14 @@ export default function TraceModal({ open, closePanel, openDemo }) {
                 Track. <span style={{ color: '#5CB3F8' }}>Trace.</span> Deliver.
               </h2>
               <p style={{ marginTop: 22, fontSize: 'clamp(16px,1.3vw,19px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.72)', maxWidth: '33rem' }}>
-              Peel-and-stick smart labels add location, temperature and shock signals to pallets, parcels and high-value assets across supported routes &mdash; in one operational view. Use the crowdsourced Bluetooth network or direct cellular reporting.
+              Peel-and-stick smart labels add location, temperature and shock signals to pallets, parcels and high-value assets across supported routes, all in one operational view. Use the crowdsourced Bluetooth network or direct cellular reporting.
               </p>
               <div style={{ marginTop: 30, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <GetFreeLabelsLink closePanel={closePanel} />
                 <WatchLifecycleButton openDemo={openDemo} />
               </div>
             </div>
-            <div style={{ position: 'relative', borderRadius: 22, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 44px 100px -40px rgba(0,0,0,0.85)', background: '#0B0C10' }}>
+            <div style={{ position: 'relative', borderRadius: 22, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 44px 100px -40px rgba(10,11,14,0.85)', background: '#0B0C10' }}>
               <AutoPlayVideo
                 src="/assets/xentag-film.mp4"
                 poster="/assets/xentag-film-poster.webp"
@@ -195,19 +196,19 @@ export default function TraceModal({ open, closePanel, openDemo }) {
           <div className="xt-stats" style={{ marginTop: 72, display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 18 }}>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
               <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#5CB3F8', lineHeight: 1 }}>100M+</div>
-              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Crowdsourced BLE nodes in the XenTag network &mdash; coverage that already exists.</p>
+              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Crowdsourced BLE nodes in the XenTag network, coverage that already exists.</p>
             </div>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FB8B24', lineHeight: 1 }}>29</div>
-              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Countries live today &mdash; global reach across Bluetooth and cellular coverage.</p>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FF8A2B', lineHeight: 1 }}>29</div>
+              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Countries live today, with global reach across Bluetooth and cellular coverage.</p>
             </div>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
               <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#00E5A0', lineHeight: 1 }}>1 yr</div>
-              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Battery life from a paper-thin label &mdash; peel, stick and forget.</p>
+              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Battery life from a paper-thin label. Peel, stick and forget.</p>
             </div>
             <div style={{ borderRadius: 18, padding: 26, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}>
               <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(30px,2.6vw,40px)', color: '#FFFFFF', lineHeight: 1 }}>&minus;60&deg;</div>
-              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Temperature logging built in &mdash; from cold chain to cell &amp; gene therapies.</p>
+              <p style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>Temperature logging built in, from cold chain to cell &amp; gene therapies.</p>
             </div>
           </div>
 
@@ -252,7 +253,7 @@ export default function TraceModal({ open, closePanel, openDemo }) {
                   Bluetooth
                 </div>
                 <h4 style={{ marginTop: 14, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 20, color: '#fff' }}>XenTag network labels</h4>
-                <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>Ultra-thin, year-long battery. Location relayed by 100M+ crowdsourced nodes &mdash; no gateways to buy.</p>
+                <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>Ultra-thin, year-long battery. Location relayed by 100M+ crowdsourced nodes, with no gateways to buy.</p>
               </div>
             </div>
             <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0B0C10' }}>
@@ -262,22 +263,22 @@ export default function TraceModal({ open, closePanel, openDemo }) {
                   Cellular
                 </div>
                 <h4 style={{ marginTop: 14, fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 20, color: '#fff' }}>Independent cellular labels</h4>
-                <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>For remote routes with no node density &mdash; report position over the mobile network anywhere.</p>
+                <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>For remote routes with no node density, position reports over the mobile network anywhere.</p>
               </div>
             </div>
           </div>
 
           {/* solutions */}
           <div style={{ marginTop: 88 }}>
-            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(24px,2.6vw,34px)', letterSpacing: '-0.02em', color: '#fff', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 'clamp(22px,2.6vw,32px)', letterSpacing: '-0.02em', color: '#fff', textAlign: 'center' }}>
               Built for every leg of the chain
             </h3>
-            <p style={{ marginTop: 12, textAlign: 'center', fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>From the plant floor to the final mile &mdash; and everything in between.</p>
+            <p style={{ marginTop: 12, textAlign: 'center', fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>From the plant floor to the final mile, and everything in between.</p>
             <div className="xt-verticals" style={{ marginTop: 36, display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
               {verticals.map((v) => (
                 <div key={v.name} style={{ position: 'relative', display: 'block', borderRadius: 16, overflow: 'hidden', aspectRatio: '3/4', border: '1px solid rgba(255,255,255,0.1)' }}>
                   <img src={v.img} alt={v.alt} width="1536" height="1024" loading="lazy" decoding="async" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top,rgba(0,0,0,0.78),transparent 55%)' }} />
+                  <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top,rgba(10,11,14,0.78),transparent 55%)' }} />
                   <span style={{ position: 'absolute', left: 16, bottom: 14, fontWeight: 700, fontSize: 16, color: '#fff' }}>{v.name}</span>
                 </div>
               ))}

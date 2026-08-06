@@ -8,12 +8,12 @@ const INTENTS = {
     heading: 'Get 10 free labels',
     sub: (
       <>
-        Starter roll ships free. First shipments live on the map the same week &mdash; then <strong style={{ color: '#FFFFFF' }}>$10 per label, tracking included</strong>.
+        Starter roll ships free. First shipments go live on the map the same week, then <strong style={{ color: '#FFFFFF' }}>$10 per label with tracking included</strong>.
       </>
     ),
     request: '10 free XenTag labels',
     button: 'Claim 10 free labels',
-    done: 'Request received — we’ll confirm by email and ship your starter roll.',
+    done: 'Request received. We’ll confirm by email and ship your starter roll.',
   },
   demo: {
     chip: '20-minute demo',
@@ -24,12 +24,12 @@ const INTENTS = {
     ),
     sub: (
       <>
-        A walkthrough of the live platform with your use case &mdash; and we&rsquo;ll ship <strong style={{ color: '#FFFFFF' }}>sample labels the same week</strong>.
+        A walkthrough of the live platform built around your use case. We&rsquo;ll also ship <strong style={{ color: '#FFFFFF' }}>sample labels the same week</strong>.
       </>
     ),
     request: 'Book a 20-minute XenTag demo',
     button: 'Request a demo',
-    done: 'Request received — we’ll reach out by email to schedule your demo.',
+    done: 'Request received. We’ll reach out by email to schedule your demo.',
   },
 };
 
@@ -136,7 +136,7 @@ export default function CtaBanner({ openDemo }) {
             <IntentChip active={intent === 'labels'} onClick={() => setIntent('labels')} edge="start">{INTENTS.labels.chip}</IntentChip>
             <IntentChip active={intent === 'demo'} onClick={() => setIntent('demo')} edge="end">{INTENTS.demo.chip}</IntentChip>
           </div>
-          <h2 style={{ fontSize: 'clamp(34px,4.2vw,52px)', lineHeight: 0.98, letterSpacing: '-0.025em', color: '#FFFFFF', maxWidth: '14ch', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(32px,4.2vw,52px)', lineHeight: 0.98, letterSpacing: '-0.025em', color: '#FFFFFF', maxWidth: '14ch', margin: '0 auto' }}>
             {copy.heading}
           </h2>
           <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.66, color: '#B9C0C8', maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -201,7 +201,7 @@ export default function CtaBanner({ openDemo }) {
                 )}
                 {status === 'failed' && (
                   <div id="cta-email-failed" role="alert" style={{ marginTop: 8, textAlign: 'left', fontSize: 13, color: '#FF9AA0', fontFamily: "var(--font-body)" }}>
-                    Couldn&rsquo;t send right now &mdash;{' '}
+                    We couldn&rsquo;t send that right now. Please{' '}
                     <a href={fallbackHref} style={{ color: '#FFB37E', textDecoration: 'underline' }}>email sales@zenduit.com</a> instead.
                   </div>
                 )}
